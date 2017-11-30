@@ -50,16 +50,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DvorakTrainer\DvorakTrainer.csproj">
-      <Project>{13386938-a1f1-41ce-bc4f-e7722ac00e3b}</Project>
-      <Name>DvorakTrainer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DvorakTrainer\DvorakTrainer.csproj">
+      <Project>{13386938-a1f1-41ce-bc4f-e7722ac00e3b}</Project>
+      <Name>DvorakTrainer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
