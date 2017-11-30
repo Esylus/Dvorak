@@ -106,7 +106,7 @@
             this.cbF1 = new System.Windows.Forms.CheckBox();
             this.lblMain = new System.Windows.Forms.Label();
             this.lblAttempts = new System.Windows.Forms.Label();
-            this.txtAttempts = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.lblScore = new System.Windows.Forms.Label();
             this.lblCorrect = new System.Windows.Forms.Label();
             this.txtScore = new System.Windows.Forms.TextBox();
@@ -1211,13 +1211,13 @@
             this.lblAttempts.TabIndex = 3;
             this.lblAttempts.Text = "Attempts";
             // 
-            // txtAttempts
+            // txtTotal
             // 
-            this.txtAttempts.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAttempts.Location = new System.Drawing.Point(113, 11);
-            this.txtAttempts.Name = "txtAttempts";
-            this.txtAttempts.Size = new System.Drawing.Size(73, 31);
-            this.txtAttempts.TabIndex = 4;
+            this.txtTotal.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(113, 11);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(73, 31);
+            this.txtTotal.TabIndex = 4;
             // 
             // lblScore
             // 
@@ -1260,7 +1260,7 @@
             this.pnlStatistics.Controls.Add(this.lblAttempts);
             this.pnlStatistics.Controls.Add(this.txtCorrect);
             this.pnlStatistics.Controls.Add(this.lblCorrect);
-            this.pnlStatistics.Controls.Add(this.txtAttempts);
+            this.pnlStatistics.Controls.Add(this.txtTotal);
             this.pnlStatistics.Controls.Add(this.lblScore);
             this.pnlStatistics.Controls.Add(this.txtScore);
             this.pnlStatistics.Location = new System.Drawing.Point(712, 65);
@@ -1403,7 +1403,7 @@
         private System.Windows.Forms.CheckBox cbRCtrl;
         private System.Windows.Forms.Label lblMain;
         private System.Windows.Forms.Label lblAttempts;
-        private System.Windows.Forms.TextBox txtAttempts;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label lblCorrect;
         private System.Windows.Forms.TextBox txtScore;

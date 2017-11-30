@@ -22,15 +22,20 @@ namespace DvorakTrainer
             set { this.m_currentRandomKey = value; }
         }
 
+        public KeyRandomizer()
+        {//empty default constructor
+            
+        }
+
         public KeyRandomizer(List<int> populateUserSelectedKeyList) 
-        {// default constructor that first clears then populates userSecectedKeyList
+        {// constructor that first clears then populates userSelectedKeyList
 
             userSelectedKeyList.Clear();
             userSelectedKeyList = populateUserSelectedKeyList;
         }
 
         public void extractUserRandomKeyToMember()
-        {//randomize user list, extract value from randomized number
+        {//randomize user list, extract key value from randomized number
 
             int randomIntFromUserList =  getRandomIntFromAnyList(userSelectedKeyList);
 
@@ -40,8 +45,10 @@ namespace DvorakTrainer
 
         }
 
-        public static int getRandomIntFromAnyList(List<int> rawList)
-        {      
+        public int getRandomIntFromAnyList(List<int> rawList)
+        {//take any list and get one random value from it
+         //add alogrithm to ensure two numbers in a row can not be selected 
+
             Random random = new Random();
             int randomIntFromAnyList = random.Next(0, rawList.Count);
             
