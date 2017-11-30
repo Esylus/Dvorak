@@ -10,12 +10,8 @@ namespace DvorakTrainer.Test
     [TestFixture]
     class KeyRandomizerTest
     {
-
-
-
-
         [Test]
-        public void Randomize_IntegerList_ReturnPositiveInteger()
+        public void getRandomIntFromAnyList_IntegerList_ReturnPositiveInteger()
         {  // Arrange, Act, Assert
 
             List<int> testList = new List<int>();
@@ -29,9 +25,11 @@ namespace DvorakTrainer.Test
 
             int actual;
 
-            actual = DvorakTrainer.KeyRandomizer.getRandomIntFromAnyList(testList);
+            KeyRandomizer testRandomizer = new KeyRandomizer();
 
-            if ((actual > 0) && (actual < testList.Count()))
+            actual = testRandomizer.getRandomIntFromAnyList(testList);
+
+            if ((actual > 0) && (actual <= testList.Count()))
             {
                 Assert.Pass();
             }

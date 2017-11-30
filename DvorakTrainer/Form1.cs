@@ -18,13 +18,19 @@ namespace Dvorak
             InitializeComponent();
         }
 
-        private KeyRandomizer userKeyListObject;  
-        private int correct = 0;                  // temp score keeper
+        private KeyRandomizer userKeyListObject;
+        private Statistics sessionStatistics;
+        //private int correct = 0;                  // temp score keeper
         private int actual = 0;                   // temp score keeper
 
         public void btnPractice_Click(object sender, EventArgs e)
         {
             userKeyListObject = new KeyRandomizer(putUserSelectedKeysIntoList());
+
+            sessionStatistics = new Statistics();
+
+            getScoreAndDisplayStatistics();
+            
             getRandomKeyAndDisplay();
 
             // clear statistics - call to statitics class
@@ -244,111 +250,141 @@ namespace Dvorak
 
             }
         }
-        
+
+        private void playAgain()
+        {
+            sessionStatistics.Correct++;
+            getRandomKeyAndDisplay();
+        }
+
+        private void trackTotal()
+        {
+            sessionStatistics.Total++;
+            getScoreAndDisplayStatistics();
+        }
+
+      
+
+        private void getScoreAndDisplayStatistics()
+        {
+            decimal correct = sessionStatistics.Correct;
+            decimal total = sessionStatistics.Total;
+            decimal score = sessionStatistics.Score;
+         
+
+            txtCorrect.Text = correct.ToString();
+            txtTotal.Text = total.ToString();
+
+            if (total != 0)
+            {
+                score = sessionStatistics.calculateScore(correct, total);
+                txtScore.Text = score.ToString("P");
+            }
+        }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {// if selected key matches user inputs
 
             if (!e.Shift)      // if shift NOT present, these key combos work
             {
-                if ((e.KeyCode == Keys.Escape) && (userKeyListObject.CurrentRandomKey == 0)) { correct++; getRandomKeyAndDisplay(); }          // if key press correct, add point and go again
-                else if ((e.KeyCode == Keys.F1) && (userKeyListObject.CurrentRandomKey == 1)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F2) && (userKeyListObject.CurrentRandomKey == 2)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F3) && (userKeyListObject.CurrentRandomKey == 3)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F4) && (userKeyListObject.CurrentRandomKey == 4)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F5) && (userKeyListObject.CurrentRandomKey == 5)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F6) && (userKeyListObject.CurrentRandomKey == 6)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F7) && (userKeyListObject.CurrentRandomKey == 7)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F8) && (userKeyListObject.CurrentRandomKey == 8)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F9) && (userKeyListObject.CurrentRandomKey == 9)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F10) && (userKeyListObject.CurrentRandomKey == 10)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F11) && (userKeyListObject.CurrentRandomKey == 11)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F12) && (userKeyListObject.CurrentRandomKey == 12)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Oemtilde) && (userKeyListObject.CurrentRandomKey == 13)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D1) && (userKeyListObject.CurrentRandomKey == 14)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D2) && (userKeyListObject.CurrentRandomKey == 15)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D3) && (userKeyListObject.CurrentRandomKey == 16)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D4) && (userKeyListObject.CurrentRandomKey == 17)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D5) && (userKeyListObject.CurrentRandomKey == 18)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D6) && (userKeyListObject.CurrentRandomKey == 19)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D7) && (userKeyListObject.CurrentRandomKey == 20)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D8) && (userKeyListObject.CurrentRandomKey == 21)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D9) && (userKeyListObject.CurrentRandomKey == 22)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D0) && (userKeyListObject.CurrentRandomKey == 23)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemOpenBrackets) && (userKeyListObject.CurrentRandomKey == 24)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemCloseBrackets) && (userKeyListObject.CurrentRandomKey == 25)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Back) && (userKeyListObject.CurrentRandomKey == 26)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Tab) && (userKeyListObject.CurrentRandomKey == 27)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemQuotes) && (userKeyListObject.CurrentRandomKey == 28)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Oemcomma) && (userKeyListObject.CurrentRandomKey == 29)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemPeriod) && (userKeyListObject.CurrentRandomKey == 30)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.P) && (userKeyListObject.CurrentRandomKey == 31)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Y) && (userKeyListObject.CurrentRandomKey == 32)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.F) && (userKeyListObject.CurrentRandomKey == 33)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.G) && (userKeyListObject.CurrentRandomKey == 34)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.C) && (userKeyListObject.CurrentRandomKey == 35)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.R) && (userKeyListObject.CurrentRandomKey == 36)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.L) && (userKeyListObject.CurrentRandomKey == 37)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemQuestion) && (userKeyListObject.CurrentRandomKey == 38)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Oemplus) && (userKeyListObject.CurrentRandomKey == 39)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemPipe) && (userKeyListObject.CurrentRandomKey == 40)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.CapsLock) && (userKeyListObject.CurrentRandomKey == 41)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.A) && (userKeyListObject.CurrentRandomKey == 42)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.O) && (userKeyListObject.CurrentRandomKey == 43)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.E) && (userKeyListObject.CurrentRandomKey == 44)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.U) && (userKeyListObject.CurrentRandomKey == 45)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.I) && (userKeyListObject.CurrentRandomKey == 46)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D) && (userKeyListObject.CurrentRandomKey == 47)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.H) && (userKeyListObject.CurrentRandomKey == 48)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.T) && (userKeyListObject.CurrentRandomKey == 49)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.N) && (userKeyListObject.CurrentRandomKey == 50)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.S) && (userKeyListObject.CurrentRandomKey == 51)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemMinus) && (userKeyListObject.CurrentRandomKey == 52)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Enter) && (userKeyListObject.CurrentRandomKey == 53)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.ShiftKey) && (userKeyListObject.CurrentRandomKey == 54)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemSemicolon) && (userKeyListObject.CurrentRandomKey == 55)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Q) && (userKeyListObject.CurrentRandomKey == 56)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.J) && (userKeyListObject.CurrentRandomKey == 57)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.K) && (userKeyListObject.CurrentRandomKey == 58)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.X) && (userKeyListObject.CurrentRandomKey == 59)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.B) && (userKeyListObject.CurrentRandomKey == 60)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.M) && (userKeyListObject.CurrentRandomKey == 61)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.W) && (userKeyListObject.CurrentRandomKey == 62)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.V) && (userKeyListObject.CurrentRandomKey == 63)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Z) && (userKeyListObject.CurrentRandomKey == 64)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.ShiftKey) && (userKeyListObject.CurrentRandomKey == 65)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.ControlKey) && (userKeyListObject.CurrentRandomKey == 66)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Menu) && (userKeyListObject.CurrentRandomKey == 67)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Alt) && (userKeyListObject.CurrentRandomKey == 68)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Space) && (userKeyListObject.CurrentRandomKey == 69)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Alt) && (userKeyListObject.CurrentRandomKey == 70)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Menu) && (userKeyListObject.CurrentRandomKey == 71)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.ControlKey) && (userKeyListObject.CurrentRandomKey == 72)) { correct++; getRandomKeyAndDisplay(); }
+                if ((e.KeyCode == Keys.Escape) && (userKeyListObject.CurrentRandomKey == 0)) { playAgain(); }          // if key press correct, add point and go again
+                else if ((e.KeyCode == Keys.F1) && (userKeyListObject.CurrentRandomKey == 1)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F2) && (userKeyListObject.CurrentRandomKey == 2)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F3) && (userKeyListObject.CurrentRandomKey == 3)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F4) && (userKeyListObject.CurrentRandomKey == 4)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F5) && (userKeyListObject.CurrentRandomKey == 5)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F6) && (userKeyListObject.CurrentRandomKey == 6)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F7) && (userKeyListObject.CurrentRandomKey == 7)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F8) && (userKeyListObject.CurrentRandomKey == 8)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F9) && (userKeyListObject.CurrentRandomKey == 9)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F10) && (userKeyListObject.CurrentRandomKey == 10)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F11) && (userKeyListObject.CurrentRandomKey == 11)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F12) && (userKeyListObject.CurrentRandomKey == 12)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Oemtilde) && (userKeyListObject.CurrentRandomKey == 13)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D1) && (userKeyListObject.CurrentRandomKey == 14)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D2) && (userKeyListObject.CurrentRandomKey == 15)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D3) && (userKeyListObject.CurrentRandomKey == 16)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D4) && (userKeyListObject.CurrentRandomKey == 17)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D5) && (userKeyListObject.CurrentRandomKey == 18)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D6) && (userKeyListObject.CurrentRandomKey == 19)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D7) && (userKeyListObject.CurrentRandomKey == 20)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D8) && (userKeyListObject.CurrentRandomKey == 21)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D9) && (userKeyListObject.CurrentRandomKey == 22)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D0) && (userKeyListObject.CurrentRandomKey == 23)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemOpenBrackets) && (userKeyListObject.CurrentRandomKey == 24)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemCloseBrackets) && (userKeyListObject.CurrentRandomKey == 25)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Back) && (userKeyListObject.CurrentRandomKey == 26)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Tab) && (userKeyListObject.CurrentRandomKey == 27)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemQuotes) && (userKeyListObject.CurrentRandomKey == 28)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Oemcomma) && (userKeyListObject.CurrentRandomKey == 29)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemPeriod) && (userKeyListObject.CurrentRandomKey == 30)) { playAgain(); }
+                else if ((e.KeyCode == Keys.P) && (userKeyListObject.CurrentRandomKey == 31)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Y) && (userKeyListObject.CurrentRandomKey == 32)) { playAgain(); }
+                else if ((e.KeyCode == Keys.F) && (userKeyListObject.CurrentRandomKey == 33)) { playAgain(); }
+                else if ((e.KeyCode == Keys.G) && (userKeyListObject.CurrentRandomKey == 34)) { playAgain(); }
+                else if ((e.KeyCode == Keys.C) && (userKeyListObject.CurrentRandomKey == 35)) { playAgain(); }
+                else if ((e.KeyCode == Keys.R) && (userKeyListObject.CurrentRandomKey == 36)) { playAgain(); }
+                else if ((e.KeyCode == Keys.L) && (userKeyListObject.CurrentRandomKey == 37)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemQuestion) && (userKeyListObject.CurrentRandomKey == 38)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Oemplus) && (userKeyListObject.CurrentRandomKey == 39)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemPipe) && (userKeyListObject.CurrentRandomKey == 40)) { playAgain(); }
+                else if ((e.KeyCode == Keys.CapsLock) && (userKeyListObject.CurrentRandomKey == 41)) { playAgain(); }
+                else if ((e.KeyCode == Keys.A) && (userKeyListObject.CurrentRandomKey == 42)) { playAgain(); }
+                else if ((e.KeyCode == Keys.O) && (userKeyListObject.CurrentRandomKey == 43)) { playAgain(); }
+                else if ((e.KeyCode == Keys.E) && (userKeyListObject.CurrentRandomKey == 44)) { playAgain(); }
+                else if ((e.KeyCode == Keys.U) && (userKeyListObject.CurrentRandomKey == 45)) { playAgain(); }
+                else if ((e.KeyCode == Keys.I) && (userKeyListObject.CurrentRandomKey == 46)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D) && (userKeyListObject.CurrentRandomKey == 47)) { playAgain(); }
+                else if ((e.KeyCode == Keys.H) && (userKeyListObject.CurrentRandomKey == 48)) { playAgain(); }
+                else if ((e.KeyCode == Keys.T) && (userKeyListObject.CurrentRandomKey == 49)) { playAgain(); }
+                else if ((e.KeyCode == Keys.N) && (userKeyListObject.CurrentRandomKey == 50)) { playAgain(); }
+                else if ((e.KeyCode == Keys.S) && (userKeyListObject.CurrentRandomKey == 51)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemMinus) && (userKeyListObject.CurrentRandomKey == 52)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Enter) && (userKeyListObject.CurrentRandomKey == 53)) { playAgain(); }
+                else if ((e.KeyCode == Keys.ShiftKey) && (userKeyListObject.CurrentRandomKey == 54)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemSemicolon) && (userKeyListObject.CurrentRandomKey == 55)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Q) && (userKeyListObject.CurrentRandomKey == 56)) { playAgain(); }
+                else if ((e.KeyCode == Keys.J) && (userKeyListObject.CurrentRandomKey == 57)) { playAgain(); }
+                else if ((e.KeyCode == Keys.K) && (userKeyListObject.CurrentRandomKey == 58)) { playAgain(); }
+                else if ((e.KeyCode == Keys.X) && (userKeyListObject.CurrentRandomKey == 59)) { playAgain(); }
+                else if ((e.KeyCode == Keys.B) && (userKeyListObject.CurrentRandomKey == 60)) { playAgain(); }
+                else if ((e.KeyCode == Keys.M) && (userKeyListObject.CurrentRandomKey == 61)) { playAgain(); }
+                else if ((e.KeyCode == Keys.W) && (userKeyListObject.CurrentRandomKey == 62)) { playAgain(); }
+                else if ((e.KeyCode == Keys.V) && (userKeyListObject.CurrentRandomKey == 63)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Z) && (userKeyListObject.CurrentRandomKey == 64)) { playAgain(); }
+                else if ((e.KeyCode == Keys.ShiftKey) && (userKeyListObject.CurrentRandomKey == 65)) { playAgain(); }
+                else if ((e.KeyCode == Keys.ControlKey) && (userKeyListObject.CurrentRandomKey == 66)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Menu) && (userKeyListObject.CurrentRandomKey == 67)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Alt) && (userKeyListObject.CurrentRandomKey == 68)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Space) && (userKeyListObject.CurrentRandomKey == 69)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Alt) && (userKeyListObject.CurrentRandomKey == 70)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Menu) && (userKeyListObject.CurrentRandomKey == 71)) { playAgain(); }
+                else if ((e.KeyCode == Keys.ControlKey) && (userKeyListObject.CurrentRandomKey == 72)) { playAgain(); }
             }
 
             else     // if shift required, these key combos work
             {
-                if ((e.KeyCode == Keys.Oemtilde && e.Shift) && (userKeyListObject.CurrentRandomKey == 73)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D1 && e.Shift) && (userKeyListObject.CurrentRandomKey == 74)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D2 && e.Shift) && (userKeyListObject.CurrentRandomKey == 75)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D3 && e.Shift) && (userKeyListObject.CurrentRandomKey == 76)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D4 && e.Shift) && (userKeyListObject.CurrentRandomKey == 77)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D5 && e.Shift) && (userKeyListObject.CurrentRandomKey == 78)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D6 && e.Shift) && (userKeyListObject.CurrentRandomKey == 79)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D7 && e.Shift) && (userKeyListObject.CurrentRandomKey == 80)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D8 && e.Shift) && (userKeyListObject.CurrentRandomKey == 81)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D9 && e.Shift) && (userKeyListObject.CurrentRandomKey == 82)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.D0 && e.Shift) && (userKeyListObject.CurrentRandomKey == 83)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemOpenBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 84)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemCloseBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 85)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemQuotes && e.Shift) && (userKeyListObject.CurrentRandomKey == 86)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Oemcomma && e.Shift) && (userKeyListObject.CurrentRandomKey == 87)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemPeriod && e.Shift) && (userKeyListObject.CurrentRandomKey == 88)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemQuestion && e.Shift) && (userKeyListObject.CurrentRandomKey == 89)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.Oemplus && e.Shift) && (userKeyListObject.CurrentRandomKey == 90)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemPipe && e.Shift) && (userKeyListObject.CurrentRandomKey == 91)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemMinus && e.Shift) && (userKeyListObject.CurrentRandomKey == 92)) { correct++; getRandomKeyAndDisplay(); }
-                else if ((e.KeyCode == Keys.OemSemicolon && e.Shift) && (userKeyListObject.CurrentRandomKey == 93)) { correct++; getRandomKeyAndDisplay(); }
+                if ((e.KeyCode == Keys.Oemtilde && e.Shift) && (userKeyListObject.CurrentRandomKey == 73)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D1 && e.Shift) && (userKeyListObject.CurrentRandomKey == 74)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D2 && e.Shift) && (userKeyListObject.CurrentRandomKey == 75)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D3 && e.Shift) && (userKeyListObject.CurrentRandomKey == 76)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D4 && e.Shift) && (userKeyListObject.CurrentRandomKey == 77)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D5 && e.Shift) && (userKeyListObject.CurrentRandomKey == 78)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D6 && e.Shift) && (userKeyListObject.CurrentRandomKey == 79)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D7 && e.Shift) && (userKeyListObject.CurrentRandomKey == 80)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D8 && e.Shift) && (userKeyListObject.CurrentRandomKey == 81)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D9 && e.Shift) && (userKeyListObject.CurrentRandomKey == 82)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D0 && e.Shift) && (userKeyListObject.CurrentRandomKey == 83)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemOpenBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 84)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemCloseBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 85)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemQuotes && e.Shift) && (userKeyListObject.CurrentRandomKey == 86)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Oemcomma && e.Shift) && (userKeyListObject.CurrentRandomKey == 87)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemPeriod && e.Shift) && (userKeyListObject.CurrentRandomKey == 88)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemQuestion && e.Shift) && (userKeyListObject.CurrentRandomKey == 89)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Oemplus && e.Shift) && (userKeyListObject.CurrentRandomKey == 90)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemPipe && e.Shift) && (userKeyListObject.CurrentRandomKey == 91)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemMinus && e.Shift) && (userKeyListObject.CurrentRandomKey == 92)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemSemicolon && e.Shift) && (userKeyListObject.CurrentRandomKey == 93)) { playAgain(); }
 
                 else if ((e.KeyCode == Keys.Back && e.Shift) && (userKeyListObject.CurrentRandomKey == 1000))  
                 {// this hotkey combo (Shift + Backspace) same as "pressing Practice button"
@@ -360,109 +396,111 @@ namespace Dvorak
                 }
             }
 
-            //if (!e.Shift)       // For scorekeeping to ensure that key and key+shift are exclusive
-            //{                   // if any key pressed, add point to total and display
+            if (!e.Shift)       // For scorekeeping to ensure that key and key+shift are exclusive
+            {                   // if any key pressed, add point to total and display
 
 
-            //    if (e.KeyCode == Keys.Escape) { total++; counters(); }   
-            //    else if (e.KeyCode == Keys.F1) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F2) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F3) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F4) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F5) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F6) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F7) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F8) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F9) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F10) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F11) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F12) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Oemtilde) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D1) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D2) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D3) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D4) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D5) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D6) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D7) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D8) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D9) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D0) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.OemOpenBrackets) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.OemCloseBrackets) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Back) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Tab) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.OemQuotes) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Oemcomma) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.OemPeriod) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.P) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Y) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.F) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.G) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.C) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.R) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.L) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.OemQuestion) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Oemplus) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.OemPipe) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.CapsLock) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.A) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.O) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.E) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.U) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.I) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.D) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.H) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.T) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.N) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.S) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.OemMinus) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Enter) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.ShiftKey) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.OemSemicolon) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Q) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.J) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.K) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.X) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.B) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.M) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.W) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.V) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Z) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.ShiftKey) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.ControlKey) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Menu) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Space) { total++; counters(); }
-            //    else if (e.Alt) { total++; counters(); }
-            //    else if (e.KeyCode == Keys.Menu) { total++; counters(); }
-            //}
+                if (e.KeyCode == Keys.Escape) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F1) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F2) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F3) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F4) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F5) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F6) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F7) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F8) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F9) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F10) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F11) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F12) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Oemtilde) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D1) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D2) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D3) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D4) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D5) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D6) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D7) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D8) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D9) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D0) {  trackTotal(); }
+                else if (e.KeyCode == Keys.OemOpenBrackets) {  trackTotal(); }
+                else if (e.KeyCode == Keys.OemCloseBrackets) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Back) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Tab) {  trackTotal(); }
+                else if (e.KeyCode == Keys.OemQuotes) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Oemcomma) {  trackTotal(); }
+                else if (e.KeyCode == Keys.OemPeriod) {  trackTotal(); }
+                else if (e.KeyCode == Keys.P) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Y) {  trackTotal(); }
+                else if (e.KeyCode == Keys.F) {  trackTotal(); }
+                else if (e.KeyCode == Keys.G) {  trackTotal(); }
+                else if (e.KeyCode == Keys.C) {  trackTotal(); }
+                else if (e.KeyCode == Keys.R) {  trackTotal(); }
+                else if (e.KeyCode == Keys.L) {  trackTotal(); }
+                else if (e.KeyCode == Keys.OemQuestion) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Oemplus) {  trackTotal(); }
+                else if (e.KeyCode == Keys.OemPipe) {  trackTotal(); }
+                else if (e.KeyCode == Keys.CapsLock) {  trackTotal(); }
+                else if (e.KeyCode == Keys.A) {  trackTotal(); }
+                else if (e.KeyCode == Keys.O) {  trackTotal(); }
+                else if (e.KeyCode == Keys.E) {  trackTotal(); }
+                else if (e.KeyCode == Keys.U) {  trackTotal(); }
+                else if (e.KeyCode == Keys.I) {  trackTotal(); }
+                else if (e.KeyCode == Keys.D) {  trackTotal(); }
+                else if (e.KeyCode == Keys.H) {  trackTotal(); }
+                else if (e.KeyCode == Keys.T) {  trackTotal(); }
+                else if (e.KeyCode == Keys.N) {  trackTotal(); }
+                else if (e.KeyCode == Keys.S) {  trackTotal(); }
+                else if (e.KeyCode == Keys.OemMinus) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Enter) {  trackTotal(); }
+                else if (e.KeyCode == Keys.ShiftKey) {  trackTotal(); }
+                else if (e.KeyCode == Keys.OemSemicolon) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Q) {  trackTotal(); }
+                else if (e.KeyCode == Keys.J) {  trackTotal(); }
+                else if (e.KeyCode == Keys.K) {  trackTotal(); }
+                else if (e.KeyCode == Keys.X) {  trackTotal(); }
+                else if (e.KeyCode == Keys.B) {  trackTotal(); }
+                else if (e.KeyCode == Keys.M) {  trackTotal(); }
+                else if (e.KeyCode == Keys.W) {  trackTotal(); }
+                else if (e.KeyCode == Keys.V) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Z) {  trackTotal(); }
+                else if (e.KeyCode == Keys.ShiftKey) {  trackTotal(); }
+                else if (e.KeyCode == Keys.ControlKey) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Menu) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Space) {  trackTotal(); }
+                else if (e.Alt) {  trackTotal(); }
+                else if (e.KeyCode == Keys.Menu) {  trackTotal(); }
+            }
 
-            //else
-            //{   // if key pressed with shift, outside of if
+            else
+            {   // if key pressed with shift, outside of if
 
 
-            //    if (e.KeyCode == Keys.Oemtilde && e.Shift) { total++; counters(); }     
-            //    if (e.KeyCode == Keys.D1 && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.D2 && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.D3 && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.D4 && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.D5 && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.D6 && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.D7 && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.D8 && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.D9 && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.D0 && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.OemOpenBrackets && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.OemCloseBrackets && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.OemQuestion && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.Oemplus && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.OemPipe && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.OemMinus && e.Shift) { total++; counters(); }
-            //    if (e.KeyCode == Keys.OemSemicolon && e.Shift) { total++; counters(); }
+                if (e.KeyCode == Keys.Oemtilde && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.D1 && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.D2 && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.D3 && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.D4 && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.D5 && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.D6 && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.D7 && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.D8 && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.D9 && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.D0 && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.OemOpenBrackets && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.OemCloseBrackets && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.OemQuestion && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.Oemplus && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.OemPipe && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.OemMinus && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.OemSemicolon && e.Shift) {  trackTotal(); }
 
-            //}
+            }
+            
 
-            //  else if (e.KeyCode == Keys.ShiftKey) { total++; counters(); }
+              //else if (e.KeyCode == Keys.ShiftKey) {  trackTotal(); }
+
 
 
 
@@ -474,11 +512,15 @@ namespace Dvorak
             
         }
 
+
+        
+    
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             
         }
-
+         
 
     }
 }
