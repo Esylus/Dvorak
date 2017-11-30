@@ -472,34 +472,33 @@ namespace Dvorak
                 else if (e.Alt) {  trackTotal(); }
                 else if (e.KeyCode == Keys.Menu) {  trackTotal(); }
             }
-
+            
             else
-            {   // if key pressed with shift, outside of if
+            {   //if key pressed with shift, simply  getScoreAndDisplayStatistics as total incremented by "shift" above
 
 
-                if (e.KeyCode == Keys.Oemtilde && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.D1 && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.D2 && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.D3 && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.D4 && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.D5 && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.D6 && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.D7 && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.D8 && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.D9 && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.D0 && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.OemOpenBrackets && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.OemCloseBrackets && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.OemQuestion && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.Oemplus && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.OemPipe && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.OemMinus && e.Shift) {  trackTotal(); }
-                if (e.KeyCode == Keys.OemSemicolon && e.Shift) {  trackTotal(); }
+                if (e.KeyCode == Keys.Oemtilde && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.D1 && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.D2 && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.D3 && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.D4 && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.D5 && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.D6 && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.D7 && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.D8 && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.D9 && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.D0 && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.OemOpenBrackets && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.OemCloseBrackets && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.OemQuestion && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.Oemplus && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.OemPipe && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.OemMinus && e.Shift) { getScoreAndDisplayStatistics(); }
+                if (e.KeyCode == Keys.OemSemicolon && e.Shift) { getScoreAndDisplayStatistics(); }
 
             }
-            
 
-              //else if (e.KeyCode == Keys.ShiftKey) {  trackTotal(); }
+            //else if (e.KeyCode == Keys.ShiftKey) {  getScoreAndDisplayStatistics(); }
 
 
 
@@ -511,10 +510,6 @@ namespace Dvorak
             
             
         }
-
-
-        
-    
 
         private void timer1_Tick(object sender, EventArgs e)
         {
