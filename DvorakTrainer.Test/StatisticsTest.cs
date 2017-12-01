@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace DvorakTrainer.Test
 {
@@ -12,7 +7,8 @@ namespace DvorakTrainer.Test
     {
         [Test]
         public void calculatorScore_PositiveDecimals_ReturnPositiveDecimal()
-        {//Arrange, Act, Assert 
+        {   // Test score calculator
+            //Arrange, Act, Assert 
 
             decimal total = 10.0m;
             decimal correct = 4.0m;
@@ -25,8 +21,5 @@ namespace DvorakTrainer.Test
 
             Assert.AreEqual(expected, actual);
         }
-
-
-
-}
+    }
 }
