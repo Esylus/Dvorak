@@ -500,22 +500,99 @@ namespace Dvorak
 
             //else if (e.KeyCode == Keys.ShiftKey) {  getScoreAndDisplayStatistics(); }
 
-
-
-
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            
-            
+            txtCorrect.Text = "";
+            txtTotal.Text = "";
+            txtScore.Text = "";
+            keysClear();
+        }
+
+        private void keysClear()    // clear all checkButtons
+        {
+            lblMain.Text = "Dvorak";
+            cbEsc.Checked = false;
+            cbF1.Checked = false;
+            cbF2.Checked = false;
+            cbF3.Checked = false;
+            cbF4.Checked = false;
+            cbF5.Checked = false;
+            cbF6.Checked = false;
+            cbF7.Checked = false;
+            cbF8.Checked = false;
+            cbF9.Checked = false;
+            cbF10.Checked = false;
+            cbF11.Checked = false;
+            cbF12.Checked = false;
+            cbTilda.CheckState = CheckState.Unchecked;
+            cb1.CheckState = CheckState.Unchecked;
+            cb2.CheckState = CheckState.Unchecked;
+            cb3.CheckState = CheckState.Unchecked;
+            cb4.CheckState = CheckState.Unchecked;
+            cb5.CheckState = CheckState.Unchecked;
+            cb6.CheckState = CheckState.Unchecked;
+            cb7.CheckState = CheckState.Unchecked;
+            cb8.CheckState = CheckState.Unchecked;
+            cb9.CheckState = CheckState.Unchecked;
+            cb0.CheckState = CheckState.Unchecked;
+            cbLSqr.CheckState = CheckState.Unchecked;
+            cbRSqr.CheckState = CheckState.Unchecked;
+            cbBack.Checked = false;
+            cbLTab.Checked = false;
+            cbQte.CheckState = CheckState.Unchecked;
+            cbComma.CheckState = CheckState.Unchecked;
+            cbPrd.CheckState = CheckState.Unchecked;
+            cbP.Checked = false;
+            cbY.Checked = false;
+            cbF.Checked = false;
+            cbG.Checked = false;
+            cbC.Checked = false;
+            cbR.Checked = false;
+            cbL.Checked = false;
+            cbBSlsh.CheckState = CheckState.Unchecked;
+            cbEql.CheckState = CheckState.Unchecked;
+            cbFSlsh.CheckState = CheckState.Unchecked;
+            cbCaps.CheckState = CheckState.Unchecked;
+            cbA.Checked = false;
+            cbO.Checked = false;
+            cbE.Checked = false;
+            cbU.Checked = false;
+            cbI.Checked = false;
+            cbD.Checked = false;
+            cbH.Checked = false;
+            cbT.Checked = false;
+            cbN.Checked = false;
+            cbS.Checked = false;
+            cbDash.CheckState = CheckState.Unchecked;
+            cbEntr.Checked = false;
+            cbLShft.Checked = false;
+            cbColon.CheckState = CheckState.Unchecked;
+            cbQ.Checked = false;
+            cbJ.Checked = false;
+            cbK.Checked = false;
+            cbX.Checked = false;
+            cbB.Checked = false;
+            cbM.Checked = false;
+            cbW.Checked = false;
+            cbV.Checked = false;
+            cbZ.Checked = false;
+            cbRShft.Checked = false;
+            cbLCtrl.Checked = false;
+            cbRCtrl.Checked = false;
+
+
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             
         }
-         
+
+        
+
 
     }
 }
