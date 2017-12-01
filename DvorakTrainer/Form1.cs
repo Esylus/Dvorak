@@ -30,9 +30,11 @@ namespace Dvorak
 
             sessionTimer = new GameTimer();
 
-            timer1.Start();
+            textboxsClear();
 
             getScoreAndDisplayStatistics();
+
+            timer1.Start();
 
             getRandomKeyAndDisplay();
         }
@@ -471,28 +473,38 @@ namespace Dvorak
 
         private void getScoreAndDisplayStatistics()
         {
-            decimal correct = sessionStatistics.Correct;
-            decimal total = sessionStatistics.Total;
-            decimal score = sessionStatistics.Score;
-         
-            txtCorrect.Text = correct.ToString();
-            txtTotal.Text = total.ToString();
-
-            if (total != 0)   // only calculate score after minimum 1 key is pressed
+            if (sessionTimer.TimerCount < 60)  // Disable refreshing score after timer ends
             {
-                score = sessionStatistics.calculateScore(correct, total);
-                txtScore.Text = score.ToString("P");
+                decimal correct = sessionStatistics.Correct;
+                decimal total = sessionStatistics.Total;
+                decimal score = sessionStatistics.Score;
+
+                txtCorrect.Text = correct.ToString();
+                txtTotal.Text = total.ToString();
+
+                if (total != 0)   // only calculate score after minimum 1 key is pressed
+                {
+                    score = sessionStatistics.calculateScore(correct, total);
+                    txtScore.Text = score.ToString("P");
+                }
             }
+
+           
         }
 
         private void btnReset_Click(object sender, EventArgs e)
+        {
+            textboxsClear();
+            timer1.Stop();
+            keysClear();
+        }
+
+        private void textboxsClear()
         {
             txtCorrect.Text = "";
             txtTotal.Text = "";
             txtScore.Text = "";
             txtTimer1.Text = "";
-            timer1.Stop();
-            keysClear();
         }
 
         private void keysClear()    // clear all checkButtons
@@ -652,5 +664,7 @@ namespace Dvorak
                 userKeyListObject.CurrentRandomKey = 1000;  // for hotkey Ctrl + Esc reset
             }
         }
+
+     
     }
 }
