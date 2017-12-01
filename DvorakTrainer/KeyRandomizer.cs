@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DvorakTrainer
 {
     public class KeyRandomizer
     {
-
-        // this class will randomize the master list to return a single key
-        // this class will ensure that a number can not be selected twice in a row
+        // this class contains all functionality related to extracting a random value from a user created list 
+        // this class will evenutally ensure that a number can not be selected twice in a row
 
         private List<int> userSelectedKeyList = new List<int>();
 
@@ -23,8 +20,7 @@ namespace DvorakTrainer
         }
 
         public KeyRandomizer()
-        {//empty default constructor
-            
+        {//empty default constructor          
         }
 
         public KeyRandomizer(List<int> populateUserSelectedKeyList) 
@@ -39,10 +35,9 @@ namespace DvorakTrainer
 
             int randomIntFromUserList =  getRandomIntFromAnyList(userSelectedKeyList);
 
-            int selectedKeyFromUserList = userSelectedKeyList.ElementAt(randomIntFromUserList);
-
-            m_currentRandomKey = selectedKeyFromUserList;         
-
+                int selectedKeyFromUserList = userSelectedKeyList.ElementAt(randomIntFromUserList);
+                m_currentRandomKey = selectedKeyFromUserList;
+                                 
         }
 
         public int getRandomIntFromAnyList(List<int> rawList)
@@ -54,6 +49,8 @@ namespace DvorakTrainer
             
             return randomIntFromAnyList;
         }
+        
+       
 
     }
 }

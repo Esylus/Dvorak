@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace DvorakTrainer.Test
@@ -12,7 +9,8 @@ namespace DvorakTrainer.Test
     {
         [Test]
         public void getRandomIntFromAnyList_IntegerList_ReturnPositiveInteger()
-        {  // Arrange, Act, Assert
+        {   // test Randomizer functionality, input numbers and return number in same range 
+            // Arrange, Act, Assert
 
             List<int> testList = new List<int>();
             testList.Add(1);
@@ -37,8 +35,6 @@ namespace DvorakTrainer.Test
             {
                 Assert.Fail();
             }
-            
-
         }
 
         

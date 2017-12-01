@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DvorakTrainer
+﻿namespace DvorakTrainer
 {
    public class Statistics
    {
+        // this class contains all code related to tracking a users score in a practice session
 
        private decimal m_correct;
        private decimal m_total;
@@ -37,8 +32,7 @@ namespace DvorakTrainer
        }
  
        public decimal calculateScore(decimal correct, decimal total)
-       {// calculate score
-
+       {
            decimal score = (correct / total);
            m_score = score;
            return score; 
