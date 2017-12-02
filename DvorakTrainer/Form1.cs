@@ -16,6 +16,7 @@ namespace Dvorak
         private KeyRandomizer userKeyListObject;
         private Statistics sessionStatistics;
         private GameTimer sessionTimer;
+        private bool disableKeyBoard = true;
 
         public void btnPractice_Click(object sender, EventArgs e)
         {
@@ -30,9 +31,13 @@ namespace Dvorak
 
             sessionTimer = new GameTimer();
 
-            timer1.Start();
+            textboxsClear();
+
+            disableKeyBoard = false;
 
             getScoreAndDisplayStatistics();
+
+            timer1.Start();
 
             getRandomKeyAndDisplay();
         }
@@ -250,6 +255,10 @@ namespace Dvorak
 
         private void Form1_KeyUp(object sender, KeyEventArgs e) //TRACK USER INTERACTION - if user input matches selected key, tally score and get new key 
         {
+            if (disableKeyBoard)
+            { return; }
+
+
             if (!e.Shift)      // for key presses without shift 
             {
                 if ((e.KeyCode == Keys.Escape) && (userKeyListObject.CurrentRandomKey == 0)) { playAgain(); }
@@ -471,28 +480,36 @@ namespace Dvorak
 
         private void getScoreAndDisplayStatistics()
         {
-            decimal correct = sessionStatistics.Correct;
-            decimal total = sessionStatistics.Total;
-            decimal score = sessionStatistics.Score;
-         
-            txtCorrect.Text = correct.ToString();
-            txtTotal.Text = total.ToString();
+            
+                decimal correct = sessionStatistics.Correct;
+                decimal total = sessionStatistics.Total;
+                decimal score = sessionStatistics.Score;
 
-            if (total != 0)   // only calculate score after minimum 1 key is pressed
-            {
-                score = sessionStatistics.calculateScore(correct, total);
-                txtScore.Text = score.ToString("P");
-            }
+                txtCorrect.Text = correct.ToString();
+                txtTotal.Text = total.ToString();
+
+                if (total != 0)   // only calculate score after minimum 1 key is pressed
+                {
+                    score = sessionStatistics.calculateScore(correct, total);
+                    txtScore.Text = score.ToString("P");
+                }
+                    
         }
 
         private void btnReset_Click(object sender, EventArgs e)
+        {
+            textboxsClear();
+            timer1.Stop();
+            keysClear();
+            disableKeyBoard = true;
+        }
+
+        private void textboxsClear()
         {
             txtCorrect.Text = "";
             txtTotal.Text = "";
             txtScore.Text = "";
             txtTimer1.Text = "";
-            timer1.Stop();
-            keysClear();
         }
 
         private void keysClear()    // clear all checkButtons
@@ -642,15 +659,18 @@ namespace Dvorak
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            sessionTimer.TimerCount++;
+            sessionTimer.TimerCount--;
             txtTimer1.Text = (sessionTimer.TimerCount / 10).ToString();
 
-            if (sessionTimer.TimerCount == 600)
+            if (sessionTimer.TimerCount == 0)
             {
                 timer1.Stop();
                 lblMain.Text = "Time";
-                userKeyListObject.CurrentRandomKey = 1000;  // for hotkey Ctrl + Esc reset
+                disableKeyBoard = true;
+
             }
         }
+
+     
     }
 }

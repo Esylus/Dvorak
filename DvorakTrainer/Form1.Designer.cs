@@ -212,6 +212,7 @@
             this.cbMenu.Name = "cbMenu";
             this.cbMenu.Size = new System.Drawing.Size(55, 43);
             this.cbMenu.TabIndex = 155;
+            this.cbMenu.TabStop = false;
             this.cbMenu.Text = "Menu";
             this.cbMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbMenu.UseVisualStyleBackColor = false;
@@ -225,6 +226,7 @@
             this.cbLShft.Name = "cbLShft";
             this.cbLShft.Size = new System.Drawing.Size(115, 43);
             this.cbLShft.TabIndex = 148;
+            this.cbLShft.TabStop = false;
             this.cbLShft.Text = "Shift";
             this.cbLShft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbLShft.UseVisualStyleBackColor = false;
@@ -239,6 +241,7 @@
             this.cbRAlt.Name = "cbRAlt";
             this.cbRAlt.Size = new System.Drawing.Size(55, 43);
             this.cbRAlt.TabIndex = 154;
+            this.cbRAlt.TabStop = false;
             this.cbRAlt.Text = "Alt";
             this.cbRAlt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbRAlt.UseVisualStyleBackColor = false;
@@ -252,6 +255,7 @@
             this.cbRCtrl.Name = "cbRCtrl";
             this.cbRCtrl.Size = new System.Drawing.Size(89, 43);
             this.cbRCtrl.TabIndex = 153;
+            this.cbRCtrl.TabStop = false;
             this.cbRCtrl.Text = "Ctrl";
             this.cbRCtrl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbRCtrl.UseVisualStyleBackColor = false;
@@ -266,6 +270,7 @@
             this.cbLAlt.Name = "cbLAlt";
             this.cbLAlt.Size = new System.Drawing.Size(55, 43);
             this.cbLAlt.TabIndex = 152;
+            this.cbLAlt.TabStop = false;
             this.cbLAlt.Text = "Alt";
             this.cbLAlt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbLAlt.UseVisualStyleBackColor = false;
@@ -280,6 +285,7 @@
             this.cbStrt.Name = "cbStrt";
             this.cbStrt.Size = new System.Drawing.Size(55, 43);
             this.cbStrt.TabIndex = 151;
+            this.cbStrt.TabStop = false;
             this.cbStrt.Text = "Strt";
             this.cbStrt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbStrt.UseVisualStyleBackColor = false;
@@ -293,6 +299,7 @@
             this.cbEsc.Name = "cbEsc";
             this.cbEsc.Size = new System.Drawing.Size(55, 43);
             this.cbEsc.TabIndex = 150;
+            this.cbEsc.TabStop = false;
             this.cbEsc.Text = "Esc";
             this.cbEsc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbEsc.UseVisualStyleBackColor = false;
@@ -306,6 +313,7 @@
             this.cbCaps.Name = "cbCaps";
             this.cbCaps.Size = new System.Drawing.Size(89, 43);
             this.cbCaps.TabIndex = 149;
+            this.cbCaps.TabStop = false;
             this.cbCaps.Text = "Caps";
             this.cbCaps.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbCaps.UseVisualStyleBackColor = false;
@@ -319,6 +327,7 @@
             this.cbTilda.Name = "cbTilda";
             this.cbTilda.Size = new System.Drawing.Size(55, 43);
             this.cbTilda.TabIndex = 147;
+            this.cbTilda.TabStop = false;
             this.cbTilda.Text = "` ~";
             this.cbTilda.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbTilda.ThreeState = true;
@@ -333,6 +342,7 @@
             this.cbLCtrl.Name = "cbLCtrl";
             this.cbLCtrl.Size = new System.Drawing.Size(89, 43);
             this.cbLCtrl.TabIndex = 146;
+            this.cbLCtrl.TabStop = false;
             this.cbLCtrl.Text = "Ctrl";
             this.cbLCtrl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbLCtrl.UseVisualStyleBackColor = false;
@@ -347,6 +357,7 @@
             this.cbSpace.Name = "cbSpace";
             this.cbSpace.Size = new System.Drawing.Size(360, 43);
             this.cbSpace.TabIndex = 145;
+            this.cbSpace.TabStop = false;
             this.cbSpace.Text = "Space";
             this.cbSpace.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbSpace.UseVisualStyleBackColor = false;
@@ -360,6 +371,7 @@
             this.cbLTab.Name = "cbLTab";
             this.cbLTab.Size = new System.Drawing.Size(76, 43);
             this.cbLTab.TabIndex = 144;
+            this.cbLTab.TabStop = false;
             this.cbLTab.Text = "Tab";
             this.cbLTab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbLTab.UseVisualStyleBackColor = false;
@@ -373,6 +385,7 @@
             this.cbQ.Name = "cbQ";
             this.cbQ.Size = new System.Drawing.Size(55, 43);
             this.cbQ.TabIndex = 143;
+            this.cbQ.TabStop = false;
             this.cbQ.Text = "q";
             this.cbQ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbQ.UseVisualStyleBackColor = false;
@@ -386,6 +399,7 @@
             this.cbJ.Name = "cbJ";
             this.cbJ.Size = new System.Drawing.Size(55, 43);
             this.cbJ.TabIndex = 142;
+            this.cbJ.TabStop = false;
             this.cbJ.Text = "j";
             this.cbJ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbJ.UseVisualStyleBackColor = false;
@@ -399,6 +413,7 @@
             this.cbK.Name = "cbK";
             this.cbK.Size = new System.Drawing.Size(55, 43);
             this.cbK.TabIndex = 141;
+            this.cbK.TabStop = false;
             this.cbK.Text = "k";
             this.cbK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbK.UseVisualStyleBackColor = false;
@@ -412,6 +427,7 @@
             this.cbX.Name = "cbX";
             this.cbX.Size = new System.Drawing.Size(55, 43);
             this.cbX.TabIndex = 140;
+            this.cbX.TabStop = false;
             this.cbX.Text = "x";
             this.cbX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbX.UseVisualStyleBackColor = false;
@@ -425,6 +441,7 @@
             this.cbB.Name = "cbB";
             this.cbB.Size = new System.Drawing.Size(55, 43);
             this.cbB.TabIndex = 139;
+            this.cbB.TabStop = false;
             this.cbB.Text = "b";
             this.cbB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbB.UseVisualStyleBackColor = false;
@@ -438,6 +455,7 @@
             this.cbM.Name = "cbM";
             this.cbM.Size = new System.Drawing.Size(55, 43);
             this.cbM.TabIndex = 138;
+            this.cbM.TabStop = false;
             this.cbM.Text = "m";
             this.cbM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbM.UseVisualStyleBackColor = false;
@@ -451,6 +469,7 @@
             this.cbW.Name = "cbW";
             this.cbW.Size = new System.Drawing.Size(55, 43);
             this.cbW.TabIndex = 137;
+            this.cbW.TabStop = false;
             this.cbW.Text = "w";
             this.cbW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbW.UseVisualStyleBackColor = false;
@@ -464,6 +483,7 @@
             this.cbV.Name = "cbV";
             this.cbV.Size = new System.Drawing.Size(55, 43);
             this.cbV.TabIndex = 136;
+            this.cbV.TabStop = false;
             this.cbV.Text = "v";
             this.cbV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbV.UseVisualStyleBackColor = false;
@@ -477,6 +497,7 @@
             this.cbZ.Name = "cbZ";
             this.cbZ.Size = new System.Drawing.Size(55, 43);
             this.cbZ.TabIndex = 135;
+            this.cbZ.TabStop = false;
             this.cbZ.Text = "z";
             this.cbZ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbZ.UseVisualStyleBackColor = false;
@@ -490,6 +511,7 @@
             this.cbRShft.Name = "cbRShft";
             this.cbRShft.Size = new System.Drawing.Size(124, 43);
             this.cbRShft.TabIndex = 132;
+            this.cbRShft.TabStop = false;
             this.cbRShft.Text = "Shift";
             this.cbRShft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbRShft.UseVisualStyleBackColor = false;
@@ -503,6 +525,7 @@
             this.cbColon.Name = "cbColon";
             this.cbColon.Size = new System.Drawing.Size(55, 43);
             this.cbColon.TabIndex = 131;
+            this.cbColon.TabStop = false;
             this.cbColon.Text = "; :";
             this.cbColon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbColon.ThreeState = true;
@@ -517,6 +540,7 @@
             this.cb2.Name = "cb2";
             this.cb2.Size = new System.Drawing.Size(55, 43);
             this.cb2.TabIndex = 130;
+            this.cb2.TabStop = false;
             this.cb2.Text = "2@";
             this.cb2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb2.ThreeState = true;
@@ -531,6 +555,7 @@
             this.cb3.Name = "cb3";
             this.cb3.Size = new System.Drawing.Size(55, 43);
             this.cb3.TabIndex = 129;
+            this.cb3.TabStop = false;
             this.cb3.Text = "3#";
             this.cb3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb3.ThreeState = true;
@@ -545,6 +570,7 @@
             this.cb4.Name = "cb4";
             this.cb4.Size = new System.Drawing.Size(55, 43);
             this.cb4.TabIndex = 128;
+            this.cb4.TabStop = false;
             this.cb4.Text = "4$";
             this.cb4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb4.ThreeState = true;
@@ -559,6 +585,7 @@
             this.cb5.Name = "cb5";
             this.cb5.Size = new System.Drawing.Size(55, 43);
             this.cb5.TabIndex = 127;
+            this.cb5.TabStop = false;
             this.cb5.Text = "5%";
             this.cb5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb5.ThreeState = true;
@@ -573,6 +600,7 @@
             this.cb6.Name = "cb6";
             this.cb6.Size = new System.Drawing.Size(55, 43);
             this.cb6.TabIndex = 126;
+            this.cb6.TabStop = false;
             this.cb6.Text = "6^";
             this.cb6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb6.ThreeState = true;
@@ -587,6 +615,7 @@
             this.cb7.Name = "cb7";
             this.cb7.Size = new System.Drawing.Size(55, 43);
             this.cb7.TabIndex = 125;
+            this.cb7.TabStop = false;
             this.cb7.Text = "7&&";
             this.cb7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb7.ThreeState = true;
@@ -601,6 +630,7 @@
             this.cb8.Name = "cb8";
             this.cb8.Size = new System.Drawing.Size(55, 43);
             this.cb8.TabIndex = 124;
+            this.cb8.TabStop = false;
             this.cb8.Text = "8*";
             this.cb8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb8.ThreeState = true;
@@ -615,6 +645,7 @@
             this.cb9.Name = "cb9";
             this.cb9.Size = new System.Drawing.Size(55, 43);
             this.cb9.TabIndex = 123;
+            this.cb9.TabStop = false;
             this.cb9.Text = "9(";
             this.cb9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb9.ThreeState = true;
@@ -629,6 +660,7 @@
             this.cb0.Name = "cb0";
             this.cb0.Size = new System.Drawing.Size(55, 43);
             this.cb0.TabIndex = 122;
+            this.cb0.TabStop = false;
             this.cb0.Text = "0)";
             this.cb0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb0.ThreeState = true;
@@ -643,6 +675,7 @@
             this.cbLSqr.Name = "cbLSqr";
             this.cbLSqr.Size = new System.Drawing.Size(55, 43);
             this.cbLSqr.TabIndex = 121;
+            this.cbLSqr.TabStop = false;
             this.cbLSqr.Text = "[{";
             this.cbLSqr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbLSqr.ThreeState = true;
@@ -657,6 +690,7 @@
             this.cbRSqr.Name = "cbRSqr";
             this.cbRSqr.Size = new System.Drawing.Size(55, 43);
             this.cbRSqr.TabIndex = 120;
+            this.cbRSqr.TabStop = false;
             this.cbRSqr.Text = "]}";
             this.cbRSqr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbRSqr.ThreeState = true;
@@ -671,6 +705,7 @@
             this.cbBack.Name = "cbBack";
             this.cbBack.Size = new System.Drawing.Size(76, 43);
             this.cbBack.TabIndex = 119;
+            this.cbBack.TabStop = false;
             this.cbBack.Text = "Back";
             this.cbBack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbBack.UseVisualStyleBackColor = false;
@@ -684,6 +719,7 @@
             this.cb1.Name = "cb1";
             this.cb1.Size = new System.Drawing.Size(55, 43);
             this.cb1.TabIndex = 118;
+            this.cb1.TabStop = false;
             this.cb1.Text = "1!";
             this.cb1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cb1.ThreeState = true;
@@ -698,6 +734,7 @@
             this.cbO.Name = "cbO";
             this.cbO.Size = new System.Drawing.Size(55, 43);
             this.cbO.TabIndex = 117;
+            this.cbO.TabStop = false;
             this.cbO.Text = "o";
             this.cbO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbO.UseVisualStyleBackColor = false;
@@ -711,6 +748,7 @@
             this.cbE.Name = "cbE";
             this.cbE.Size = new System.Drawing.Size(55, 43);
             this.cbE.TabIndex = 116;
+            this.cbE.TabStop = false;
             this.cbE.Text = "e";
             this.cbE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbE.UseVisualStyleBackColor = false;
@@ -724,6 +762,7 @@
             this.cbU.Name = "cbU";
             this.cbU.Size = new System.Drawing.Size(55, 43);
             this.cbU.TabIndex = 115;
+            this.cbU.TabStop = false;
             this.cbU.Text = "u_";
             this.cbU.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbU.UseVisualStyleBackColor = false;
@@ -737,6 +776,7 @@
             this.cbI.Name = "cbI";
             this.cbI.Size = new System.Drawing.Size(55, 43);
             this.cbI.TabIndex = 114;
+            this.cbI.TabStop = false;
             this.cbI.Text = "i";
             this.cbI.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbI.UseVisualStyleBackColor = false;
@@ -750,6 +790,7 @@
             this.cbD.Name = "cbD";
             this.cbD.Size = new System.Drawing.Size(55, 43);
             this.cbD.TabIndex = 113;
+            this.cbD.TabStop = false;
             this.cbD.Text = "d";
             this.cbD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbD.UseVisualStyleBackColor = false;
@@ -763,6 +804,7 @@
             this.cbH.Name = "cbH";
             this.cbH.Size = new System.Drawing.Size(55, 43);
             this.cbH.TabIndex = 112;
+            this.cbH.TabStop = false;
             this.cbH.Text = "_h";
             this.cbH.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbH.UseVisualStyleBackColor = false;
@@ -776,6 +818,7 @@
             this.cbT.Name = "cbT";
             this.cbT.Size = new System.Drawing.Size(55, 43);
             this.cbT.TabIndex = 111;
+            this.cbT.TabStop = false;
             this.cbT.Text = "t";
             this.cbT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbT.UseVisualStyleBackColor = false;
@@ -789,6 +832,7 @@
             this.cbN.Name = "cbN";
             this.cbN.Size = new System.Drawing.Size(55, 43);
             this.cbN.TabIndex = 110;
+            this.cbN.TabStop = false;
             this.cbN.Text = "n";
             this.cbN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbN.UseVisualStyleBackColor = false;
@@ -802,6 +846,7 @@
             this.cbS.Name = "cbS";
             this.cbS.Size = new System.Drawing.Size(55, 43);
             this.cbS.TabIndex = 109;
+            this.cbS.TabStop = false;
             this.cbS.Text = "s";
             this.cbS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbS.UseVisualStyleBackColor = false;
@@ -815,6 +860,7 @@
             this.cbDash.Name = "cbDash";
             this.cbDash.Size = new System.Drawing.Size(55, 43);
             this.cbDash.TabIndex = 108;
+            this.cbDash.TabStop = false;
             this.cbDash.Text = "- _";
             this.cbDash.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbDash.ThreeState = true;
@@ -829,6 +875,7 @@
             this.cbEntr.Name = "cbEntr";
             this.cbEntr.Size = new System.Drawing.Size(103, 43);
             this.cbEntr.TabIndex = 107;
+            this.cbEntr.TabStop = false;
             this.cbEntr.Text = "Enter";
             this.cbEntr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbEntr.UseVisualStyleBackColor = false;
@@ -842,6 +889,7 @@
             this.cbA.Name = "cbA";
             this.cbA.Size = new System.Drawing.Size(55, 43);
             this.cbA.TabIndex = 105;
+            this.cbA.TabStop = false;
             this.cbA.Text = "a";
             this.cbA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbA.UseVisualStyleBackColor = false;
@@ -855,6 +903,7 @@
             this.cbComma.Name = "cbComma";
             this.cbComma.Size = new System.Drawing.Size(55, 43);
             this.cbComma.TabIndex = 104;
+            this.cbComma.TabStop = false;
             this.cbComma.Text = ", <";
             this.cbComma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbComma.ThreeState = true;
@@ -869,6 +918,7 @@
             this.cbPrd.Name = "cbPrd";
             this.cbPrd.Size = new System.Drawing.Size(55, 43);
             this.cbPrd.TabIndex = 103;
+            this.cbPrd.TabStop = false;
             this.cbPrd.Text = ".  >";
             this.cbPrd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbPrd.ThreeState = true;
@@ -883,6 +933,7 @@
             this.cbP.Name = "cbP";
             this.cbP.Size = new System.Drawing.Size(55, 43);
             this.cbP.TabIndex = 102;
+            this.cbP.TabStop = false;
             this.cbP.Text = "p";
             this.cbP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbP.UseVisualStyleBackColor = false;
@@ -896,6 +947,7 @@
             this.cbY.Name = "cbY";
             this.cbY.Size = new System.Drawing.Size(55, 43);
             this.cbY.TabIndex = 101;
+            this.cbY.TabStop = false;
             this.cbY.Text = "y";
             this.cbY.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbY.UseVisualStyleBackColor = false;
@@ -909,6 +961,7 @@
             this.cbF.Name = "cbF";
             this.cbF.Size = new System.Drawing.Size(55, 43);
             this.cbF.TabIndex = 100;
+            this.cbF.TabStop = false;
             this.cbF.Text = "f";
             this.cbF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF.UseVisualStyleBackColor = false;
@@ -922,6 +975,7 @@
             this.cbG.Name = "cbG";
             this.cbG.Size = new System.Drawing.Size(55, 43);
             this.cbG.TabIndex = 99;
+            this.cbG.TabStop = false;
             this.cbG.Text = "g";
             this.cbG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbG.UseVisualStyleBackColor = false;
@@ -935,6 +989,7 @@
             this.cbC.Name = "cbC";
             this.cbC.Size = new System.Drawing.Size(55, 43);
             this.cbC.TabIndex = 98;
+            this.cbC.TabStop = false;
             this.cbC.Text = "c";
             this.cbC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbC.UseVisualStyleBackColor = false;
@@ -948,6 +1003,7 @@
             this.cbR.Name = "cbR";
             this.cbR.Size = new System.Drawing.Size(55, 43);
             this.cbR.TabIndex = 97;
+            this.cbR.TabStop = false;
             this.cbR.Text = "r";
             this.cbR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbR.UseVisualStyleBackColor = false;
@@ -961,6 +1017,7 @@
             this.cbBSlsh.Name = "cbBSlsh";
             this.cbBSlsh.Size = new System.Drawing.Size(55, 43);
             this.cbBSlsh.TabIndex = 96;
+            this.cbBSlsh.TabStop = false;
             this.cbBSlsh.Text = "/ ?";
             this.cbBSlsh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbBSlsh.ThreeState = true;
@@ -975,6 +1032,7 @@
             this.cbEql.Name = "cbEql";
             this.cbEql.Size = new System.Drawing.Size(55, 43);
             this.cbEql.TabIndex = 95;
+            this.cbEql.TabStop = false;
             this.cbEql.Text = "=+";
             this.cbEql.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbEql.ThreeState = true;
@@ -989,6 +1047,7 @@
             this.cbFSlsh.Name = "cbFSlsh";
             this.cbFSlsh.Size = new System.Drawing.Size(55, 43);
             this.cbFSlsh.TabIndex = 94;
+            this.cbFSlsh.TabStop = false;
             this.cbFSlsh.Text = "\\ |";
             this.cbFSlsh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbFSlsh.ThreeState = true;
@@ -1003,6 +1062,7 @@
             this.cbL.Name = "cbL";
             this.cbL.Size = new System.Drawing.Size(55, 43);
             this.cbL.TabIndex = 93;
+            this.cbL.TabStop = false;
             this.cbL.Text = "l";
             this.cbL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbL.UseVisualStyleBackColor = false;
@@ -1016,6 +1076,7 @@
             this.cbQte.Name = "cbQte";
             this.cbQte.Size = new System.Drawing.Size(55, 43);
             this.cbQte.TabIndex = 89;
+            this.cbQte.TabStop = false;
             this.cbQte.Text = "\' \"";
             this.cbQte.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbQte.ThreeState = true;
@@ -1031,6 +1092,7 @@
             this.cbPW.Name = "cbPW";
             this.cbPW.Size = new System.Drawing.Size(89, 43);
             this.cbPW.TabIndex = 88;
+            this.cbPW.TabStop = false;
             this.cbPW.Text = "Power";
             this.cbPW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbPW.UseVisualStyleBackColor = false;
@@ -1044,6 +1106,7 @@
             this.cbF2.Name = "cbF2";
             this.cbF2.Size = new System.Drawing.Size(55, 43);
             this.cbF2.TabIndex = 87;
+            this.cbF2.TabStop = false;
             this.cbF2.Text = "F2";
             this.cbF2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF2.UseVisualStyleBackColor = false;
@@ -1057,6 +1120,7 @@
             this.cbF3.Name = "cbF3";
             this.cbF3.Size = new System.Drawing.Size(55, 43);
             this.cbF3.TabIndex = 86;
+            this.cbF3.TabStop = false;
             this.cbF3.Text = "F3";
             this.cbF3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF3.UseVisualStyleBackColor = false;
@@ -1070,6 +1134,7 @@
             this.cbF4.Name = "cbF4";
             this.cbF4.Size = new System.Drawing.Size(55, 43);
             this.cbF4.TabIndex = 85;
+            this.cbF4.TabStop = false;
             this.cbF4.Text = "F4";
             this.cbF4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF4.UseVisualStyleBackColor = false;
@@ -1083,6 +1148,7 @@
             this.cbF5.Name = "cbF5";
             this.cbF5.Size = new System.Drawing.Size(55, 43);
             this.cbF5.TabIndex = 84;
+            this.cbF5.TabStop = false;
             this.cbF5.Text = "F5";
             this.cbF5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF5.UseVisualStyleBackColor = false;
@@ -1096,6 +1162,7 @@
             this.cbF6.Name = "cbF6";
             this.cbF6.Size = new System.Drawing.Size(55, 43);
             this.cbF6.TabIndex = 83;
+            this.cbF6.TabStop = false;
             this.cbF6.Text = "F6";
             this.cbF6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF6.UseVisualStyleBackColor = false;
@@ -1109,6 +1176,7 @@
             this.cbF7.Name = "cbF7";
             this.cbF7.Size = new System.Drawing.Size(55, 43);
             this.cbF7.TabIndex = 82;
+            this.cbF7.TabStop = false;
             this.cbF7.Text = "F7";
             this.cbF7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF7.UseVisualStyleBackColor = false;
@@ -1122,6 +1190,7 @@
             this.cbF8.Name = "cbF8";
             this.cbF8.Size = new System.Drawing.Size(55, 43);
             this.cbF8.TabIndex = 81;
+            this.cbF8.TabStop = false;
             this.cbF8.Text = "F8";
             this.cbF8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF8.UseVisualStyleBackColor = false;
@@ -1135,6 +1204,7 @@
             this.cbF9.Name = "cbF9";
             this.cbF9.Size = new System.Drawing.Size(55, 43);
             this.cbF9.TabIndex = 80;
+            this.cbF9.TabStop = false;
             this.cbF9.Text = "F9";
             this.cbF9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF9.UseVisualStyleBackColor = false;
@@ -1148,6 +1218,7 @@
             this.cbF10.Name = "cbF10";
             this.cbF10.Size = new System.Drawing.Size(55, 43);
             this.cbF10.TabIndex = 79;
+            this.cbF10.TabStop = false;
             this.cbF10.Text = "F10";
             this.cbF10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF10.UseVisualStyleBackColor = false;
@@ -1161,6 +1232,7 @@
             this.cbF11.Name = "cbF11";
             this.cbF11.Size = new System.Drawing.Size(55, 43);
             this.cbF11.TabIndex = 78;
+            this.cbF11.TabStop = false;
             this.cbF11.Text = "F11";
             this.cbF11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF11.UseVisualStyleBackColor = false;
@@ -1174,6 +1246,7 @@
             this.cbF12.Name = "cbF12";
             this.cbF12.Size = new System.Drawing.Size(55, 43);
             this.cbF12.TabIndex = 77;
+            this.cbF12.TabStop = false;
             this.cbF12.Text = "F12";
             this.cbF12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF12.UseVisualStyleBackColor = false;
@@ -1187,6 +1260,7 @@
             this.cbF1.Name = "cbF1";
             this.cbF1.Size = new System.Drawing.Size(55, 43);
             this.cbF1.TabIndex = 76;
+            this.cbF1.TabStop = false;
             this.cbF1.Text = "F1";
             this.cbF1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF1.UseVisualStyleBackColor = false;
@@ -1200,7 +1274,6 @@
             this.lblMain.Size = new System.Drawing.Size(652, 193);
             this.lblMain.TabIndex = 2;
             this.lblMain.Text = "Dvorak";
-       
             // 
             // lblAttempts
             // 
@@ -1214,12 +1287,14 @@
             // 
             // txtTotal
             // 
+            this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Location = new System.Drawing.Point(113, 11);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(73, 31);
             this.txtTotal.TabIndex = 4;
+            this.txtTotal.TabStop = false;
             // 
             // lblScore
             // 
@@ -1243,21 +1318,25 @@
             // 
             // txtScore
             // 
+            this.txtScore.Enabled = false;
             this.txtScore.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScore.Location = new System.Drawing.Point(113, 89);
             this.txtScore.Name = "txtScore";
             this.txtScore.ReadOnly = true;
             this.txtScore.Size = new System.Drawing.Size(98, 31);
             this.txtScore.TabIndex = 7;
+            this.txtScore.TabStop = false;
             // 
             // txtCorrect
             // 
+            this.txtCorrect.Enabled = false;
             this.txtCorrect.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCorrect.Location = new System.Drawing.Point(113, 50);
             this.txtCorrect.Name = "txtCorrect";
             this.txtCorrect.ReadOnly = true;
             this.txtCorrect.Size = new System.Drawing.Size(73, 31);
             this.txtCorrect.TabIndex = 8;
+            this.txtCorrect.TabStop = false;
             // 
             // pnlStatistics
             // 
@@ -1278,7 +1357,8 @@
             this.btnPractice.Location = new System.Drawing.Point(712, 12);
             this.btnPractice.Name = "btnPractice";
             this.btnPractice.Size = new System.Drawing.Size(75, 33);
-            this.btnPractice.TabIndex = 11;
+            this.btnPractice.TabIndex = 0;
+            this.btnPractice.TabStop = false;
             this.btnPractice.Text = "Practice";
             this.btnPractice.UseVisualStyleBackColor = true;
             this.btnPractice.Click += new System.EventHandler(this.btnPractice_Click);
@@ -1289,7 +1369,8 @@
             this.btnReset.Location = new System.Drawing.Point(807, 12);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 33);
-            this.btnReset.TabIndex = 12;
+            this.btnReset.TabIndex = 1;
+            this.btnReset.TabStop = false;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -1300,12 +1381,14 @@
             // 
             // txtTimer1
             // 
+            this.txtTimer1.Enabled = false;
             this.txtTimer1.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimer1.Location = new System.Drawing.Point(900, 12);
             this.txtTimer1.Name = "txtTimer1";
             this.txtTimer1.ReadOnly = true;
             this.txtTimer1.Size = new System.Drawing.Size(33, 31);
             this.txtTimer1.TabIndex = 9;
+            this.txtTimer1.TabStop = false;
             // 
             // Form1
             // 
@@ -1319,7 +1402,9 @@
             this.Controls.Add(this.pnlStatistics);
             this.Controls.Add(this.lblMain);
             this.Controls.Add(this.gbKeyBoard);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Dvorak";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
