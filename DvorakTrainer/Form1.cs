@@ -16,6 +16,7 @@ namespace Dvorak
         private KeyRandomizer userKeyListObject;
         private Statistics sessionStatistics;
         private GameTimer sessionTimer;
+        private bool disableKeyBoard = true;
 
         public void btnPractice_Click(object sender, EventArgs e)
         {
@@ -31,6 +32,8 @@ namespace Dvorak
             sessionTimer = new GameTimer();
 
             textboxsClear();
+
+            disableKeyBoard = false;
 
             getScoreAndDisplayStatistics();
 
@@ -252,6 +255,10 @@ namespace Dvorak
 
         private void Form1_KeyUp(object sender, KeyEventArgs e) //TRACK USER INTERACTION - if user input matches selected key, tally score and get new key 
         {
+            if (disableKeyBoard)
+            { return; }
+
+
             if (!e.Shift)      // for key presses without shift 
             {
                 if ((e.KeyCode == Keys.Escape) && (userKeyListObject.CurrentRandomKey == 0)) { playAgain(); }
@@ -473,8 +480,7 @@ namespace Dvorak
 
         private void getScoreAndDisplayStatistics()
         {
-            if (sessionTimer.TimerCount < 60)  // Disable refreshing score after timer ends
-            {
+            
                 decimal correct = sessionStatistics.Correct;
                 decimal total = sessionStatistics.Total;
                 decimal score = sessionStatistics.Score;
@@ -487,9 +493,7 @@ namespace Dvorak
                     score = sessionStatistics.calculateScore(correct, total);
                     txtScore.Text = score.ToString("P");
                 }
-            }
-
-           
+                    
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -497,6 +501,7 @@ namespace Dvorak
             textboxsClear();
             timer1.Stop();
             keysClear();
+            disableKeyBoard = true;
         }
 
         private void textboxsClear()
@@ -661,7 +666,8 @@ namespace Dvorak
             {
                 timer1.Stop();
                 lblMain.Text = "Time";
-                userKeyListObject.CurrentRandomKey = 1000;  // for hotkey Ctrl + Esc reset
+                disableKeyBoard = true;
+
             }
         }
 
