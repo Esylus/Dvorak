@@ -659,10 +659,10 @@ namespace Dvorak
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            sessionTimer.TimerCount++;
+            sessionTimer.TimerCount--;
             txtTimer1.Text = (sessionTimer.TimerCount / 10).ToString();
 
-            if (sessionTimer.TimerCount == 600)
+            if (sessionTimer.TimerCount == 0)
             {
                 timer1.Stop();
                 lblMain.Text = "Time";

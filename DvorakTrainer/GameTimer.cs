@@ -14,7 +14,7 @@
 
         public GameTimer()
         {
-            m_timerCount = 0;
+            m_timerCount = 600;
         }
 
     }
