@@ -13,6 +13,7 @@ namespace DvorakTrainer.Test
             // Arrange, Act, Assert
 
             List<int> testList = new List<int>();
+            testList.Add(0);
             testList.Add(1);
             testList.Add(2);
             testList.Add(3);
@@ -27,7 +28,7 @@ namespace DvorakTrainer.Test
 
             actual = testRandomizer.getRandomIntFromAnyList(testList);
 
-            if ((actual > 0) && (actual <= testList.Count()))
+            if ((actual >= 0) && (actual <= testList.Count()))
             {
                 Assert.Pass();
             }
