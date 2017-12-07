@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Dvorak;
 
-namespace DvorakTrainer
+namespace DvorakTrainer.Entities
 {
     static class Program
     {

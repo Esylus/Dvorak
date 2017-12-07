@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using DvorakTrainer.Entities;
+using NUnit.Framework;
 
 namespace DvorakTrainer.Test
 {
