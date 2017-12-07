@@ -16,6 +16,7 @@ namespace Dvorak
 
         private KeyRandomizer userKeyListObject;
         private Statistics sessionStatistics;
+
         private GameTimer sessionTimer;
         private bool disableKeyBoard = true;
 
@@ -467,15 +468,29 @@ namespace Dvorak
             }
         }
 
-        private void playAgain()   // add point to correct, get next key
+        private void playAgain()   // add point to correct / +8 to points, get next key
         {
             sessionStatistics.Correct++;
+
+            sessionStatistics.TotalPoints += 8;           
             getRandomKeyAndDisplay();
         }
 
-        private void trackTotal()  // add point to total when user answer incorrect, refresh statistics display
+        private void trackTotal()  // add point to total / -3 to points when user answer incorrect, refresh statistics display
         {
             sessionStatistics.Total++;
+
+            sessionStatistics.TotalPoints -= 3;
+
+            //if ()        // figure out wap to implement me 
+            //{
+            //    txtPoints.Text = "+5";
+            //}
+            //else
+            //{
+            //    txtPoints.Text = "-3";
+            //}
+            
             getScoreAndDisplayStatistics();
         }   
 
@@ -484,15 +499,15 @@ namespace Dvorak
             
                 decimal correct = sessionStatistics.Correct;
                 decimal total = sessionStatistics.Total;
-                decimal score = sessionStatistics.Score;
+                decimal accuracy = sessionStatistics.Accuracy;
+                int totalPoints = sessionStatistics.TotalPoints;
 
-                txtCorrect.Text = correct.ToString();
-                txtTotal.Text = total.ToString();
+                txtTotalPoints.Text = totalPoints.ToString();
 
                 if (total != 0)   // only calculate score after minimum 1 key is pressed
                 {
-                    score = sessionStatistics.calculateScore(correct, total);
-                    txtScore.Text = score.ToString("P");
+                    accuracy = sessionStatistics.calculateAccuracy(correct, total);
+                    txtAccuracy.Text = accuracy.ToString("P");
                 }
                     
         }
@@ -507,9 +522,9 @@ namespace Dvorak
 
         private void textboxsClear()
         {
-            txtCorrect.Text = "";
-            txtTotal.Text = "";
-            txtScore.Text = "";
+            txtTotalPoints.Text = "";
+            txtPoints.Text = "";
+            txtAccuracy.Text = "";
             txtTimer1.Text = "";
         }
 

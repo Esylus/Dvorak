@@ -105,12 +105,12 @@
             this.cbF12 = new System.Windows.Forms.CheckBox();
             this.cbF1 = new System.Windows.Forms.CheckBox();
             this.lblMain = new System.Windows.Forms.Label();
-            this.lblAttempts = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.lblScore = new System.Windows.Forms.Label();
-            this.lblCorrect = new System.Windows.Forms.Label();
-            this.txtScore = new System.Windows.Forms.TextBox();
-            this.txtCorrect = new System.Windows.Forms.TextBox();
+            this.lblPoints = new System.Windows.Forms.Label();
+            this.txtPoints = new System.Windows.Forms.TextBox();
+            this.lblAccuracy = new System.Windows.Forms.Label();
+            this.lblTotalPoints = new System.Windows.Forms.Label();
+            this.txtAccuracy = new System.Windows.Forms.TextBox();
+            this.txtTotalPoints = new System.Windows.Forms.TextBox();
             this.pnlStatistics = new System.Windows.Forms.Panel();
             this.btnPractice = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
@@ -1275,77 +1275,77 @@
             this.lblMain.TabIndex = 2;
             this.lblMain.Text = "Dvorak";
             // 
-            // lblAttempts
+            // lblPoints
             // 
-            this.lblAttempts.AutoSize = true;
-            this.lblAttempts.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttempts.Location = new System.Drawing.Point(9, 14);
-            this.lblAttempts.Name = "lblAttempts";
-            this.lblAttempts.Size = new System.Drawing.Size(95, 23);
-            this.lblAttempts.TabIndex = 3;
-            this.lblAttempts.Text = "Attempts";
+            this.lblPoints.AutoSize = true;
+            this.lblPoints.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPoints.Location = new System.Drawing.Point(9, 14);
+            this.lblPoints.Name = "lblPoints";
+            this.lblPoints.Size = new System.Drawing.Size(68, 23);
+            this.lblPoints.TabIndex = 3;
+            this.lblPoints.Text = "Points";
             // 
-            // txtTotal
+            // txtPoints
             // 
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(113, 11);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(73, 31);
-            this.txtTotal.TabIndex = 4;
-            this.txtTotal.TabStop = false;
+            this.txtPoints.Enabled = false;
+            this.txtPoints.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPoints.Location = new System.Drawing.Point(113, 11);
+            this.txtPoints.Name = "txtPoints";
+            this.txtPoints.ReadOnly = true;
+            this.txtPoints.Size = new System.Drawing.Size(73, 31);
+            this.txtPoints.TabIndex = 4;
+            this.txtPoints.TabStop = false;
             // 
-            // lblScore
+            // lblAccuracy
             // 
-            this.lblScore.AutoSize = true;
-            this.lblScore.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.Location = new System.Drawing.Point(11, 92);
-            this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(64, 23);
-            this.lblScore.TabIndex = 5;
-            this.lblScore.Text = "Score";
+            this.lblAccuracy.AutoSize = true;
+            this.lblAccuracy.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccuracy.Location = new System.Drawing.Point(11, 92);
+            this.lblAccuracy.Name = "lblAccuracy";
+            this.lblAccuracy.Size = new System.Drawing.Size(95, 23);
+            this.lblAccuracy.TabIndex = 5;
+            this.lblAccuracy.Text = "Accuracy";
             // 
-            // lblCorrect
+            // lblTotalPoints
             // 
-            this.lblCorrect.AutoSize = true;
-            this.lblCorrect.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCorrect.Location = new System.Drawing.Point(11, 53);
-            this.lblCorrect.Name = "lblCorrect";
-            this.lblCorrect.Size = new System.Drawing.Size(79, 23);
-            this.lblCorrect.TabIndex = 6;
-            this.lblCorrect.Text = "Correct";
+            this.lblTotalPoints.AutoSize = true;
+            this.lblTotalPoints.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPoints.Location = new System.Drawing.Point(11, 53);
+            this.lblTotalPoints.Name = "lblTotalPoints";
+            this.lblTotalPoints.Size = new System.Drawing.Size(56, 23);
+            this.lblTotalPoints.TabIndex = 6;
+            this.lblTotalPoints.Text = "Total";
             // 
-            // txtScore
+            // txtAccuracy
             // 
-            this.txtScore.Enabled = false;
-            this.txtScore.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScore.Location = new System.Drawing.Point(113, 89);
-            this.txtScore.Name = "txtScore";
-            this.txtScore.ReadOnly = true;
-            this.txtScore.Size = new System.Drawing.Size(98, 31);
-            this.txtScore.TabIndex = 7;
-            this.txtScore.TabStop = false;
+            this.txtAccuracy.Enabled = false;
+            this.txtAccuracy.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccuracy.Location = new System.Drawing.Point(113, 89);
+            this.txtAccuracy.Name = "txtAccuracy";
+            this.txtAccuracy.ReadOnly = true;
+            this.txtAccuracy.Size = new System.Drawing.Size(98, 31);
+            this.txtAccuracy.TabIndex = 7;
+            this.txtAccuracy.TabStop = false;
             // 
-            // txtCorrect
+            // txtTotalPoints
             // 
-            this.txtCorrect.Enabled = false;
-            this.txtCorrect.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCorrect.Location = new System.Drawing.Point(113, 50);
-            this.txtCorrect.Name = "txtCorrect";
-            this.txtCorrect.ReadOnly = true;
-            this.txtCorrect.Size = new System.Drawing.Size(73, 31);
-            this.txtCorrect.TabIndex = 8;
-            this.txtCorrect.TabStop = false;
+            this.txtTotalPoints.Enabled = false;
+            this.txtTotalPoints.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPoints.Location = new System.Drawing.Point(113, 50);
+            this.txtTotalPoints.Name = "txtTotalPoints";
+            this.txtTotalPoints.ReadOnly = true;
+            this.txtTotalPoints.Size = new System.Drawing.Size(73, 31);
+            this.txtTotalPoints.TabIndex = 8;
+            this.txtTotalPoints.TabStop = false;
             // 
             // pnlStatistics
             // 
-            this.pnlStatistics.Controls.Add(this.lblAttempts);
-            this.pnlStatistics.Controls.Add(this.txtCorrect);
-            this.pnlStatistics.Controls.Add(this.lblCorrect);
-            this.pnlStatistics.Controls.Add(this.txtTotal);
-            this.pnlStatistics.Controls.Add(this.lblScore);
-            this.pnlStatistics.Controls.Add(this.txtScore);
+            this.pnlStatistics.Controls.Add(this.lblPoints);
+            this.pnlStatistics.Controls.Add(this.txtTotalPoints);
+            this.pnlStatistics.Controls.Add(this.lblTotalPoints);
+            this.pnlStatistics.Controls.Add(this.txtPoints);
+            this.pnlStatistics.Controls.Add(this.lblAccuracy);
+            this.pnlStatistics.Controls.Add(this.txtAccuracy);
             this.pnlStatistics.Location = new System.Drawing.Point(712, 65);
             this.pnlStatistics.Name = "pnlStatistics";
             this.pnlStatistics.Size = new System.Drawing.Size(221, 134);
@@ -1492,12 +1492,12 @@
         private System.Windows.Forms.CheckBox cbRAlt;
         private System.Windows.Forms.CheckBox cbRCtrl;
         private System.Windows.Forms.Label lblMain;
-        private System.Windows.Forms.Label lblAttempts;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label lblScore;
-        private System.Windows.Forms.Label lblCorrect;
-        private System.Windows.Forms.TextBox txtScore;
-        private System.Windows.Forms.TextBox txtCorrect;
+        private System.Windows.Forms.Label lblPoints;
+        private System.Windows.Forms.TextBox txtPoints;
+        private System.Windows.Forms.Label lblAccuracy;
+        private System.Windows.Forms.Label lblTotalPoints;
+        private System.Windows.Forms.TextBox txtAccuracy;
+        private System.Windows.Forms.TextBox txtTotalPoints;
         private System.Windows.Forms.Panel pnlStatistics;
         private System.Windows.Forms.Button btnPractice;
         private System.Windows.Forms.CheckBox cbPW;

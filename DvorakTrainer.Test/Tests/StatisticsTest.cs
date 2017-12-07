@@ -18,7 +18,7 @@ namespace DvorakTrainer.Test
 
             Statistics testStatistics = new Statistics();
 
-            actual = testStatistics.calculateScore(correct, total);
+            actual = testStatistics.calculateAccuracy(correct, total);
 
             Assert.AreEqual(expected, actual);
         }

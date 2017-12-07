@@ -38,6 +38,7 @@ namespace DvorakTrainer.Entities
         public int getRandomIntFromAnyList(List<int> rawList)
         {//take any list and get one random value from it
          //add alogrithm to ensure two numbers in a row can not be selected 
+         // add alogorith to track problematic key strikes for focused practice
 
             Random random = new Random();
             int randomIntFromAnyList = random.Next(0, rawList.Count);

@@ -6,22 +6,24 @@
 
        public decimal Correct { get; set; }
        public decimal Total { get; set; }
-       public decimal Score { get; set; }
+       public decimal Accuracy { get; set; }
+       public int TotalPoints { get; set; }
 
         public Statistics()
        {// constructor initializes fields
 
            Correct = 0;
            Total = 0;
-           Score = 0;
+           Accuracy = 0;
+           TotalPoints = 0;
 
        }
  
-       public decimal calculateScore(decimal correct, decimal total)
+       public decimal calculateAccuracy(decimal correct, decimal total)
        {
-           decimal score = (correct / total);
-           Score = score;
-           return score; 
+           decimal accuracy = (correct / total);
+           Accuracy = accuracy;
+           return accuracy; 
        }
     }
 }
