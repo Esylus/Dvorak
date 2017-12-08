@@ -441,7 +441,7 @@ namespace Dvorak
                 else if (e.KeyCode == Keys.ShiftKey) { trackTotal(); }
                 else if (e.KeyCode == Keys.ControlKey) { trackTotal(); }
                 else if (e.KeyCode == Keys.Menu) { trackTotal(); }
-                else if (e.KeyCode == Keys.Space) { trackTotal(); }
+               // else if (e.KeyCode == Keys.Space) { trackTotal(); }
                 else if (e.Alt) { trackTotal(); }
                 else if (e.KeyCode == Keys.Menu) { trackTotal(); }
             }
@@ -735,87 +735,87 @@ namespace Dvorak
 
         private void cbFingerings_CheckedChanged(object sender, EventArgs e)  // toggle viewing correct key fingerings
         {
-            Fingerings one = new Fingerings(255, 255, 0, 0);         // thumb
-            Fingerings two = new Fingerings(255, 255, 255, 0);         // pointer
-            Fingerings three = new Fingerings(255, 255, 0, 255);       // middle
-            Fingerings four = new Fingerings(255, 45, 38, 40);        // ring
-            Fingerings five = new Fingerings(255, 246, 185, 47);        // pinky
+            Fingerings one = new Fingerings(255, 255, 131, 62);         // thumb
+            Fingerings two = new Fingerings(255, 132, 138, 224);         // pointer
+            Fingerings three = new Fingerings(255, 149, 73, 203);       // middle
+            Fingerings four = new Fingerings(255, 160, 192, 76);        // ring
+            Fingerings five = new Fingerings(255, 0, 153, 217);        // pinky
 
             if (cbFingerings.Checked)
             {
-                cbEsc.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbF1.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbF2.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbF3.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbF4.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbEsc.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbF1.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF2.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF3.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF4.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
                 cbF5.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbF6.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbF7.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbF8.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbF9.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbF10.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbF11.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbF12.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbTilda.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cb1.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cb2.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cb3.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cb4.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbF8.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbF9.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF10.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF11.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbF12.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbTilda.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cb1.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cb2.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cb3.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cb4.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
                 cb5.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cb6.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cb7.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cb8.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cb9.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cb0.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbLSqr.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbRSqr.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbBack.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbLTab.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbQte.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbComma.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbPrd.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cb9.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cb0.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbLSqr.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbRSqr.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbBack.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLTab.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbQte.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbComma.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbPrd.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
                 cbP.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbY.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbF.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbG.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbC.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbR.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbL.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbBSlsh.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbEql.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbFSlsh.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbCaps.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbA.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbO.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbE.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbC.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbR.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbL.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbBSlsh.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbEql.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbFSlsh.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbCaps.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbA.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbO.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbE.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
                 cbU.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbI.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbD.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbH.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbT.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbN.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbS.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbDash.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbEntr.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbLShft.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbColon.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbQ.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbJ.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbT.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbN.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbS.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbDash.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbEntr.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLShft.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbColon.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbQ.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbJ.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
                 cbK.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbX.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbB.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
                 cbM.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbW.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbV.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbZ.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbRShft.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbLCtrl.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbStrt.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbLAlt.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbSpace.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbRAlt.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbMenu.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
-                cbRCtrl.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbW.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbV.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbZ.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbRShft.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLCtrl.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbStrt.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLAlt.BackColor = Color.FromArgb(one.O, one.R, one.G, one.B);
+                cbSpace.BackColor = Color.FromArgb(one.O, one.R, one.G, one.B);
+                cbRAlt.BackColor = Color.FromArgb(one.O, one.R, one.G, one.B);
+                cbMenu.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbRCtrl.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
 
             }
             else
