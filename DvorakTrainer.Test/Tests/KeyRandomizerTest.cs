@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DvorakTrainer.Entities;
 using NUnit.Framework;
 
 namespace DvorakTrainer.Test

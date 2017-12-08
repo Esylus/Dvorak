@@ -1,4 +1,6 @@
-﻿namespace Dvorak
+﻿using System.Runtime.CompilerServices;
+
+namespace Dvorak
 {
     partial class Form1
     {
@@ -104,18 +106,19 @@
             this.cbF11 = new System.Windows.Forms.CheckBox();
             this.cbF12 = new System.Windows.Forms.CheckBox();
             this.cbF1 = new System.Windows.Forms.CheckBox();
-            this.lblMain = new System.Windows.Forms.Label();
-            this.lblAttempts = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.lblScore = new System.Windows.Forms.Label();
-            this.lblCorrect = new System.Windows.Forms.Label();
-            this.txtScore = new System.Windows.Forms.TextBox();
-            this.txtCorrect = new System.Windows.Forms.TextBox();
+            this.lblAccuracy = new System.Windows.Forms.Label();
+            this.lblTotalPoints = new System.Windows.Forms.Label();
             this.pnlStatistics = new System.Windows.Forms.Panel();
+            this.lblAccuracyDisplay = new System.Windows.Forms.Label();
+            this.lblTotalDisplay = new System.Windows.Forms.Label();
+            this.lblPointsDisplay = new System.Windows.Forms.Label();
             this.btnPractice = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.txtTimer1 = new System.Windows.Forms.TextBox();
+            this.lblTimerDisplay = new System.Windows.Forms.Label();
+            this.FadeTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblMain = new System.Windows.Forms.Label();
+            this.lblDvorak = new System.Windows.Forms.Label();
             this.gbKeyBoard.SuspendLayout();
             this.pnlStatistics.SuspendLayout();
             this.SuspendLayout();
@@ -1265,91 +1268,65 @@
             this.cbF1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbF1.UseVisualStyleBackColor = false;
             // 
-            // lblMain
+            // lblAccuracy
             // 
-            this.lblMain.AutoSize = true;
-            this.lblMain.Font = new System.Drawing.Font("Verdana", 120F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMain.Location = new System.Drawing.Point(12, 6);
-            this.lblMain.Name = "lblMain";
-            this.lblMain.Size = new System.Drawing.Size(652, 193);
-            this.lblMain.TabIndex = 2;
-            this.lblMain.Text = "Dvorak";
+            this.lblAccuracy.AutoSize = true;
+            this.lblAccuracy.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccuracy.Location = new System.Drawing.Point(6, 55);
+            this.lblAccuracy.Name = "lblAccuracy";
+            this.lblAccuracy.Size = new System.Drawing.Size(111, 23);
+            this.lblAccuracy.TabIndex = 5;
+            this.lblAccuracy.Text = "Accuracy :";
             // 
-            // lblAttempts
+            // lblTotalPoints
             // 
-            this.lblAttempts.AutoSize = true;
-            this.lblAttempts.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttempts.Location = new System.Drawing.Point(9, 14);
-            this.lblAttempts.Name = "lblAttempts";
-            this.lblAttempts.Size = new System.Drawing.Size(95, 23);
-            this.lblAttempts.TabIndex = 3;
-            this.lblAttempts.Text = "Attempts";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(113, 11);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(73, 31);
-            this.txtTotal.TabIndex = 4;
-            this.txtTotal.TabStop = false;
-            // 
-            // lblScore
-            // 
-            this.lblScore.AutoSize = true;
-            this.lblScore.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.Location = new System.Drawing.Point(11, 92);
-            this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(64, 23);
-            this.lblScore.TabIndex = 5;
-            this.lblScore.Text = "Score";
-            // 
-            // lblCorrect
-            // 
-            this.lblCorrect.AutoSize = true;
-            this.lblCorrect.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCorrect.Location = new System.Drawing.Point(11, 53);
-            this.lblCorrect.Name = "lblCorrect";
-            this.lblCorrect.Size = new System.Drawing.Size(79, 23);
-            this.lblCorrect.TabIndex = 6;
-            this.lblCorrect.Text = "Correct";
-            // 
-            // txtScore
-            // 
-            this.txtScore.Enabled = false;
-            this.txtScore.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScore.Location = new System.Drawing.Point(113, 89);
-            this.txtScore.Name = "txtScore";
-            this.txtScore.ReadOnly = true;
-            this.txtScore.Size = new System.Drawing.Size(98, 31);
-            this.txtScore.TabIndex = 7;
-            this.txtScore.TabStop = false;
-            // 
-            // txtCorrect
-            // 
-            this.txtCorrect.Enabled = false;
-            this.txtCorrect.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCorrect.Location = new System.Drawing.Point(113, 50);
-            this.txtCorrect.Name = "txtCorrect";
-            this.txtCorrect.ReadOnly = true;
-            this.txtCorrect.Size = new System.Drawing.Size(73, 31);
-            this.txtCorrect.TabIndex = 8;
-            this.txtCorrect.TabStop = false;
+            this.lblTotalPoints.AutoSize = true;
+            this.lblTotalPoints.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPoints.Location = new System.Drawing.Point(6, 16);
+            this.lblTotalPoints.Name = "lblTotalPoints";
+            this.lblTotalPoints.Size = new System.Drawing.Size(112, 23);
+            this.lblTotalPoints.TabIndex = 6;
+            this.lblTotalPoints.Text = "Points     :";
             // 
             // pnlStatistics
             // 
-            this.pnlStatistics.Controls.Add(this.lblAttempts);
-            this.pnlStatistics.Controls.Add(this.txtCorrect);
-            this.pnlStatistics.Controls.Add(this.lblCorrect);
-            this.pnlStatistics.Controls.Add(this.txtTotal);
-            this.pnlStatistics.Controls.Add(this.lblScore);
-            this.pnlStatistics.Controls.Add(this.txtScore);
-            this.pnlStatistics.Location = new System.Drawing.Point(712, 65);
+            this.pnlStatistics.BackColor = System.Drawing.Color.Silver;
+            this.pnlStatistics.Controls.Add(this.lblAccuracyDisplay);
+            this.pnlStatistics.Controls.Add(this.lblTotalDisplay);
+            this.pnlStatistics.Controls.Add(this.lblTotalPoints);
+            this.pnlStatistics.Controls.Add(this.lblAccuracy);
+            this.pnlStatistics.Location = new System.Drawing.Point(702, 80);
             this.pnlStatistics.Name = "pnlStatistics";
-            this.pnlStatistics.Size = new System.Drawing.Size(221, 134);
+            this.pnlStatistics.Size = new System.Drawing.Size(231, 97);
             this.pnlStatistics.TabIndex = 10;
+            // 
+            // lblAccuracyDisplay
+            // 
+            this.lblAccuracyDisplay.AutoSize = true;
+            this.lblAccuracyDisplay.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccuracyDisplay.Location = new System.Drawing.Point(127, 55);
+            this.lblAccuracyDisplay.Name = "lblAccuracyDisplay";
+            this.lblAccuracyDisplay.Size = new System.Drawing.Size(0, 23);
+            this.lblAccuracyDisplay.TabIndex = 11;
+            // 
+            // lblTotalDisplay
+            // 
+            this.lblTotalDisplay.AutoSize = true;
+            this.lblTotalDisplay.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDisplay.Location = new System.Drawing.Point(128, 16);
+            this.lblTotalDisplay.Name = "lblTotalDisplay";
+            this.lblTotalDisplay.Size = new System.Drawing.Size(0, 23);
+            this.lblTotalDisplay.TabIndex = 12;
+            // 
+            // lblPointsDisplay
+            // 
+            this.lblPointsDisplay.AutoSize = true;
+            this.lblPointsDisplay.Font = new System.Drawing.Font("Verdana", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPointsDisplay.Location = new System.Drawing.Point(619, 24);
+            this.lblPointsDisplay.Name = "lblPointsDisplay";
+            this.lblPointsDisplay.Size = new System.Drawing.Size(33, 36);
+            this.lblPointsDisplay.TabIndex = 9;
+            this.lblPointsDisplay.Text = "T";
             // 
             // btnPractice
             // 
@@ -1379,16 +1356,39 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // txtTimer1
+            // lblTimerDisplay
             // 
-            this.txtTimer1.Enabled = false;
-            this.txtTimer1.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimer1.Location = new System.Drawing.Point(900, 12);
-            this.txtTimer1.Name = "txtTimer1";
-            this.txtTimer1.ReadOnly = true;
-            this.txtTimer1.Size = new System.Drawing.Size(33, 31);
-            this.txtTimer1.TabIndex = 9;
-            this.txtTimer1.TabStop = false;
+            this.lblTimerDisplay.AutoSize = true;
+            this.lblTimerDisplay.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimerDisplay.Location = new System.Drawing.Point(902, 14);
+            this.lblTimerDisplay.Name = "lblTimerDisplay";
+            this.lblTimerDisplay.Size = new System.Drawing.Size(0, 23);
+            this.lblTimerDisplay.TabIndex = 13;
+            // 
+            // FadeTimer
+            // 
+            this.FadeTimer.Interval = 25;
+            this.FadeTimer.Tick += new System.EventHandler(this.FadeTimer_Tick);
+            // 
+            // lblMain
+            // 
+            this.lblMain.AutoSize = true;
+            this.lblMain.Font = new System.Drawing.Font("Verdana", 110.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMain.Location = new System.Drawing.Point(215, 9);
+            this.lblMain.Name = "lblMain";
+            this.lblMain.Size = new System.Drawing.Size(418, 178);
+            this.lblMain.TabIndex = 2;
+            this.lblMain.Text = "Shift";
+            // 
+            // lblDvorak
+            // 
+            this.lblDvorak.AutoSize = true;
+            this.lblDvorak.Font = new System.Drawing.Font("Verdana", 110.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDvorak.Location = new System.Drawing.Point(11, 7);
+            this.lblDvorak.Name = "lblDvorak";
+            this.lblDvorak.Size = new System.Drawing.Size(598, 178);
+            this.lblDvorak.TabIndex = 14;
+            this.lblDvorak.Text = "Dvorak";
             // 
             // Form1
             // 
@@ -1396,12 +1396,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(952, 551);
-            this.Controls.Add(this.txtTimer1);
+            this.Controls.Add(this.lblPointsDisplay);
+            this.Controls.Add(this.lblTimerDisplay);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnPractice);
             this.Controls.Add(this.pnlStatistics);
-            this.Controls.Add(this.lblMain);
             this.Controls.Add(this.gbKeyBoard);
+            this.Controls.Add(this.lblDvorak);
+            this.Controls.Add(this.lblMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1491,19 +1493,20 @@
         private System.Windows.Forms.CheckBox cbMenu;
         private System.Windows.Forms.CheckBox cbRAlt;
         private System.Windows.Forms.CheckBox cbRCtrl;
-        private System.Windows.Forms.Label lblMain;
-        private System.Windows.Forms.Label lblAttempts;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label lblScore;
-        private System.Windows.Forms.Label lblCorrect;
-        private System.Windows.Forms.TextBox txtScore;
-        private System.Windows.Forms.TextBox txtCorrect;
+        private System.Windows.Forms.Label lblAccuracy;
+        private System.Windows.Forms.Label lblTotalPoints;
         private System.Windows.Forms.Panel pnlStatistics;
         private System.Windows.Forms.Button btnPractice;
         private System.Windows.Forms.CheckBox cbPW;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox txtTimer1;
+        private System.Windows.Forms.Label lblPointsDisplay;
+        private System.Windows.Forms.Label lblAccuracyDisplay;
+        private System.Windows.Forms.Label lblTotalDisplay;
+        private System.Windows.Forms.Label lblTimerDisplay;
+        private System.Windows.Forms.Timer FadeTimer;
+        private System.Windows.Forms.Label lblMain;
+        private System.Windows.Forms.Label lblDvorak;
     }
 }
 

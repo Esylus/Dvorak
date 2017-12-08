@@ -1,20 +1,15 @@
-﻿namespace DvorakTrainer
+﻿namespace DvorakTrainer.Entities
 {
     // this class contains all timer - related code
 
     class GameTimer
     {
-        private int m_timerCount;
 
-        public int TimerCount
-        {
-            get{return m_timerCount;}
-            set{this.m_timerCount = value;}
-        }
+        public int TimerCount { get; set; }      
 
         public GameTimer()
         {
-            m_timerCount = 600;
+            TimerCount = 600;
         }
 
     }

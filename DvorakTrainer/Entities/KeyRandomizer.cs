@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DvorakTrainer
+namespace DvorakTrainer.Entities
 {
     public class KeyRandomizer
     {
@@ -11,13 +11,7 @@ namespace DvorakTrainer
 
         private List<int> userSelectedKeyList = new List<int>();
 
-        private int m_currentRandomKey;
-
-        public int CurrentRandomKey
-        {//private field getter setter
-            get { return this.m_currentRandomKey; }
-            set { this.m_currentRandomKey = value; }
-        }
+        public int CurrentRandomKey { get; set; }
 
         public KeyRandomizer()
         {//empty default constructor          
@@ -36,13 +30,15 @@ namespace DvorakTrainer
             int randomIntFromUserList =  getRandomIntFromAnyList(userSelectedKeyList);
 
                 int selectedKeyFromUserList = userSelectedKeyList.ElementAt(randomIntFromUserList);
-                m_currentRandomKey = selectedKeyFromUserList;
-                                 
+              //  m_currentRandomKey = selectedKeyFromUserList;
+            CurrentRandomKey = selectedKeyFromUserList;
+
         }
 
         public int getRandomIntFromAnyList(List<int> rawList)
         {//take any list and get one random value from it
          //add alogrithm to ensure two numbers in a row can not be selected 
+         // add alogorith to track problematic key strikes for focused practice
 
             Random random = new Random();
             int randomIntFromAnyList = random.Next(0, rawList.Count);

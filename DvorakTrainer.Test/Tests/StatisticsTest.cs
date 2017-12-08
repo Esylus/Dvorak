@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using DvorakTrainer.Entities;
+using NUnit.Framework;
 
 namespace DvorakTrainer.Test
 {
@@ -17,7 +18,7 @@ namespace DvorakTrainer.Test
 
             Statistics testStatistics = new Statistics();
 
-            actual = testStatistics.calculateScore(correct, total);
+            actual = testStatistics.calculateAccuracy(correct, total);
 
             Assert.AreEqual(expected, actual);
         }
