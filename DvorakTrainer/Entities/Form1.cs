@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DvorakTrainer;
@@ -16,8 +17,8 @@ namespace Dvorak
 
         private KeyRandomizer userKeyListObject;
         private Statistics sessionStatistics;
-
         private GameTimer sessionTimer;
+        private FadeTimer pointFade;
         private bool disableKeyBoard = true;
 
         public void btnPractice_Click(object sender, EventArgs e)
@@ -25,7 +26,7 @@ namespace Dvorak
             startSession();
         }
 
-        private void startSession()           // initiates practice session
+        private void startSession()           // initiates practice session 
         {
             userKeyListObject = new KeyRandomizer(putUserSelectedKeysIntoList());
 
@@ -33,11 +34,12 @@ namespace Dvorak
 
             sessionTimer = new GameTimer();
 
-            textboxsClear();
+            statisticDisplaysClear();
+
+            lblDvorak.Hide();
+            lblMain.Show();
 
             disableKeyBoard = false;
-
-            getScoreAndDisplayStatistics();
 
             timer1.Start();
 
@@ -212,7 +214,7 @@ namespace Dvorak
                 case 51: lblMain.Text = "s"; break;
                 case 52: lblMain.Text = "-"; break;
                 case 53: lblMain.Text = "Enter"; break;
-                case 54: lblMain.Text = "Shft"; break;
+                case 54: lblMain.Text = "Shift"; break;
                 case 55: lblMain.Text = ";"; break;
                 case 56: lblMain.Text = "q"; break;
                 case 57: lblMain.Text = "j"; break;
@@ -223,7 +225,7 @@ namespace Dvorak
                 case 62: lblMain.Text = "w"; break;
                 case 63: lblMain.Text = "v"; break;
                 case 64: lblMain.Text = "z"; break;
-                case 65: lblMain.Text = "Shft"; break;
+                case 65: lblMain.Text = "Shift"; break;
                 case 66: lblMain.Text = "Ctrl"; break;
                 case 67: lblMain.Text = "Start"; break;
                 case 68: lblMain.Text = "Alt"; break;
@@ -472,8 +474,42 @@ namespace Dvorak
         {
             sessionStatistics.Correct++;
 
-            sessionStatistics.TotalPoints += 8;           
+            sessionStatistics.TotalPoints += 8;
+            sessionStatistics.PositivePointMonitor = true;
             getRandomKeyAndDisplay();
+        }
+
+        private void FadeTimer_Tick(object sender, EventArgs e)
+        {
+            pointFade.FadeTimerCount--;
+            int endColor = 105;
+            int fadeRate = 5;
+
+            if (pointFade.PositiveOrNegativePoints)
+            {
+                // if positive points apply green color + fade
+                lblPointsDisplay.ForeColor = Color.FromArgb(pointFade.R, pointFade.G, pointFade.B);
+                lblPointsDisplay.Text = "+5";
+
+                if (pointFade.R < endColor) pointFade.R += fadeRate;
+                if (pointFade.G > endColor) pointFade.G -= fadeRate;
+                if (pointFade.B < endColor) pointFade.B += fadeRate;
+            }
+            else
+            {
+                // if negative points apply red color + fade
+                lblPointsDisplay.ForeColor = Color.FromArgb(pointFade.R, pointFade.G, pointFade.B); ;
+                lblPointsDisplay.Text = "-3";
+
+                if (pointFade.R > endColor) pointFade.R -= fadeRate;
+                if (pointFade.G < endColor) pointFade.G += fadeRate;
+                if (pointFade.B < endColor) pointFade.B += fadeRate;
+            }
+
+            if (pointFade.FadeTimerCount == 0)
+            {
+               FadeTimer.Stop();
+            }
         }
 
         private void trackTotal()  // add point to total / -3 to points when user answer incorrect, refresh statistics display
@@ -482,15 +518,21 @@ namespace Dvorak
 
             sessionStatistics.TotalPoints -= 3;
 
-            //if ()        // figure out wap to implement me 
-            //{
-            //    txtPoints.Text = "+5";
-            //}
-            //else
-            //{
-            //    txtPoints.Text = "-3";
-            //}
-            
+
+            if (sessionStatistics.PositivePointMonitor)  // if positive point signaled 
+            {
+                pointFade = new FadeTimer(0, 255, 0);            // create fade object
+                pointFade.PositiveOrNegativePoints = true;       // assign positive bool
+                FadeTimer.Start();                               //start timer which will display points then fade
+                sessionStatistics.PositivePointMonitor = false;  //change back to default false
+            }
+            else
+            {
+                pointFade = new FadeTimer(255, 0, 0);
+                pointFade.PositiveOrNegativePoints = false;
+                FadeTimer.Start();          
+            }
+
             getScoreAndDisplayStatistics();
         }   
 
@@ -502,35 +544,39 @@ namespace Dvorak
                 decimal accuracy = sessionStatistics.Accuracy;
                 int totalPoints = sessionStatistics.TotalPoints;
 
-                txtTotalPoints.Text = totalPoints.ToString();
+                lblTotalDisplay.Text = totalPoints.ToString();
 
-                if (total != 0)   // only calculate score after minimum 1 key is pressed
+            if (total != 0)   // only calculate score after minimum 1 key is pressed
                 {
                     accuracy = sessionStatistics.calculateAccuracy(correct, total);
-                    txtAccuracy.Text = accuracy.ToString("P");
-                }
+                    lblAccuracyDisplay.Text = accuracy.ToString("P");
+            }
                     
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            textboxsClear();
+            statisticDisplaysClear();
             timer1.Stop();
             keysClear();
             disableKeyBoard = true;
+            lblDvorak.Show();
         }
 
-        private void textboxsClear()
+        private void statisticDisplaysClear()
         {
-            txtTotalPoints.Text = "";
-            txtPoints.Text = "";
-            txtAccuracy.Text = "";
-            txtTimer1.Text = "";
+
+            lblPointsDisplay.Text = "";
+            lblAccuracyDisplay.Text = "";
+            lblTotalDisplay.Text = "";
+            lblTimerDisplay.Text = "";
         }
 
         private void keysClear()    // clear all checkButtons
         {
-            lblMain.Text = "Dvorak";
+     
+            lblMain.Hide();
+            lblDvorak.Show();
             cbEsc.Checked = false;
             cbF1.Checked = false;
             cbF2.Checked = false;
@@ -676,7 +722,7 @@ namespace Dvorak
         private void timer1_Tick(object sender, EventArgs e)
         {
             sessionTimer.TimerCount--;
-            txtTimer1.Text = (sessionTimer.TimerCount / 10).ToString();
+            lblTimerDisplay.Text = (sessionTimer.TimerCount / 10).ToString();
 
             if (sessionTimer.TimerCount == 0)
             {
@@ -687,6 +733,6 @@ namespace Dvorak
             }
         }
 
-     
+      
     }
 }
