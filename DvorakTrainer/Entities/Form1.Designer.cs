@@ -119,6 +119,7 @@ namespace Dvorak
             this.FadeTimer = new System.Windows.Forms.Timer(this.components);
             this.lblMain = new System.Windows.Forms.Label();
             this.lblDvorak = new System.Windows.Forms.Label();
+            this.cbFingerings = new System.Windows.Forms.CheckBox();
             this.gbKeyBoard.SuspendLayout();
             this.pnlStatistics.SuspendLayout();
             this.SuspendLayout();
@@ -1295,7 +1296,7 @@ namespace Dvorak
             this.pnlStatistics.Controls.Add(this.lblTotalDisplay);
             this.pnlStatistics.Controls.Add(this.lblTotalPoints);
             this.pnlStatistics.Controls.Add(this.lblAccuracy);
-            this.pnlStatistics.Location = new System.Drawing.Point(702, 80);
+            this.pnlStatistics.Location = new System.Drawing.Point(702, 90);
             this.pnlStatistics.Name = "pnlStatistics";
             this.pnlStatistics.Size = new System.Drawing.Size(231, 97);
             this.pnlStatistics.TabIndex = 10;
@@ -1390,12 +1391,25 @@ namespace Dvorak
             this.lblDvorak.TabIndex = 14;
             this.lblDvorak.Text = "Dvorak";
             // 
+            // cbFingerings
+            // 
+            this.cbFingerings.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cbFingerings.Location = new System.Drawing.Point(712, 51);
+            this.cbFingerings.Name = "cbFingerings";
+            this.cbFingerings.Size = new System.Drawing.Size(75, 33);
+            this.cbFingerings.TabIndex = 15;
+            this.cbFingerings.Text = "Fingerings";
+            this.cbFingerings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbFingerings.UseVisualStyleBackColor = true;
+            this.cbFingerings.CheckedChanged += new System.EventHandler(this.cbFingerings_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(952, 551);
+            this.Controls.Add(this.cbFingerings);
             this.Controls.Add(this.lblPointsDisplay);
             this.Controls.Add(this.lblTimerDisplay);
             this.Controls.Add(this.btnReset);
@@ -1507,6 +1521,7 @@ namespace Dvorak
         private System.Windows.Forms.Timer FadeTimer;
         private System.Windows.Forms.Label lblMain;
         private System.Windows.Forms.Label lblDvorak;
+        private System.Windows.Forms.CheckBox cbFingerings;
     }
 }
 

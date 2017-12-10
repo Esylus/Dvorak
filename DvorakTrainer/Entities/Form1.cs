@@ -441,7 +441,7 @@ namespace Dvorak
                 else if (e.KeyCode == Keys.ShiftKey) { trackTotal(); }
                 else if (e.KeyCode == Keys.ControlKey) { trackTotal(); }
                 else if (e.KeyCode == Keys.Menu) { trackTotal(); }
-                else if (e.KeyCode == Keys.Space) { trackTotal(); }
+               // else if (e.KeyCode == Keys.Space) { trackTotal(); }
                 else if (e.Alt) { trackTotal(); }
                 else if (e.KeyCode == Keys.Menu) { trackTotal(); }
             }
@@ -477,39 +477,6 @@ namespace Dvorak
             sessionStatistics.TotalPoints += 8;
             sessionStatistics.PositivePointMonitor = true;
             getRandomKeyAndDisplay();
-        }
-
-        private void FadeTimer_Tick(object sender, EventArgs e)
-        {
-            pointFade.FadeTimerCount--;
-            int endColor = 105;
-            int fadeRate = 5;
-
-            if (pointFade.PositiveOrNegativePoints)
-            {
-                // if positive points apply green color + fade
-                lblPointsDisplay.ForeColor = Color.FromArgb(pointFade.R, pointFade.G, pointFade.B);
-                lblPointsDisplay.Text = "+5";
-
-                if (pointFade.R < endColor) pointFade.R += fadeRate;
-                if (pointFade.G > endColor) pointFade.G -= fadeRate;
-                if (pointFade.B < endColor) pointFade.B += fadeRate;
-            }
-            else
-            {
-                // if negative points apply red color + fade
-                lblPointsDisplay.ForeColor = Color.FromArgb(pointFade.R, pointFade.G, pointFade.B); ;
-                lblPointsDisplay.Text = "-3";
-
-                if (pointFade.R > endColor) pointFade.R -= fadeRate;
-                if (pointFade.G < endColor) pointFade.G += fadeRate;
-                if (pointFade.B < endColor) pointFade.B += fadeRate;
-            }
-
-            if (pointFade.FadeTimerCount == 0)
-            {
-               FadeTimer.Stop();
-            }
         }
 
         private void trackTotal()  // add point to total / -3 to points when user answer incorrect, refresh statistics display
@@ -554,7 +521,7 @@ namespace Dvorak
                     
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)  // reset game to initialized state
         {
             statisticDisplaysClear();
             timer1.Stop();
@@ -733,6 +700,274 @@ namespace Dvorak
             }
         }
 
-      
+        private void FadeTimer_Tick(object sender, EventArgs e)  // allows points added or subtracted to fade away
+        {
+            pointFade.FadeTimerCount--;
+            int endColor = 105;
+            int fadeRate = 5;
+
+            if (pointFade.PositiveOrNegativePoints)
+            {
+                // if positive points apply green color + fade
+                lblPointsDisplay.ForeColor = Color.FromArgb(pointFade.R, pointFade.G, pointFade.B);
+                lblPointsDisplay.Text = "+5";
+
+                if (pointFade.R < endColor) pointFade.R += fadeRate;
+                if (pointFade.G > endColor) pointFade.G -= fadeRate;
+                if (pointFade.B < endColor) pointFade.B += fadeRate;
+            }
+            else
+            {
+                // if negative points apply red color + fade
+                lblPointsDisplay.ForeColor = Color.FromArgb(pointFade.R, pointFade.G, pointFade.B); ;
+                lblPointsDisplay.Text = "-3";
+
+                if (pointFade.R > endColor) pointFade.R -= fadeRate;
+                if (pointFade.G < endColor) pointFade.G += fadeRate;
+                if (pointFade.B < endColor) pointFade.B += fadeRate;
+            }
+
+            if (pointFade.FadeTimerCount == 0)
+            {
+                FadeTimer.Stop();
+            }
+        }
+
+        private void cbFingerings_CheckedChanged(object sender, EventArgs e)  // toggle viewing correct key fingerings
+        {
+            Fingerings one = new Fingerings(255, 255, 131, 62);         // thumb
+            Fingerings two = new Fingerings(255, 132, 138, 224);         // pointer
+            Fingerings three = new Fingerings(255, 149, 73, 203);       // middle
+            Fingerings four = new Fingerings(255, 160, 192, 76);        // ring
+            Fingerings five = new Fingerings(255, 0, 153, 217);        // pinky
+
+            if (cbFingerings.Checked)
+            {
+                cbEsc.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbF1.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF2.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF3.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF4.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbF5.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbF6.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbF7.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbF8.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbF9.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF10.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF11.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbF12.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbTilda.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cb1.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cb2.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cb3.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cb4.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cb5.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cb6.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cb7.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cb8.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cb9.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cb0.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbLSqr.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbRSqr.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbBack.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLTab.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbQte.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbComma.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbPrd.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbP.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbY.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbF.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbG.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbC.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbR.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbL.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbBSlsh.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbEql.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbFSlsh.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbCaps.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbA.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbO.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbE.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbU.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbI.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbD.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbH.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbT.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbN.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbS.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbDash.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbEntr.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLShft.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbColon.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbQ.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbJ.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbK.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbX.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbB.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbM.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbW.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbV.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbZ.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbRShft.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLCtrl.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbStrt.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLAlt.BackColor = Color.FromArgb(one.O, one.R, one.G, one.B);
+                cbSpace.BackColor = Color.FromArgb(one.O, one.R, one.G, one.B);
+                cbRAlt.BackColor = Color.FromArgb(one.O, one.R, one.G, one.B);
+                cbMenu.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbRCtrl.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+
+            }
+            else
+            {
+                cbEsc.BackColor = default(Color);
+                cbEsc.UseVisualStyleBackColor = true;
+                cbF1.BackColor = default(Color);
+                cbF1.UseVisualStyleBackColor = true;
+                cbF2.BackColor = default(Color);
+                cbF2.UseVisualStyleBackColor = true;
+                cbF3.BackColor = default(Color);
+                cbF3.UseVisualStyleBackColor = true;
+                cbF4.BackColor = default(Color);
+                cbF4.UseVisualStyleBackColor = true;
+                cbF5.BackColor = default(Color);
+                cbF5.UseVisualStyleBackColor = true;
+                cbF6.BackColor = default(Color);
+                cbF6.UseVisualStyleBackColor = true;
+                cbF7.BackColor = default(Color);
+                cbF7.UseVisualStyleBackColor = true;
+                cbF8.BackColor = default(Color);
+                cbF8.UseVisualStyleBackColor = true;
+                cbF9.BackColor = default(Color);
+                cbF9.UseVisualStyleBackColor = true;
+                cbF10.BackColor = default(Color);
+                cbF10.UseVisualStyleBackColor = true;
+                cbF11.BackColor = default(Color);
+                cbF11.UseVisualStyleBackColor = true;
+                cbF12.BackColor = default(Color);
+                cbF12.UseVisualStyleBackColor = true;
+                cbTilda.BackColor = default(Color);
+                cbTilda.UseVisualStyleBackColor = true;
+                cb1.BackColor = default(Color);
+                cb1.UseVisualStyleBackColor = true;
+                cb2.BackColor = default(Color);
+                cb2.UseVisualStyleBackColor = true;
+                cb3.BackColor = default(Color);
+                cb3.UseVisualStyleBackColor = true;
+                cb4.BackColor = default(Color);
+                cb4.UseVisualStyleBackColor = true;
+                cb5.BackColor = default(Color);
+                cb5.UseVisualStyleBackColor = true;
+                cb6.BackColor = default(Color);
+                cb6.UseVisualStyleBackColor = true;
+                cb7.BackColor = default(Color);
+                cb7.UseVisualStyleBackColor = true;
+                cb8.BackColor = default(Color);
+                cb8.UseVisualStyleBackColor = true;
+                cb9.BackColor = default(Color);
+                cb9.UseVisualStyleBackColor = true;
+                cb0.BackColor = default(Color);
+                cb0.UseVisualStyleBackColor = true;
+                cbLSqr.BackColor = default(Color);
+                cbLSqr.UseVisualStyleBackColor = true;
+                cbRSqr.BackColor = default(Color);
+                cbRSqr.UseVisualStyleBackColor = true;
+                cbBack.BackColor = default(Color);
+                cbBack.UseVisualStyleBackColor = true;
+                cbLTab.BackColor = default(Color);
+                cbLTab.UseVisualStyleBackColor = true;
+                cbQte.BackColor = default(Color);
+                cbQte.UseVisualStyleBackColor = true;
+                cbComma.BackColor = default(Color);
+                cbComma.UseVisualStyleBackColor = true;
+                cbPrd.BackColor = default(Color);
+                cbPrd.UseVisualStyleBackColor = true;
+                cbP.BackColor = default(Color);
+                cbP.UseVisualStyleBackColor = true;
+                cbY.BackColor = default(Color);
+                cbY.UseVisualStyleBackColor = true;
+                cbF.BackColor = default(Color);
+                cbF.UseVisualStyleBackColor = true;
+                cbG.BackColor = default(Color);
+                cbG.UseVisualStyleBackColor = true;
+                cbC.BackColor = default(Color);
+                cbC.UseVisualStyleBackColor = true;
+                cbR.BackColor = default(Color);
+                cbR.UseVisualStyleBackColor = true;
+                cbL.BackColor = default(Color);
+                cbL.UseVisualStyleBackColor = true;
+                cbBSlsh.BackColor = default(Color);
+                cbBSlsh.UseVisualStyleBackColor = true;
+                cbEql.BackColor = default(Color);
+                cbEql.UseVisualStyleBackColor = true;
+                cbFSlsh.BackColor = default(Color);
+                cbFSlsh.UseVisualStyleBackColor = true;
+                cbCaps.BackColor = default(Color);
+                cbCaps.UseVisualStyleBackColor = true;
+                cbA.BackColor = default(Color);
+                cbA.UseVisualStyleBackColor = true;
+                cbO.BackColor = default(Color);
+                cbO.UseVisualStyleBackColor = true;
+                cbE.BackColor = default(Color);
+                cbE.UseVisualStyleBackColor = true;
+                cbU.BackColor = default(Color);
+                cbU.UseVisualStyleBackColor = true;
+                cbI.BackColor = default(Color);
+                cbI.UseVisualStyleBackColor = true;
+                cbD.BackColor = default(Color);
+                cbD.UseVisualStyleBackColor = true;
+                cbH.BackColor = default(Color);
+                cbH.UseVisualStyleBackColor = true;
+                cbT.BackColor = default(Color);
+                cbT.UseVisualStyleBackColor = true;
+                cbN.BackColor = default(Color);
+                cbN.UseVisualStyleBackColor = true;
+                cbS.BackColor = default(Color);
+                cbS.UseVisualStyleBackColor = true;
+                cbDash.BackColor = default(Color);
+                cbDash.UseVisualStyleBackColor = true;
+                cbEntr.BackColor = default(Color);
+                cbEntr.UseVisualStyleBackColor = true;
+                cbLShft.BackColor = default(Color);
+                cbLShft.UseVisualStyleBackColor = true;
+                cbColon.BackColor = default(Color);
+                cbColon.UseVisualStyleBackColor = true;
+                cbQ.BackColor = default(Color);
+                cbQ.UseVisualStyleBackColor = true;
+                cbJ.BackColor = default(Color);
+                cbJ.UseVisualStyleBackColor = true;
+                cbK.BackColor = default(Color);
+                cbK.UseVisualStyleBackColor = true;
+                cbX.BackColor = default(Color);
+                cbX.UseVisualStyleBackColor = true;
+                cbB.BackColor = default(Color);
+                cbB.UseVisualStyleBackColor = true;
+                cbM.BackColor = default(Color);
+                cbM.UseVisualStyleBackColor = true;
+                cbW.BackColor = default(Color);
+                cbW.UseVisualStyleBackColor = true;
+                cbV.BackColor = default(Color);
+                cbV.UseVisualStyleBackColor = true;
+                cbZ.BackColor = default(Color);
+                cbZ.UseVisualStyleBackColor = true;
+                cbRShft.BackColor = default(Color);
+                cbRShft.UseVisualStyleBackColor = true;
+                cbLCtrl.BackColor = default(Color);
+                cbLCtrl.UseVisualStyleBackColor = true;
+                cbStrt.BackColor = default(Color);
+                cbStrt.UseVisualStyleBackColor = true;
+                cbLAlt.BackColor = default(Color);
+                cbLAlt.UseVisualStyleBackColor = true;
+                cbSpace.BackColor = default(Color);
+                cbSpace.UseVisualStyleBackColor = true;
+                cbRAlt.BackColor = default(Color);
+                cbRAlt.UseVisualStyleBackColor = true;
+                cbMenu.BackColor = default(Color);
+                cbMenu.UseVisualStyleBackColor = true;
+                cbRCtrl.BackColor = default(Color);
+                cbRCtrl.UseVisualStyleBackColor = true;
+              
+            }
+        }
     }
 }

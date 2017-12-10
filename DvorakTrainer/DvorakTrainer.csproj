@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\FadeTimer.cs" />
+    <Compile Include="Entities\Fingerings.cs" />
     <Compile Include="Entities\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
