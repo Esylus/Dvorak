@@ -735,11 +735,11 @@ namespace Dvorak
 
         private void cbFingerings_CheckedChanged(object sender, EventArgs e)  // toggle viewing correct key fingerings
         {
-            Fingerings one = new Fingerings(255, 255, 131, 62);         // thumb
-            Fingerings two = new Fingerings(255, 132, 138, 224);         // pointer
-            Fingerings three = new Fingerings(255, 149, 73, 203);       // middle
-            Fingerings four = new Fingerings(255, 160, 192, 76);        // ring
-            Fingerings five = new Fingerings(255, 0, 153, 217);        // pinky
+            Fingerings one = new Fingerings(155, 255, 131, 62);         // thumb
+            Fingerings two = new Fingerings(155, 132, 138, 224);         // pointer
+            Fingerings three = new Fingerings(155, 149, 73, 203);       // middle
+            Fingerings four = new Fingerings(155, 160, 192, 76);        // ring
+            Fingerings five = new Fingerings(155, 0, 153, 217);        // pinky
 
             if (cbFingerings.Checked)
             {

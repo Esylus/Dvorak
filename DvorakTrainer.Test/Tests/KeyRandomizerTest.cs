@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DvorakTrainer.Entities;
 using NUnit.Framework;
@@ -14,14 +15,12 @@ namespace DvorakTrainer.Test
             // Arrange, Act, Assert
 
             List<int> testList = new List<int>();
-            testList.Add(0);
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
-            testList.Add(4);
-            testList.Add(5);
-            testList.Add(6);
-            testList.Add(7);
+            Random random = new Random();
+
+            for (int i = 0; i < 10; i++)
+            {
+                testList.Add(random.Next(0, 100));
+            }
 
             int actual;
 
@@ -39,7 +38,41 @@ namespace DvorakTrainer.Test
             }
         }
 
-        
+        [Test]
+        public void preventDuplicates_IntegerList_ReturnUniqueNumberComparedToPrevious()
+        {// Prevent Duplicates should deliver multiple integers without ever repeating two
+         // Arrange Act Assert
+
+            KeyRandomizer testPreventDuplicates = new KeyRandomizer();
+            List<int> testList = new List<int>();
+            Random random = new Random();
+            int previousNumber = -1;
+            int currentNumber = 0;
+
+            for (int i = 0; i < 100; i++)
+            {
+                testList.Add(random.Next(0, 100));
+            }
+
+            for (int j = 0; j < 100; j++)
+            {
+                currentNumber = testPreventDuplicates.preventDuplicates(testList);
+
+                if (currentNumber == previousNumber)
+                {
+                    Assert.Fail();
+                }
+                else
+                {
+                    previousNumber = currentNumber;
+                    Console.WriteLine(currentNumber);
+                }
+
+            }
+
+            Assert.Pass();
+
+        }
 
 
     }
