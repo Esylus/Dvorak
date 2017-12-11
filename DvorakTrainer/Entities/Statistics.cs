@@ -8,7 +8,6 @@
        public decimal Total { get; set; }
        public decimal Accuracy { get; set; }
 
-       public bool PositivePointMonitor { get; set; }
 
        public int TotalPoints { get; set; }
 
@@ -19,7 +18,6 @@
            Total = 0;
            Accuracy = 0;
            TotalPoints = 0;
-           PositivePointMonitor = false;
 
        }
  

@@ -261,7 +261,7 @@ namespace Dvorak
         {
             if (disableKeyBoard)
             { return; }
-
+            
 
             if (!e.Shift)      // for key presses without shift 
             {
@@ -338,42 +338,8 @@ namespace Dvorak
                 else if ((e.KeyCode == Keys.Alt) && (userKeyListObject.CurrentRandomKey == 70)) { playAgain(); }
                 else if ((e.KeyCode == Keys.Menu) && (userKeyListObject.CurrentRandomKey == 71)) { playAgain(); }
                 else if ((e.KeyCode == Keys.ControlKey) && (userKeyListObject.CurrentRandomKey == 72)) { playAgain(); }
-            }
 
-            else     // for key presses that require shift
-            {
-                if ((e.KeyCode == Keys.Oemtilde && e.Shift) && (userKeyListObject.CurrentRandomKey == 73)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D1 && e.Shift) && (userKeyListObject.CurrentRandomKey == 74)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D2 && e.Shift) && (userKeyListObject.CurrentRandomKey == 75)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D3 && e.Shift) && (userKeyListObject.CurrentRandomKey == 76)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D4 && e.Shift) && (userKeyListObject.CurrentRandomKey == 77)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D5 && e.Shift) && (userKeyListObject.CurrentRandomKey == 78)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D6 && e.Shift) && (userKeyListObject.CurrentRandomKey == 79)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D7 && e.Shift) && (userKeyListObject.CurrentRandomKey == 80)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D8 && e.Shift) && (userKeyListObject.CurrentRandomKey == 81)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D9 && e.Shift) && (userKeyListObject.CurrentRandomKey == 82)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D0 && e.Shift) && (userKeyListObject.CurrentRandomKey == 83)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemOpenBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 84)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemCloseBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 85)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemQuotes && e.Shift) && (userKeyListObject.CurrentRandomKey == 86)) { playAgain(); }
-                else if ((e.KeyCode == Keys.Oemcomma && e.Shift) && (userKeyListObject.CurrentRandomKey == 87)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemPeriod && e.Shift) && (userKeyListObject.CurrentRandomKey == 88)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemQuestion && e.Shift) && (userKeyListObject.CurrentRandomKey == 89)) { playAgain(); }
-                else if ((e.KeyCode == Keys.Oemplus && e.Shift) && (userKeyListObject.CurrentRandomKey == 90)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemPipe && e.Shift) && (userKeyListObject.CurrentRandomKey == 91)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemMinus && e.Shift) && (userKeyListObject.CurrentRandomKey == 92)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemSemicolon && e.Shift) && (userKeyListObject.CurrentRandomKey == 93)) { playAgain(); }
-
-                else if ((e.KeyCode == Keys.Back && e.Shift) && (userKeyListObject.CurrentRandomKey == 1000))
-                {// this hotkey combo (Shift + Backspace) same as "pressing Practice button"
-
-                    startSession();
-                }
-            }
-
-            if (!e.Shift)       // To track incorrect key presses that don't require shift
-            {
-                if (e.KeyCode == Keys.Escape) { trackTotal(); }
+                else if (e.KeyCode == Keys.Escape) { trackTotal(); }
                 else if (e.KeyCode == Keys.F1) { trackTotal(); }
                 else if (e.KeyCode == Keys.F2) { trackTotal(); }
                 else if (e.KeyCode == Keys.F3) { trackTotal(); }
@@ -427,7 +393,7 @@ namespace Dvorak
                 else if (e.KeyCode == Keys.S) { trackTotal(); }
                 else if (e.KeyCode == Keys.OemMinus) { trackTotal(); }
                 else if (e.KeyCode == Keys.Enter) { trackTotal(); }
-                else if (e.KeyCode == Keys.ShiftKey) { trackTotal(); }
+              //  else if (e.KeyCode == Keys.ShiftKey) { trackTotal(); }
                 else if (e.KeyCode == Keys.OemSemicolon) { trackTotal(); }
                 else if (e.KeyCode == Keys.Q) { trackTotal(); }
                 else if (e.KeyCode == Keys.J) { trackTotal(); }
@@ -438,44 +404,72 @@ namespace Dvorak
                 else if (e.KeyCode == Keys.W) { trackTotal(); }
                 else if (e.KeyCode == Keys.V) { trackTotal(); }
                 else if (e.KeyCode == Keys.Z) { trackTotal(); }
-                else if (e.KeyCode == Keys.ShiftKey) { trackTotal(); }
+              //  else if (e.KeyCode == Keys.ShiftKey) { trackTotal(); }
                 else if (e.KeyCode == Keys.ControlKey) { trackTotal(); }
                 else if (e.KeyCode == Keys.Menu) { trackTotal(); }
-               // else if (e.KeyCode == Keys.Space) { trackTotal(); }
+                // else if (e.KeyCode == Keys.Space) { trackTotal(); }
                 else if (e.Alt) { trackTotal(); }
                 else if (e.KeyCode == Keys.Menu) { trackTotal(); }
             }
 
-            else // To track incorrect key presses that require shift
-            {   //in this case,  getScoreAndDisplayStatistics as total gets incremented by "shift" trackTotal() above
+            else     // for key presses that require shift
+            {
+                if ((e.KeyCode == Keys.Oemtilde && e.Shift) && (userKeyListObject.CurrentRandomKey == 73)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D1 && e.Shift) && (userKeyListObject.CurrentRandomKey == 74)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D2 && e.Shift) && (userKeyListObject.CurrentRandomKey == 75)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D3 && e.Shift) && (userKeyListObject.CurrentRandomKey == 76)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D4 && e.Shift) && (userKeyListObject.CurrentRandomKey == 77)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D5 && e.Shift) && (userKeyListObject.CurrentRandomKey == 78)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D6 && e.Shift) && (userKeyListObject.CurrentRandomKey == 79)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D7 && e.Shift) && (userKeyListObject.CurrentRandomKey == 80)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D8 && e.Shift) && (userKeyListObject.CurrentRandomKey == 81)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D9 && e.Shift) && (userKeyListObject.CurrentRandomKey == 82)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D0 && e.Shift) && (userKeyListObject.CurrentRandomKey == 83)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemOpenBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 84)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemCloseBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 85)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemQuotes && e.Shift) && (userKeyListObject.CurrentRandomKey == 86)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Oemcomma && e.Shift) && (userKeyListObject.CurrentRandomKey == 87)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemPeriod && e.Shift) && (userKeyListObject.CurrentRandomKey == 88)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemQuestion && e.Shift) && (userKeyListObject.CurrentRandomKey == 89)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Oemplus && e.Shift) && (userKeyListObject.CurrentRandomKey == 90)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemPipe && e.Shift) && (userKeyListObject.CurrentRandomKey == 91)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemMinus && e.Shift) && (userKeyListObject.CurrentRandomKey == 92)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemSemicolon && e.Shift) && (userKeyListObject.CurrentRandomKey == 93)) { playAgain(); }
 
-                if (e.KeyCode == Keys.Oemtilde && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D1 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D2 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D3 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D4 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D5 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D6 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D7 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D8 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D9 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D0 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemOpenBrackets && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemCloseBrackets && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemQuestion && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.Oemplus && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemPipe && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemMinus && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemSemicolon && e.Shift) { getScoreAndDisplayStatistics(); }
-            }
+                else if (e.KeyCode == Keys.Oemtilde && e.Shift) { trackTotal(); } 
+                else if (e.KeyCode == Keys.D1 && e.Shift) { trackTotal(); }
+                else if(e.KeyCode == Keys.D2 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D3 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D4 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D5 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D6 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D7 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D8 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D9 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D0 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemOpenBrackets && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemCloseBrackets && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemQuestion && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.Oemplus && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemPipe && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemMinus && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemSemicolon && e.Shift) { trackTotal(); }
+            }     
         }
+
 
         private void playAgain()   // add point to correct / +8 to points, get next key
         {
             sessionStatistics.Correct++;
+            sessionStatistics.Total++;
+            sessionStatistics.TotalPoints += 5;
 
-            sessionStatistics.TotalPoints += 8;
-            sessionStatistics.PositivePointMonitor = true;
+
+            pointFade = new FadeTimer(0, 255, 0);            // create fade object
+            pointFade.PositiveOrNegativePoints = true;       // assign positive bool
+            FadeTimer.Start();                               //start timer which will display points then fade
+           
+            getScoreAndDisplayStatistics();
             getRandomKeyAndDisplay();
         }
 
@@ -484,22 +478,11 @@ namespace Dvorak
             sessionStatistics.Total++;
 
             sessionStatistics.TotalPoints -= 3;
-
-
-            if (sessionStatistics.PositivePointMonitor)  // if positive point signaled 
-            {
-                pointFade = new FadeTimer(0, 255, 0);            // create fade object
-                pointFade.PositiveOrNegativePoints = true;       // assign positive bool
-                FadeTimer.Start();                               //start timer which will display points then fade
-                sessionStatistics.PositivePointMonitor = false;  //change back to default false
-            }
-            else
-            {
+         
                 pointFade = new FadeTimer(255, 0, 0);
                 pointFade.PositiveOrNegativePoints = false;
-                FadeTimer.Start();          
-            }
-
+                FadeTimer.Start();
+         
             getScoreAndDisplayStatistics();
         }   
 
