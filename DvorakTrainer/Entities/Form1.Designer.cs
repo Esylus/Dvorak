@@ -120,6 +120,7 @@ namespace Dvorak
             this.lblMain = new System.Windows.Forms.Label();
             this.lblDvorak = new System.Windows.Forms.Label();
             this.cbFingerings = new System.Windows.Forms.CheckBox();
+            this.cbFocus = new System.Windows.Forms.CheckBox();
             this.gbKeyBoard.SuspendLayout();
             this.pnlStatistics.SuspendLayout();
             this.SuspendLayout();
@@ -1403,12 +1404,25 @@ namespace Dvorak
             this.cbFingerings.UseVisualStyleBackColor = true;
             this.cbFingerings.CheckedChanged += new System.EventHandler(this.cbFingerings_CheckedChanged);
             // 
+            // cbFocus
+            // 
+            this.cbFocus.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cbFocus.Location = new System.Drawing.Point(807, 51);
+            this.cbFocus.Name = "cbFocus";
+            this.cbFocus.Size = new System.Drawing.Size(75, 33);
+            this.cbFocus.TabIndex = 16;
+            this.cbFocus.Text = "Focus";
+            this.cbFocus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbFocus.UseVisualStyleBackColor = true;
+            this.cbFocus.CheckedChanged += new System.EventHandler(this.cbFocus_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(952, 551);
+            this.Controls.Add(this.cbFocus);
             this.Controls.Add(this.cbFingerings);
             this.Controls.Add(this.lblPointsDisplay);
             this.Controls.Add(this.lblTimerDisplay);
@@ -1522,6 +1536,7 @@ namespace Dvorak
         private System.Windows.Forms.Label lblMain;
         private System.Windows.Forms.Label lblDvorak;
         private System.Windows.Forms.CheckBox cbFingerings;
+        private System.Windows.Forms.CheckBox cbFocus;
     }
 }
 

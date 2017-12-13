@@ -19,6 +19,7 @@ namespace Dvorak
         private Statistics sessionStatistics;
         private GameTimer sessionTimer;
         private FadeTimer pointFade;
+        private Focus sessionFocus;
         private bool disableKeyBoard = true;
 
         public void btnPractice_Click(object sender, EventArgs e)
@@ -155,9 +156,23 @@ namespace Dvorak
         }
 
         private void getRandomKeyAndDisplay() //Gets random key from user selected list and displays
-        {            
-            userKeyListObject.extractUserRandomKeyToMember();
-
+        {
+            if (sessionFocus != null)   // if focus button (cb) has been pushed and object initialized..
+            {
+                if (sessionFocus.FocusModeEnabled)  // if first round of focus learning has gone by there will be a focusList created
+                {
+                    userKeyListObject.extractUserRandomKeyToMember(sessionFocus.FocusList); // Use this list after 1st round data collection
+                }
+                else      // if focus button is pushed but it is the first focus learning round
+                {
+                    userKeyListObject.extractUserRandomKeyToMember(userKeyListObject.UserSelectedKeyList); // use default list
+                }
+            }
+            else    // if the focus button is not pushed
+            {
+                userKeyListObject.extractUserRandomKeyToMember(userKeyListObject.UserSelectedKeyList); // Default list
+            }
+            
             switch (userKeyListObject.CurrentRandomKey)
             {
                 case 0: lblMain.Text = "Esc"; break;
@@ -259,9 +274,7 @@ namespace Dvorak
 
         private void Form1_KeyUp(object sender, KeyEventArgs e) //TRACK USER INTERACTION - if user input matches selected key, tally score and get new key 
         {
-            if (disableKeyBoard)
-            { return; }
-            
+            if (disableKeyBoard) { return; } 
 
             if (!e.Shift)      // for key presses without shift 
             {
@@ -457,9 +470,25 @@ namespace Dvorak
             }     
         }
 
-
-        private void playAgain()   // add point to correct / +8 to points, get next key
+        private void cbFocus_CheckedChanged(object sender, EventArgs e)  // activates focus mode
         {
+            if (cbFocus.Checked)  // if focus cb checked, initialize focus object
+            {
+                sessionFocus = new Focus();
+            }
+            else
+            {
+                sessionFocus.FocusModeEnabled = false;  // if user takes focus mode off, disable
+            }         
+        }
+
+        private void playAgain()   // add point to correct / +5 to points, get next key
+        {
+            if (cbFocus.Checked)  // if in focus mode, collect result data
+            {
+                sessionFocus.recordKeyPressResults(userKeyListObject.CurrentRandomKey, 1);
+            }
+           
             sessionStatistics.Correct++;
             sessionStatistics.Total++;
             sessionStatistics.TotalPoints += 5;
@@ -475,6 +504,11 @@ namespace Dvorak
 
         private void trackTotal()  // add point to total / -3 to points when user answer incorrect, refresh statistics display
         {
+            if (cbFocus.Checked)
+            {
+                sessionFocus.recordKeyPressResults(userKeyListObject.CurrentRandomKey, 0);
+            }
+
             sessionStatistics.Total++;
 
             sessionStatistics.TotalPoints -= 3;
@@ -511,11 +545,11 @@ namespace Dvorak
             keysClear();
             disableKeyBoard = true;
             lblDvorak.Show();
+            cbFocus.Checked = false;
         }
 
         private void statisticDisplaysClear()
         {
-
             lblPointsDisplay.Text = "";
             lblAccuracyDisplay.Text = "";
             lblTotalDisplay.Text = "";
@@ -674,12 +708,17 @@ namespace Dvorak
             sessionTimer.TimerCount--;
             lblTimerDisplay.Text = (sessionTimer.TimerCount / 10).ToString();
 
-            if (sessionTimer.TimerCount == 0)
+            if (sessionTimer.TimerCount == 0)  // when round is over
             {
                 timer1.Stop();
                 lblMain.Text = "Time";
                 disableKeyBoard = true;
 
+                if (cbFocus.Checked)             // focus-mode, after first round of data collected, create next rounds list and enable focus mode 
+                {
+                   sessionFocus.createFocusList();
+                   sessionFocus.FocusModeEnabled = true;
+                }
             }
         }
 
@@ -952,5 +991,7 @@ namespace Dvorak
               
             }
         }
+
+       
     }
 }

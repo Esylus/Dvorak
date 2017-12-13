@@ -9,7 +9,7 @@
 
         public GameTimer()
         {
-            TimerCount = 600;
+            TimerCount = 600;      // set how long each round should take 
         }
 
     }
