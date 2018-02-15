@@ -7,7 +7,7 @@ A typing app designed to increase user speed and accuracy with all keys using us
 
   -- User can pick which letters they want to practice with by clicking on keys (twice to access special characters such as '&')
   
-  -- User chosen letters will then be served to user randomly for 1 minute. User scores +5 for correct answers and -3 for incorrect
+  -- User chosen letters will then be served to user randomly for 1 minute. +5 for correct answers and -3 for incorrect
   
   -- Pressing 'Learn' button activates psuedo machine learn option:
   
