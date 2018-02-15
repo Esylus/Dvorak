@@ -1,9 +1,9 @@
 # Dvorak
-A typing app designed to increase user speed and accuracy with all keys.
+A typing app designed to increase user speed and accuracy with all keys using user defined practice sessions
 
 ![typeapp](https://user-images.githubusercontent.com/28571149/36284685-77831d16-125d-11e8-9648-effacdf2123b.jpg)
 
-Can be used with either QWERTY or DVORAK style typing 
+  -- Can be used with either QWERTY or DVORAK style typing 
 
   -- User can pick which letters they want to practice with by clicking on keys (twice to access special characters such as '&')
   
@@ -23,14 +23,14 @@ Can be used with either QWERTY or DVORAK style typing
   
   -- Pressing 'Fingerings' button will show suggested fingerings (aimed at Dvorak typers) 
   
-  -- Use this typing app in combination with other resources such as https://learn.dvorak.nl/ and https://www.ratatype.com/typing-test/
+  -- Use this typing app in combination with https://learn.dvorak.nl/ and https://www.ratatype.com/typing-test/
   
-  -- This app was intended to compliment the above two websites letting the user pick specifically which keys to work on
+  -- This app was intended to compliment the above two websites letting the user pick which keys to work on
   
   -- This app also allows user to focus on numbers, special characters and the F1-F12 keys
   
-  Dvorak typing app was created and coded by PJ Miller in C# in a succesful effort to master typing in Dvorak
+  -- Dvorak typing app was created and coded by PJ Miller in C# in a succesful effort to master typing in Dvorak
   
-  Find out why typing in Dvorak is significantly more efficient than traditional QWERTY here http://www.dvzine.org/
+  -- Find out why typing in Dvorak is significantly more efficient than traditional QWERTY here http://www.dvzine.org/
   
 
