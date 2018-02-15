@@ -1,5 +1,6 @@
 # Dvorak
-A typing app designed to increase user speed and accuracy with all keys. Can be used with either QWERTY or DVORAK style typing 
+A typing app designed to increase user speed and accuracy with all keys 
+Can be used with either QWERTY or DVORAK style typing 
 
   -- User can pick which letters they want to practice with by clicking on keys (twice to access special characters such as '&')
   -- User chosen letters will then be served to user randomly for 1 minute. User scores +5 for correct answers and -3 for incorrect
