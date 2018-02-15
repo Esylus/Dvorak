@@ -1,4 +1,4 @@
 # Dvorak
 A typing app designed to increase speed and accuracy. Can be used with either QWERTY or DVORAK. 
 
-![dvorak](https://user-images.githubusercontent.com/28571149/34532218-96f05c2a-f072-11e7-92bc-7b577b772cbe.png)
+![typeapp](https://user-images.githubusercontent.com/28571149/36284624-307c47c6-125d-11e8-9c99-4871529d45bd.jpg)
