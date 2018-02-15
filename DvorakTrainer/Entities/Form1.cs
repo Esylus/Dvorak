@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DvorakTrainer;
+using DvorakTrainer.Entities;
 
 namespace Dvorak
 {
@@ -16,6 +18,8 @@ namespace Dvorak
         private KeyRandomizer userKeyListObject;
         private Statistics sessionStatistics;
         private GameTimer sessionTimer;
+        private FadeTimer pointFade;
+        private Focus sessionFocus;
         private bool disableKeyBoard = true;
 
         public void btnPractice_Click(object sender, EventArgs e)
@@ -23,7 +27,7 @@ namespace Dvorak
             startSession();
         }
 
-        private void startSession()           // initiates practice session
+        private void startSession()           // initiates practice session 
         {
             userKeyListObject = new KeyRandomizer(putUserSelectedKeysIntoList());
 
@@ -31,11 +35,12 @@ namespace Dvorak
 
             sessionTimer = new GameTimer();
 
-            textboxsClear();
+            statisticDisplaysClear();
+
+            lblDvorak.Hide();
+            lblMain.Show();
 
             disableKeyBoard = false;
-
-            getScoreAndDisplayStatistics();
 
             timer1.Start();
 
@@ -151,9 +156,23 @@ namespace Dvorak
         }
 
         private void getRandomKeyAndDisplay() //Gets random key from user selected list and displays
-        {            
-            userKeyListObject.extractUserRandomKeyToMember();
-
+        {
+            if (sessionFocus != null)   // if focus button (cb) has been pushed and object initialized..
+            {
+                if (sessionFocus.FocusModeEnabled)  // if first round of focus learning has gone by there will be a focusList created
+                {
+                    userKeyListObject.extractUserRandomKeyToMember(sessionFocus.FocusList); // Use this list after 1st round data collection
+                }
+                else      // if focus button is pushed but it is the first focus learning round
+                {
+                    userKeyListObject.extractUserRandomKeyToMember(userKeyListObject.UserSelectedKeyList); // use default list
+                }
+            }
+            else    // if the focus button is not pushed
+            {
+                userKeyListObject.extractUserRandomKeyToMember(userKeyListObject.UserSelectedKeyList); // Default list
+            }
+            
             switch (userKeyListObject.CurrentRandomKey)
             {
                 case 0: lblMain.Text = "Esc"; break;
@@ -210,7 +229,7 @@ namespace Dvorak
                 case 51: lblMain.Text = "s"; break;
                 case 52: lblMain.Text = "-"; break;
                 case 53: lblMain.Text = "Enter"; break;
-                case 54: lblMain.Text = "Shft"; break;
+                case 54: lblMain.Text = "Shift"; break;
                 case 55: lblMain.Text = ";"; break;
                 case 56: lblMain.Text = "q"; break;
                 case 57: lblMain.Text = "j"; break;
@@ -221,7 +240,7 @@ namespace Dvorak
                 case 62: lblMain.Text = "w"; break;
                 case 63: lblMain.Text = "v"; break;
                 case 64: lblMain.Text = "z"; break;
-                case 65: lblMain.Text = "Shft"; break;
+                case 65: lblMain.Text = "Shift"; break;
                 case 66: lblMain.Text = "Ctrl"; break;
                 case 67: lblMain.Text = "Start"; break;
                 case 68: lblMain.Text = "Alt"; break;
@@ -255,9 +274,7 @@ namespace Dvorak
 
         private void Form1_KeyUp(object sender, KeyEventArgs e) //TRACK USER INTERACTION - if user input matches selected key, tally score and get new key 
         {
-            if (disableKeyBoard)
-            { return; }
-
+            if (disableKeyBoard) { return; } 
 
             if (!e.Shift)      // for key presses without shift 
             {
@@ -334,42 +351,8 @@ namespace Dvorak
                 else if ((e.KeyCode == Keys.Alt) && (userKeyListObject.CurrentRandomKey == 70)) { playAgain(); }
                 else if ((e.KeyCode == Keys.Menu) && (userKeyListObject.CurrentRandomKey == 71)) { playAgain(); }
                 else if ((e.KeyCode == Keys.ControlKey) && (userKeyListObject.CurrentRandomKey == 72)) { playAgain(); }
-            }
 
-            else     // for key presses that require shift
-            {
-                if ((e.KeyCode == Keys.Oemtilde && e.Shift) && (userKeyListObject.CurrentRandomKey == 73)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D1 && e.Shift) && (userKeyListObject.CurrentRandomKey == 74)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D2 && e.Shift) && (userKeyListObject.CurrentRandomKey == 75)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D3 && e.Shift) && (userKeyListObject.CurrentRandomKey == 76)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D4 && e.Shift) && (userKeyListObject.CurrentRandomKey == 77)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D5 && e.Shift) && (userKeyListObject.CurrentRandomKey == 78)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D6 && e.Shift) && (userKeyListObject.CurrentRandomKey == 79)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D7 && e.Shift) && (userKeyListObject.CurrentRandomKey == 80)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D8 && e.Shift) && (userKeyListObject.CurrentRandomKey == 81)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D9 && e.Shift) && (userKeyListObject.CurrentRandomKey == 82)) { playAgain(); }
-                else if ((e.KeyCode == Keys.D0 && e.Shift) && (userKeyListObject.CurrentRandomKey == 83)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemOpenBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 84)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemCloseBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 85)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemQuotes && e.Shift) && (userKeyListObject.CurrentRandomKey == 86)) { playAgain(); }
-                else if ((e.KeyCode == Keys.Oemcomma && e.Shift) && (userKeyListObject.CurrentRandomKey == 87)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemPeriod && e.Shift) && (userKeyListObject.CurrentRandomKey == 88)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemQuestion && e.Shift) && (userKeyListObject.CurrentRandomKey == 89)) { playAgain(); }
-                else if ((e.KeyCode == Keys.Oemplus && e.Shift) && (userKeyListObject.CurrentRandomKey == 90)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemPipe && e.Shift) && (userKeyListObject.CurrentRandomKey == 91)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemMinus && e.Shift) && (userKeyListObject.CurrentRandomKey == 92)) { playAgain(); }
-                else if ((e.KeyCode == Keys.OemSemicolon && e.Shift) && (userKeyListObject.CurrentRandomKey == 93)) { playAgain(); }
-
-                else if ((e.KeyCode == Keys.Back && e.Shift) && (userKeyListObject.CurrentRandomKey == 1000))
-                {// this hotkey combo (Shift + Backspace) same as "pressing Practice button"
-
-                    startSession();
-                }
-            }
-
-            if (!e.Shift)       // To track incorrect key presses that don't require shift
-            {
-                if (e.KeyCode == Keys.Escape) { trackTotal(); }
+                else if (e.KeyCode == Keys.Escape) { trackTotal(); }
                 else if (e.KeyCode == Keys.F1) { trackTotal(); }
                 else if (e.KeyCode == Keys.F2) { trackTotal(); }
                 else if (e.KeyCode == Keys.F3) { trackTotal(); }
@@ -423,7 +406,7 @@ namespace Dvorak
                 else if (e.KeyCode == Keys.S) { trackTotal(); }
                 else if (e.KeyCode == Keys.OemMinus) { trackTotal(); }
                 else if (e.KeyCode == Keys.Enter) { trackTotal(); }
-                else if (e.KeyCode == Keys.ShiftKey) { trackTotal(); }
+              //  else if (e.KeyCode == Keys.ShiftKey) { trackTotal(); }
                 else if (e.KeyCode == Keys.OemSemicolon) { trackTotal(); }
                 else if (e.KeyCode == Keys.Q) { trackTotal(); }
                 else if (e.KeyCode == Keys.J) { trackTotal(); }
@@ -434,47 +417,106 @@ namespace Dvorak
                 else if (e.KeyCode == Keys.W) { trackTotal(); }
                 else if (e.KeyCode == Keys.V) { trackTotal(); }
                 else if (e.KeyCode == Keys.Z) { trackTotal(); }
-                else if (e.KeyCode == Keys.ShiftKey) { trackTotal(); }
+              //  else if (e.KeyCode == Keys.ShiftKey) { trackTotal(); }
                 else if (e.KeyCode == Keys.ControlKey) { trackTotal(); }
                 else if (e.KeyCode == Keys.Menu) { trackTotal(); }
-                else if (e.KeyCode == Keys.Space) { trackTotal(); }
+                // else if (e.KeyCode == Keys.Space) { trackTotal(); }
                 else if (e.Alt) { trackTotal(); }
                 else if (e.KeyCode == Keys.Menu) { trackTotal(); }
             }
 
-            else // To track incorrect key presses that require shift
-            {   //in this case,  getScoreAndDisplayStatistics as total gets incremented by "shift" trackTotal() above
+            else     // for key presses that require shift
+            {
+                if ((e.KeyCode == Keys.Oemtilde && e.Shift) && (userKeyListObject.CurrentRandomKey == 73)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D1 && e.Shift) && (userKeyListObject.CurrentRandomKey == 74)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D2 && e.Shift) && (userKeyListObject.CurrentRandomKey == 75)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D3 && e.Shift) && (userKeyListObject.CurrentRandomKey == 76)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D4 && e.Shift) && (userKeyListObject.CurrentRandomKey == 77)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D5 && e.Shift) && (userKeyListObject.CurrentRandomKey == 78)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D6 && e.Shift) && (userKeyListObject.CurrentRandomKey == 79)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D7 && e.Shift) && (userKeyListObject.CurrentRandomKey == 80)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D8 && e.Shift) && (userKeyListObject.CurrentRandomKey == 81)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D9 && e.Shift) && (userKeyListObject.CurrentRandomKey == 82)) { playAgain(); }
+                else if ((e.KeyCode == Keys.D0 && e.Shift) && (userKeyListObject.CurrentRandomKey == 83)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemOpenBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 84)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemCloseBrackets && e.Shift) && (userKeyListObject.CurrentRandomKey == 85)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemQuotes && e.Shift) && (userKeyListObject.CurrentRandomKey == 86)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Oemcomma && e.Shift) && (userKeyListObject.CurrentRandomKey == 87)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemPeriod && e.Shift) && (userKeyListObject.CurrentRandomKey == 88)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemQuestion && e.Shift) && (userKeyListObject.CurrentRandomKey == 89)) { playAgain(); }
+                else if ((e.KeyCode == Keys.Oemplus && e.Shift) && (userKeyListObject.CurrentRandomKey == 90)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemPipe && e.Shift) && (userKeyListObject.CurrentRandomKey == 91)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemMinus && e.Shift) && (userKeyListObject.CurrentRandomKey == 92)) { playAgain(); }
+                else if ((e.KeyCode == Keys.OemSemicolon && e.Shift) && (userKeyListObject.CurrentRandomKey == 93)) { playAgain(); }
 
-                if (e.KeyCode == Keys.Oemtilde && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D1 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D2 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D3 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D4 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D5 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D6 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D7 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D8 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D9 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.D0 && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemOpenBrackets && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemCloseBrackets && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemQuestion && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.Oemplus && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemPipe && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemMinus && e.Shift) { getScoreAndDisplayStatistics(); }
-                if (e.KeyCode == Keys.OemSemicolon && e.Shift) { getScoreAndDisplayStatistics(); }
-            }
+                else if (e.KeyCode == Keys.Oemtilde && e.Shift) { trackTotal(); } 
+                else if (e.KeyCode == Keys.D1 && e.Shift) { trackTotal(); }
+                else if(e.KeyCode == Keys.D2 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D3 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D4 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D5 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D6 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D7 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D8 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D9 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.D0 && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemOpenBrackets && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemCloseBrackets && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemQuestion && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.Oemplus && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemPipe && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemMinus && e.Shift) { trackTotal(); }
+                else if (e.KeyCode == Keys.OemSemicolon && e.Shift) { trackTotal(); }
+            }     
         }
 
-        private void playAgain()   // add point to correct, get next key
+        private void cbFocus_CheckedChanged(object sender, EventArgs e)  // activates focus mode
         {
+            if (cbFocus.Checked)  // if focus cb checked, initialize focus object
+            {
+                sessionFocus = new Focus();
+            }
+            else
+            {
+                sessionFocus.FocusModeEnabled = false;  // if user takes focus mode off, disable
+            }         
+        }
+
+        private void playAgain()   // add point to correct / +5 to points, get next key
+        {
+            if (cbFocus.Checked)  // if in focus mode, collect result data
+            {
+                sessionFocus.recordKeyPressResults(userKeyListObject.CurrentRandomKey, 1);
+            }
+           
             sessionStatistics.Correct++;
+            sessionStatistics.Total++;
+            sessionStatistics.TotalPoints += 5;
+
+
+            pointFade = new FadeTimer(0, 255, 0);            // create fade object
+            pointFade.PositiveOrNegativePoints = true;       // assign positive bool
+            FadeTimer.Start();                               //start timer which will display points then fade
+           
+            getScoreAndDisplayStatistics();
             getRandomKeyAndDisplay();
         }
 
-        private void trackTotal()  // add point to total when user answer incorrect, refresh statistics display
+        private void trackTotal()  // add point to total / -3 to points when user answer incorrect, refresh statistics display
         {
+            if (cbFocus.Checked)
+            {
+                sessionFocus.recordKeyPressResults(userKeyListObject.CurrentRandomKey, 0);
+            }
+
             sessionStatistics.Total++;
+
+            sessionStatistics.TotalPoints -= 3;
+         
+                pointFade = new FadeTimer(255, 0, 0);
+                pointFade.PositiveOrNegativePoints = false;
+                FadeTimer.Start();
+         
             getScoreAndDisplayStatistics();
         }   
 
@@ -483,38 +525,42 @@ namespace Dvorak
             
                 decimal correct = sessionStatistics.Correct;
                 decimal total = sessionStatistics.Total;
-                decimal score = sessionStatistics.Score;
+                decimal accuracy = sessionStatistics.Accuracy;
+                int totalPoints = sessionStatistics.TotalPoints;
 
-                txtCorrect.Text = correct.ToString();
-                txtTotal.Text = total.ToString();
+                lblTotalDisplay.Text = totalPoints.ToString();
 
-                if (total != 0)   // only calculate score after minimum 1 key is pressed
+            if (total != 0)   // only calculate score after minimum 1 key is pressed
                 {
-                    score = sessionStatistics.calculateScore(correct, total);
-                    txtScore.Text = score.ToString("P");
-                }
+                    accuracy = sessionStatistics.calculateAccuracy(correct, total);
+                    lblAccuracyDisplay.Text = accuracy.ToString("P");
+            }
                     
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)  // reset game to initialized state
         {
-            textboxsClear();
+            statisticDisplaysClear();
             timer1.Stop();
             keysClear();
             disableKeyBoard = true;
+            lblDvorak.Show();
+            cbFocus.Checked = false;
         }
 
-        private void textboxsClear()
+        private void statisticDisplaysClear()
         {
-            txtCorrect.Text = "";
-            txtTotal.Text = "";
-            txtScore.Text = "";
-            txtTimer1.Text = "";
+            lblPointsDisplay.Text = "";
+            lblAccuracyDisplay.Text = "";
+            lblTotalDisplay.Text = "";
+            lblTimerDisplay.Text = "";
         }
 
         private void keysClear()    // clear all checkButtons
         {
-            lblMain.Text = "Dvorak";
+     
+            lblMain.Hide();
+            lblDvorak.Show();
             cbEsc.Checked = false;
             cbF1.Checked = false;
             cbF2.Checked = false;
@@ -660,17 +706,292 @@ namespace Dvorak
         private void timer1_Tick(object sender, EventArgs e)
         {
             sessionTimer.TimerCount--;
-            txtTimer1.Text = (sessionTimer.TimerCount / 10).ToString();
+            lblTimerDisplay.Text = (sessionTimer.TimerCount / 10).ToString();
 
-            if (sessionTimer.TimerCount == 0)
+            if (sessionTimer.TimerCount == 0)  // when round is over
             {
                 timer1.Stop();
                 lblMain.Text = "Time";
                 disableKeyBoard = true;
 
+                if (cbFocus.Checked)             // focus-mode, after first round of data collected, create next rounds list and enable focus mode 
+                {
+                   sessionFocus.createFocusList();
+                   sessionFocus.FocusModeEnabled = true;
+                }
             }
         }
 
-     
+        private void FadeTimer_Tick(object sender, EventArgs e)  // allows points added or subtracted to fade away
+        {
+            pointFade.FadeTimerCount--;
+            int endColor = 105;
+            int fadeRate = 5;
+
+            if (pointFade.PositiveOrNegativePoints)
+            {
+                // if positive points apply green color + fade
+                lblPointsDisplay.ForeColor = Color.FromArgb(pointFade.R, pointFade.G, pointFade.B);
+                lblPointsDisplay.Text = "+5";
+
+                if (pointFade.R < endColor) pointFade.R += fadeRate;
+                if (pointFade.G > endColor) pointFade.G -= fadeRate;
+                if (pointFade.B < endColor) pointFade.B += fadeRate;
+            }
+            else
+            {
+                // if negative points apply red color + fade
+                lblPointsDisplay.ForeColor = Color.FromArgb(pointFade.R, pointFade.G, pointFade.B); ;
+                lblPointsDisplay.Text = "-3";
+
+                if (pointFade.R > endColor) pointFade.R -= fadeRate;
+                if (pointFade.G < endColor) pointFade.G += fadeRate;
+                if (pointFade.B < endColor) pointFade.B += fadeRate;
+            }
+
+            if (pointFade.FadeTimerCount == 0)
+            {
+                FadeTimer.Stop();
+            }
+        }
+
+        private void cbFingerings_CheckedChanged(object sender, EventArgs e)  // toggle viewing correct key fingerings
+        {
+            Fingerings one = new Fingerings(155, 255, 131, 62);         // thumb
+            Fingerings two = new Fingerings(155, 132, 138, 224);         // pointer
+            Fingerings three = new Fingerings(155, 149, 73, 203);       // middle
+            Fingerings four = new Fingerings(155, 160, 192, 76);        // ring
+            Fingerings five = new Fingerings(155, 0, 153, 217);        // pinky
+
+            if (cbFingerings.Checked)
+            {
+                cbEsc.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbF1.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF2.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF3.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF4.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbF5.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbF6.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbF7.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbF8.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbF9.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF10.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbF11.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbF12.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbTilda.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cb1.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cb2.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cb3.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cb4.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cb5.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cb6.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cb7.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cb8.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cb9.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cb0.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbLSqr.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbRSqr.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbBack.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLTab.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbQte.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbComma.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbPrd.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbP.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbY.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbF.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbG.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbC.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbR.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbL.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbBSlsh.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbEql.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbFSlsh.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbCaps.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbA.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbO.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbE.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbU.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbI.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbD.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbH.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbT.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbN.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbS.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbDash.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbEntr.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLShft.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbColon.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbQ.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbJ.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbK.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbX.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbB.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbM.BackColor = Color.FromArgb(two.O, two.R, two.G, two.B);
+                cbW.BackColor = Color.FromArgb(three.O, three.R, three.G, three.B);
+                cbV.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbZ.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbRShft.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLCtrl.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbStrt.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+                cbLAlt.BackColor = Color.FromArgb(one.O, one.R, one.G, one.B);
+                cbSpace.BackColor = Color.FromArgb(one.O, one.R, one.G, one.B);
+                cbRAlt.BackColor = Color.FromArgb(one.O, one.R, one.G, one.B);
+                cbMenu.BackColor = Color.FromArgb(four.O, four.R, four.G, four.B);
+                cbRCtrl.BackColor = Color.FromArgb(five.O, five.R, five.G, five.B);
+
+            }
+            else
+            {
+                cbEsc.BackColor = default(Color);
+                cbEsc.UseVisualStyleBackColor = true;
+                cbF1.BackColor = default(Color);
+                cbF1.UseVisualStyleBackColor = true;
+                cbF2.BackColor = default(Color);
+                cbF2.UseVisualStyleBackColor = true;
+                cbF3.BackColor = default(Color);
+                cbF3.UseVisualStyleBackColor = true;
+                cbF4.BackColor = default(Color);
+                cbF4.UseVisualStyleBackColor = true;
+                cbF5.BackColor = default(Color);
+                cbF5.UseVisualStyleBackColor = true;
+                cbF6.BackColor = default(Color);
+                cbF6.UseVisualStyleBackColor = true;
+                cbF7.BackColor = default(Color);
+                cbF7.UseVisualStyleBackColor = true;
+                cbF8.BackColor = default(Color);
+                cbF8.UseVisualStyleBackColor = true;
+                cbF9.BackColor = default(Color);
+                cbF9.UseVisualStyleBackColor = true;
+                cbF10.BackColor = default(Color);
+                cbF10.UseVisualStyleBackColor = true;
+                cbF11.BackColor = default(Color);
+                cbF11.UseVisualStyleBackColor = true;
+                cbF12.BackColor = default(Color);
+                cbF12.UseVisualStyleBackColor = true;
+                cbTilda.BackColor = default(Color);
+                cbTilda.UseVisualStyleBackColor = true;
+                cb1.BackColor = default(Color);
+                cb1.UseVisualStyleBackColor = true;
+                cb2.BackColor = default(Color);
+                cb2.UseVisualStyleBackColor = true;
+                cb3.BackColor = default(Color);
+                cb3.UseVisualStyleBackColor = true;
+                cb4.BackColor = default(Color);
+                cb4.UseVisualStyleBackColor = true;
+                cb5.BackColor = default(Color);
+                cb5.UseVisualStyleBackColor = true;
+                cb6.BackColor = default(Color);
+                cb6.UseVisualStyleBackColor = true;
+                cb7.BackColor = default(Color);
+                cb7.UseVisualStyleBackColor = true;
+                cb8.BackColor = default(Color);
+                cb8.UseVisualStyleBackColor = true;
+                cb9.BackColor = default(Color);
+                cb9.UseVisualStyleBackColor = true;
+                cb0.BackColor = default(Color);
+                cb0.UseVisualStyleBackColor = true;
+                cbLSqr.BackColor = default(Color);
+                cbLSqr.UseVisualStyleBackColor = true;
+                cbRSqr.BackColor = default(Color);
+                cbRSqr.UseVisualStyleBackColor = true;
+                cbBack.BackColor = default(Color);
+                cbBack.UseVisualStyleBackColor = true;
+                cbLTab.BackColor = default(Color);
+                cbLTab.UseVisualStyleBackColor = true;
+                cbQte.BackColor = default(Color);
+                cbQte.UseVisualStyleBackColor = true;
+                cbComma.BackColor = default(Color);
+                cbComma.UseVisualStyleBackColor = true;
+                cbPrd.BackColor = default(Color);
+                cbPrd.UseVisualStyleBackColor = true;
+                cbP.BackColor = default(Color);
+                cbP.UseVisualStyleBackColor = true;
+                cbY.BackColor = default(Color);
+                cbY.UseVisualStyleBackColor = true;
+                cbF.BackColor = default(Color);
+                cbF.UseVisualStyleBackColor = true;
+                cbG.BackColor = default(Color);
+                cbG.UseVisualStyleBackColor = true;
+                cbC.BackColor = default(Color);
+                cbC.UseVisualStyleBackColor = true;
+                cbR.BackColor = default(Color);
+                cbR.UseVisualStyleBackColor = true;
+                cbL.BackColor = default(Color);
+                cbL.UseVisualStyleBackColor = true;
+                cbBSlsh.BackColor = default(Color);
+                cbBSlsh.UseVisualStyleBackColor = true;
+                cbEql.BackColor = default(Color);
+                cbEql.UseVisualStyleBackColor = true;
+                cbFSlsh.BackColor = default(Color);
+                cbFSlsh.UseVisualStyleBackColor = true;
+                cbCaps.BackColor = default(Color);
+                cbCaps.UseVisualStyleBackColor = true;
+                cbA.BackColor = default(Color);
+                cbA.UseVisualStyleBackColor = true;
+                cbO.BackColor = default(Color);
+                cbO.UseVisualStyleBackColor = true;
+                cbE.BackColor = default(Color);
+                cbE.UseVisualStyleBackColor = true;
+                cbU.BackColor = default(Color);
+                cbU.UseVisualStyleBackColor = true;
+                cbI.BackColor = default(Color);
+                cbI.UseVisualStyleBackColor = true;
+                cbD.BackColor = default(Color);
+                cbD.UseVisualStyleBackColor = true;
+                cbH.BackColor = default(Color);
+                cbH.UseVisualStyleBackColor = true;
+                cbT.BackColor = default(Color);
+                cbT.UseVisualStyleBackColor = true;
+                cbN.BackColor = default(Color);
+                cbN.UseVisualStyleBackColor = true;
+                cbS.BackColor = default(Color);
+                cbS.UseVisualStyleBackColor = true;
+                cbDash.BackColor = default(Color);
+                cbDash.UseVisualStyleBackColor = true;
+                cbEntr.BackColor = default(Color);
+                cbEntr.UseVisualStyleBackColor = true;
+                cbLShft.BackColor = default(Color);
+                cbLShft.UseVisualStyleBackColor = true;
+                cbColon.BackColor = default(Color);
+                cbColon.UseVisualStyleBackColor = true;
+                cbQ.BackColor = default(Color);
+                cbQ.UseVisualStyleBackColor = true;
+                cbJ.BackColor = default(Color);
+                cbJ.UseVisualStyleBackColor = true;
+                cbK.BackColor = default(Color);
+                cbK.UseVisualStyleBackColor = true;
+                cbX.BackColor = default(Color);
+                cbX.UseVisualStyleBackColor = true;
+                cbB.BackColor = default(Color);
+                cbB.UseVisualStyleBackColor = true;
+                cbM.BackColor = default(Color);
+                cbM.UseVisualStyleBackColor = true;
+                cbW.BackColor = default(Color);
+                cbW.UseVisualStyleBackColor = true;
+                cbV.BackColor = default(Color);
+                cbV.UseVisualStyleBackColor = true;
+                cbZ.BackColor = default(Color);
+                cbZ.UseVisualStyleBackColor = true;
+                cbRShft.BackColor = default(Color);
+                cbRShft.UseVisualStyleBackColor = true;
+                cbLCtrl.BackColor = default(Color);
+                cbLCtrl.UseVisualStyleBackColor = true;
+                cbStrt.BackColor = default(Color);
+                cbStrt.UseVisualStyleBackColor = true;
+                cbLAlt.BackColor = default(Color);
+                cbLAlt.UseVisualStyleBackColor = true;
+                cbSpace.BackColor = default(Color);
+                cbSpace.UseVisualStyleBackColor = true;
+                cbRAlt.BackColor = default(Color);
+                cbRAlt.UseVisualStyleBackColor = true;
+                cbMenu.BackColor = default(Color);
+                cbMenu.UseVisualStyleBackColor = true;
+                cbRCtrl.BackColor = default(Color);
+                cbRCtrl.UseVisualStyleBackColor = true;
+              
+            }
+        }
+
+       
     }
 }
