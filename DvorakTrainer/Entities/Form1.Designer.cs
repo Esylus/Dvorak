@@ -1333,7 +1333,7 @@ namespace Dvorak
             // btnPractice
             // 
             this.btnPractice.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPractice.Location = new System.Drawing.Point(712, 12);
+            this.btnPractice.Location = new System.Drawing.Point(702, 12);
             this.btnPractice.Name = "btnPractice";
             this.btnPractice.Size = new System.Drawing.Size(75, 33);
             this.btnPractice.TabIndex = 0;
@@ -1345,7 +1345,7 @@ namespace Dvorak
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(807, 12);
+            this.btnReset.Location = new System.Drawing.Point(794, 51);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 33);
             this.btnReset.TabIndex = 1;
@@ -1386,16 +1386,16 @@ namespace Dvorak
             // 
             this.lblDvorak.AutoSize = true;
             this.lblDvorak.Font = new System.Drawing.Font("Verdana", 110.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDvorak.Location = new System.Drawing.Point(11, 7);
+            this.lblDvorak.Location = new System.Drawing.Point(175, 9);
             this.lblDvorak.Name = "lblDvorak";
-            this.lblDvorak.Size = new System.Drawing.Size(598, 178);
+            this.lblDvorak.Size = new System.Drawing.Size(477, 178);
             this.lblDvorak.TabIndex = 14;
-            this.lblDvorak.Text = "Dvorak";
+            this.lblDvorak.Text = "Type!";
             // 
             // cbFingerings
             // 
             this.cbFingerings.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cbFingerings.Location = new System.Drawing.Point(712, 51);
+            this.cbFingerings.Location = new System.Drawing.Point(702, 51);
             this.cbFingerings.Name = "cbFingerings";
             this.cbFingerings.Size = new System.Drawing.Size(75, 33);
             this.cbFingerings.TabIndex = 15;
@@ -1407,11 +1407,11 @@ namespace Dvorak
             // cbFocus
             // 
             this.cbFocus.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cbFocus.Location = new System.Drawing.Point(807, 51);
+            this.cbFocus.Location = new System.Drawing.Point(794, 14);
             this.cbFocus.Name = "cbFocus";
             this.cbFocus.Size = new System.Drawing.Size(75, 33);
             this.cbFocus.TabIndex = 16;
-            this.cbFocus.Text = "Focus";
+            this.cbFocus.Text = "Learn";
             this.cbFocus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbFocus.UseVisualStyleBackColor = true;
             this.cbFocus.CheckedChanged += new System.EventHandler(this.cbFocus_CheckedChanged);
