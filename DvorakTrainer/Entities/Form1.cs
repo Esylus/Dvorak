@@ -61,44 +61,38 @@ namespace Dvorak
             };
 
             Dictionary<int, CheckBox> keyIntDictChecked = new Dictionary<int, CheckBox>();
-                                 
-            int count = 0;
 
-                foreach (CheckBox cb in allCheckBoxNames)
-                {   
-                    keyIntDictChecked.Add(count, cb);
-                    count++;
+                {
+                    int count = 0;
+                    foreach (CheckBox cb in allCheckBoxNames)
+                    {
+                        keyIntDictChecked.Add(count, cb);
+                        count++;
+                    }
                 }
-                
-            Dictionary<int, CheckBox> keyIntDictIndeterminate = new Dictionary<int, CheckBox>()
-            {
-                {73, cbTilda},
-                {74, cb1},
-                {75, cb2},
-                {76, cb3},
-                {77, cb4}, 
-                {78, cb5},
-                {79, cb6},
-                {80, cb7},
-                {81, cb8},
-                {82, cb9},
-                {83, cb0},
-                {84, cbLSqr},
-                {85, cbRSqr},
-                {86, cbQte},
-                {87, cbComma},
-                {88, cbPrd},
-                {89, cbFSlsh},
-                {90, cbEql},
-                {91, cbBSlsh},
-                {92, cbDash},
-                {93, cbColon}
-            }; // PUT ME INTO A CLASS
 
-            foreach (var keyPair in keyIntDictChecked)
-            {// add keyIntDictChecked dictionary 
-                keyIntDictIndeterminate.Add(keyPair.Key, keyPair.Value);
-            }
+            List<CheckBox> allCheckBoxNamesIndeterminate = new List<CheckBox>()
+            {            
+                cbTilda,cb1,cb2,cb3,cb4,cb5,cb6,cb7,cb8,cb9,cb0,cbLSqr,cbRSqr,
+                cbQte,cbComma,cbPrd,cbFSlsh,cbEql,cbBSlsh,cbDash,cbColon
+             };
+
+            Dictionary<int, CheckBox> keyIntDictIndeterminate = new Dictionary<int, CheckBox>();
+
+
+                {
+                    int count1 = 73;
+                    foreach (CheckBox cb in allCheckBoxNamesIndeterminate)
+                    {
+                        keyIntDictIndeterminate.Add(count1, cb);
+                        count1++;
+                    }
+                }
+
+                foreach (var keyPair in keyIntDictChecked)
+                {// add first half of keys  
+                    keyIntDictIndeterminate.Add(keyPair.Key, keyPair.Value);
+                }
 
             while (!mySelectedKeys.Any()) // ensures that the list will never be empty
             {
