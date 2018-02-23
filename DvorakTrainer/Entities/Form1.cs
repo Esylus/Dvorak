@@ -212,8 +212,7 @@ namespace Dvorak
         {
             if (sessionFocus != null) // if focus button (cb) has been pushed and object initialized..
             {
-                if (sessionFocus.FocusModeEnabled
-                ) // if first round of focus learning has gone by there will be a focusList created
+                if (sessionFocus.FocusModeEnabled) // if first round of focus learning has gone by there will be a focusList created
                 {
                     userKeyListObject.extractUserRandomKeyToMember(sessionFocus
                         .FocusList); // Use this list after 1st round data collection
@@ -337,8 +336,7 @@ namespace Dvorak
         }
 
         private void
-            Form1_KeyUp(object sender,
-                KeyEventArgs e) //TRACK USER INTERACTION - if user input matches selected key, tally score and get new key 
+            Form1_KeyUp(object sender, KeyEventArgs e) //TRACK USER INTERACTION - if user input matches selected key, tally score and get new key 
         {
             if (disableKeyBoard)
             {
