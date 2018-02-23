@@ -51,84 +51,25 @@ namespace Dvorak
         {
             List<int> mySelectedKeys = new List<int>();
 
-            Dictionary<int, CheckBox> keyIntDictChecked = new Dictionary<int, CheckBox>()
+            List<CheckBox> allCheckBoxNames = new List<CheckBox>()
             {
-                {0, cbEsc},
-                {1, cbF1},
-                {2, cbF2},
-                {3, cbF3},
-                {4, cbF4},
-                {5, cbF5},
-                {6, cbF6},
-                {7, cbF7},
-                {8, cbF8},
-                {9, cbF9},
-                {10, cbF10},
-                {11, cbF11},
-                {12, cbF12},
-                {13, cbTilda},
-                {14, cb1},
-                {15, cb2},
-                {16, cb3},
-                {17, cb4},
-                {18, cb5},
-                {19, cb6},
-                {20, cb7},
-                {21, cb8},
-                {22, cb9},
-                {23, cb0},
-                {24, cbLSqr},
-                {25, cbRSqr},
-                {26, cbBack},
-                {27, cbLTab},
-                {28, cbQte},
-                {29, cbComma},
-                {30, cbPrd},
-                {31, cbP},
-                {32, cbY},
-                {33, cbF},
-                {34, cbG},
-                {35, cbC},
-                {36, cbR},
-                {37, cbL},
-                {38, cbFSlsh},
-                {39, cbEql},
-                {40, cbBSlsh},
-                {41, cbCaps},
-                {42, cbA},
-                {43, cbO},
-                {44, cbE},
-                {45, cbU},
-                {46, cbI},
-                {47, cbD},
-                {48, cbH},
-                {49, cbT},
-                {50, cbN},
-                {51, cbS},
-                {52, cbDash},
-                {53, cbEntr},
-                {54, cbLShft},
-                {55, cbColon},
-                {56, cbQ},
-                {57, cbJ},
-                {58, cbK},
-                {59, cbX},
-                {60, cbB},
-                {61, cbM},
-                {62, cbW},
-                {63, cbV},
-                {64, cbZ},
-                {65, cbRShft},
-                {66, cbLCtrl},
-                {67, cbStrt},
-                {68, cbLAlt},
-                {69, cbSpace},
-                {70, cbLAlt},
-                {71, cbMenu},
-                {72, cbRCtrl},
-                
-            }; // PUT ME INTO A CLASS
+                cbEsc,cbF1,cbF2,cbF3,cbF4,cbF5,cbF6,cbF7,cbF8,cbF9,cbF10,cbF11,cbF12,cbTilda,cb1,
+                cb2,cb3,cb4,cb5,cb6,cb7,cb8,cb9,cb0,cbLSqr,cbRSqr,cbBack,cbLTab,cbQte,cbComma,cbPrd,cbP,
+                cbY,cbF,cbG,cbC,cbR,cbL,cbFSlsh,cbEql,cbBSlsh,cbCaps,cbA,cbO,cbE,cbU,cbI,cbD,cbH,cbT,cbN,
+                cbS,cbDash,cbEntr,cbLShft,cbColon,cbQ,cbJ,cbK,cbX,cbB,cbM,cbW,cbV,cbZ,cbRShft,cbLCtrl,cbStrt,
+                cbLAlt,cbSpace,cbLAlt,cbMenu,cbRCtrl
+            };
 
+            Dictionary<int, CheckBox> keyIntDictChecked = new Dictionary<int, CheckBox>();
+                                 
+            int count = 0;
+
+                foreach (CheckBox cb in allCheckBoxNames)
+                {   
+                    keyIntDictChecked.Add(count, cb);
+                    count++;
+                }
+                
             Dictionary<int, CheckBox> keyIntDictIndeterminate = new Dictionary<int, CheckBox>()
             {
                 {73, cbTilda},
@@ -193,7 +134,8 @@ namespace Dvorak
             if (mySelectedKeys.Count < 2)
             {//since an algorithm prevents keys from repeating, thus if only a single key is selected the below default will select the home row
 
-                MessageBox.Show("Must select minimum two keys as letters are unable to repeat themselves. Now practice your home row or hit Reset to try again!");
+                MessageBox.Show("Must select minimum two keys as letters are unable to repeat themselves. " +
+                                "Now practice your home row or hit Reset to try again!");
                 mySelectedKeys.Clear();
                 keysClear();
                 int[] range = {42, 43, 44, 45, 46, 47, 48, 49, 50, 51};               
@@ -204,7 +146,6 @@ namespace Dvorak
                     cb.Checked = true;
                 }
             }
-
             return mySelectedKeys;
         }
 
@@ -228,103 +169,23 @@ namespace Dvorak
                 userKeyListObject.extractUserRandomKeyToMember(userKeyListObject.UserSelectedKeyList); // Default list
             }
 
-            Dictionary<int, string> keyStringDict = new Dictionary<int, string>()
+            List<String> allCheckBoxStrings = new List<String>()    // change display characters here
             {
-                {0, "Esc"},
-                {1, "F1"},
-                {2, "F2"},
-                {3, "F3"},
-                {4, "F4"},
-                {5, "F5"},
-                {6, "F6"},
-                {7, "F7"},
-                {8, "F8"},
-                {9, "F9"},
-                {10, "F10"},
-                {11, "F11"},
-                {12, "F12"},
-                {13, "`"},
-                {14, "1"},
-                {15, "2"},
-                {16, "3"},
-                {17, "4"},
-                {18, "5"},
-                {19, "6"},
-                {20, "7"},
-                {21, "8"},
-                {22, "9"},
-                {23, "0"},
-                {24, "["},
-                {25, "]"},
-                {26, "Back"},
-                {27, "Tab"},
-                {28, "'"},
-                {29, ","},
-                {30, "."},
-                {31, "p"},
-                {32, "y"},
-                {33, "f"},
-                {34, "g"},
-                {35, "c"},
-                {36, "r"},
-                {37, "l"},
-                {38, "/"},
-                {39, "="},
-                {40, "\\"},
-                {41, "Caps"},
-                {42, "a"},
-                {43, "o"},
-                {44, "e"},
-                {45, "u"},
-                {46, "i"},
-                {47, "d"},
-                {48, "h"},
-                {49, "t"},
-                {50, "n"},
-                {51, "s"},
-                {52, "-"},
-                {53, "Enter"},
-                {54, "Shift"},
-                {55, ";"},
-                {56, "q"},
-                {57, "j"},
-                {58, "k"},
-                {59, "x"},
-                {60, "b"},
-                {61, "m"},
-                {62, "w"},
-                {63, "v"},
-                {64, "z"},
-                {65, "Shift"},
-                {66, "Ctrl"},
-                {67, "Start"},
-                {68, "Alt"},
-                {69, "Space"},
-                {70, "Alt"},
-                {71, "Menu"},
-                {72, "Ctrl"},
-                {73, "~"},
-                {74, "!"},
-                {75, "@"},
-                {76, "#"},
-                {77, "$"},
-                {78, "%"},
-                {79, "^"},
-                {80, "&&"},
-                {81, "*"},
-                {82, "("},
-                {83, ")"},
-                {84, "{"},
-                {85, "}"},
-                {86, "\""},
-                {87, "<"},
-                {88, ">"},
-                {89, "?"},
-                {90, "+"},
-                {91, "| pipe"},
-                {92, "_"},
-                {93, ":"},
+                "Esc","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","`","1","2","3","4",
+                 "5","6","7","8","9","0","[","]","Back","Tab","'",",",".","p","y","f","g","c","r","l","/",
+                 "=","\\","Caps","a","o","e","u","i","d","h","t","n","s","-","Enter","Shift",";","q","j","k",
+                 "x","b","m","w","v","z","Shift","Ctrl","Start","Alt","Space","Alt","Menu","Ctrl","~","!","@",
+                 "#","$","%","^","&&","*","(",")","{","}","\"","<",">","?","+","| pipe","_",":",              
             };
+
+            Dictionary<int, string> keyStringDict = new Dictionary<int, string>();
+           
+            int count = 0;
+            foreach (String str in allCheckBoxStrings)
+            {
+                keyStringDict.Add(count, str);
+                count++;
+            }
 
             foreach (KeyValuePair<int, string> keyString in keyStringDict)
             {
@@ -343,111 +204,45 @@ namespace Dvorak
                 return;
             }
 
-            // make dictionary of keycodes  
+          
 
-            Dictionary<int, Keys> keyCodesInts = new Dictionary<int, Keys>()
+            List<Keys> allCheckBoxKeys = new List<Keys>()
             {
-                {0, Keys.Escape},
-                {1, Keys.F1},
-                {2, Keys.F2},
-                {3, Keys.F3},
-                {4, Keys.F4},
-                {5, Keys.F5},
-                {6, Keys.F6},
-                {7, Keys.F7},
-                {8, Keys.F8},
-                {9, Keys.F9},
-                {10, Keys.F10},
-                {11, Keys.F11},
-                {12, Keys.F12},
-                {13, Keys.Oemtilde},
-                {14, Keys.D1},
-                {15, Keys.D2},
-                {16, Keys.D3},
-                {17, Keys.D4},
-                {18, Keys.D5},
-                {19, Keys.D6},
-                {20, Keys.D7},
-                {21, Keys.D8},
-                {22, Keys.D9},
-                {23, Keys.D0},
-                {24, Keys.OemOpenBrackets},
-                {25, Keys.OemCloseBrackets},
-                {26, Keys.Back},
-                {27, Keys.Tab},
-                {28, Keys.OemQuotes},
-                {29, Keys.Oemcomma},
-                {30, Keys.OemPeriod},
-                {31, Keys.P},
-                {32, Keys.Y},
-                {33, Keys.F},
-                {34, Keys.G},
-                {35, Keys.C},
-                {36, Keys.R},
-                {37, Keys.L},
-                {38, Keys.OemQuestion},
-                {39, Keys.Oemplus},
-                {40, Keys.OemPipe},
-                {41, Keys.CapsLock},
-                {42, Keys.A},
-                {43, Keys.O},
-                {44, Keys.E},
-                {45, Keys.U},
-                {46, Keys.I},
-                {47, Keys.D},
-                {48, Keys.H},
-                {49, Keys.T},
-                {50, Keys.N},
-                {51, Keys.S},
-                {52, Keys.OemMinus},
-                {53, Keys.Enter},
-                {54, Keys.ShiftKey},
-                {55, Keys.OemSemicolon},
-                {56, Keys.Q},
-                {57, Keys.J},
-                {58, Keys.K},
-                {59, Keys.X},
-                {60, Keys.B},
-                {61, Keys.M},
-                {62, Keys.W},
-                {63, Keys.V},
-                {64, Keys.Z},
-                {65, Keys.ShiftKey},
-                {66, Keys.ControlKey},
-                {67, Keys.Menu},
-                {68, Keys.Alt},
-                {69, Keys.Space},
-                {70, Keys.Alt},
-                {71, Keys.Menu},
-                {72, Keys.ControlKey}
-
+                Keys.Escape,Keys.F1,Keys.F2,Keys.F3,Keys.F4,Keys.F5,Keys.F6,Keys.F7,Keys.F8,Keys.F9,Keys.F10,Keys.F11,Keys.F12,Keys.Oemtilde,
+                 Keys.D1,Keys.D2,Keys.D3,Keys.D4,Keys.D5,Keys.D6,Keys.D7,Keys.D8,Keys.D9,Keys.D0,Keys.OemOpenBrackets,Keys.OemCloseBrackets,
+                 Keys.Back,Keys.Tab,Keys.OemQuotes,Keys.Oemcomma,Keys.OemPeriod,Keys.P,Keys.Y,Keys.F,Keys.G,Keys.C,Keys.R,Keys.L,Keys.OemQuestion,
+                 Keys.Oemplus,Keys.OemPipe,Keys.CapsLock,Keys.A,Keys.O,Keys.E,Keys.U,Keys.I,Keys.D,Keys.H,Keys.T,Keys.N,Keys.S,Keys.OemMinus,
+                 Keys.Enter,Keys.ShiftKey,Keys.OemSemicolon,Keys.Q,Keys.J,Keys.K,Keys.X,Keys.B,Keys.M,Keys.W,Keys.V,Keys.Z,Keys.ShiftKey,Keys.ControlKey,
+                 Keys.Menu,Keys.Alt,Keys.Space,Keys.Alt,Keys.Menu,Keys.ControlKey
             };
 
-            Dictionary<int, Keys> keyShiftCodesInts = new Dictionary<int, Keys>()
-            {
-                {73, Keys.Oemtilde},
-                {74, Keys.D1},
-                {75, Keys.D2},
-                {76, Keys.D3},
-                {77, Keys.D4},
-                {78, Keys.D5},
-                {79, Keys.D6},
-                {80, Keys.D7},
-                {81, Keys.D8},
-                {82, Keys.D9},
-                {83, Keys.D0},
-                {84, Keys.OemOpenBrackets},
-                {85, Keys.OemCloseBrackets},
-                {86, Keys.OemQuotes},
-                {87, Keys.Oemcomma},
-                {88, Keys.OemPeriod},
-                {89, Keys.OemQuestion},
-                {90, Keys.Oemplus},
-                {91, Keys.OemPipe},
-                {92, Keys.OemMinus},
-                {93, Keys.OemSemicolon}
+            Dictionary<int, Keys> keyCodesInts = new Dictionary<int, Keys>();
 
+            {
+                int count = 0;
+                foreach (Keys key in allCheckBoxKeys)
+                {
+                    keyCodesInts.Add(count, key);
+                    count++;
+                }
+            }
+
+            List<Keys> allCheckBoxShiftKeys = new List<Keys>()   
+            {
+                Keys.Oemtilde,Keys.D1,Keys.D2,Keys.D3,Keys.D4,Keys.D5,Keys.D6,Keys.D7,Keys.D8,Keys.D9,Keys.D0,Keys.OemOpenBrackets,Keys.OemCloseBrackets,
+                Keys.OemQuotes,Keys.Oemcomma,Keys.OemPeriod,Keys.OemQuestion,Keys.Oemplus,Keys.OemPipe,Keys.OemMinus,Keys.OemSemicolon
             };
+
+            Dictionary<int, Keys> keyShiftCodesInts = new Dictionary<int, Keys>();
+
+            {
+                int shiftCount = 73;
+                foreach (Keys key in allCheckBoxShiftKeys)
+                {
+                    keyShiftCodesInts.Add(shiftCount, key);
+                    shiftCount++;
+                }
+            }
 
             if (!e.Shift) // for key presses without shift 
             {
