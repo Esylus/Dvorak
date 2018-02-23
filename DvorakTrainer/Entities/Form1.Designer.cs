@@ -88,9 +88,9 @@ namespace Dvorak
             this.cbG = new System.Windows.Forms.CheckBox();
             this.cbC = new System.Windows.Forms.CheckBox();
             this.cbR = new System.Windows.Forms.CheckBox();
-            this.cbBSlsh = new System.Windows.Forms.CheckBox();
-            this.cbEql = new System.Windows.Forms.CheckBox();
             this.cbFSlsh = new System.Windows.Forms.CheckBox();
+            this.cbEql = new System.Windows.Forms.CheckBox();
+            this.cbBSlsh = new System.Windows.Forms.CheckBox();
             this.cbL = new System.Windows.Forms.CheckBox();
             this.cbQte = new System.Windows.Forms.CheckBox();
             this.cbPW = new System.Windows.Forms.CheckBox();
@@ -183,9 +183,9 @@ namespace Dvorak
             this.gbKeyBoard.Controls.Add(this.cbG);
             this.gbKeyBoard.Controls.Add(this.cbC);
             this.gbKeyBoard.Controls.Add(this.cbR);
-            this.gbKeyBoard.Controls.Add(this.cbBSlsh);
-            this.gbKeyBoard.Controls.Add(this.cbEql);
             this.gbKeyBoard.Controls.Add(this.cbFSlsh);
+            this.gbKeyBoard.Controls.Add(this.cbEql);
+            this.gbKeyBoard.Controls.Add(this.cbBSlsh);
             this.gbKeyBoard.Controls.Add(this.cbL);
             this.gbKeyBoard.Controls.Add(this.cbQte);
             this.gbKeyBoard.Controls.Add(this.cbPW);
@@ -1013,20 +1013,20 @@ namespace Dvorak
             this.cbR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbR.UseVisualStyleBackColor = false;
             // 
-            // cbBSlsh
+            // cbFSlsh
             // 
-            this.cbBSlsh.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cbBSlsh.BackColor = System.Drawing.Color.Transparent;
-            this.cbBSlsh.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbBSlsh.Location = new System.Drawing.Point(707, 132);
-            this.cbBSlsh.Name = "cbBSlsh";
-            this.cbBSlsh.Size = new System.Drawing.Size(55, 43);
-            this.cbBSlsh.TabIndex = 96;
-            this.cbBSlsh.TabStop = false;
-            this.cbBSlsh.Text = "/ ?";
-            this.cbBSlsh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cbBSlsh.ThreeState = true;
-            this.cbBSlsh.UseVisualStyleBackColor = false;
+            this.cbFSlsh.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cbFSlsh.BackColor = System.Drawing.Color.Transparent;
+            this.cbFSlsh.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFSlsh.Location = new System.Drawing.Point(707, 132);
+            this.cbFSlsh.Name = "cbFSlsh";
+            this.cbFSlsh.Size = new System.Drawing.Size(55, 43);
+            this.cbFSlsh.TabIndex = 96;
+            this.cbFSlsh.TabStop = false;
+            this.cbFSlsh.Text = "/ ?";
+            this.cbFSlsh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbFSlsh.ThreeState = true;
+            this.cbFSlsh.UseVisualStyleBackColor = false;
             // 
             // cbEql
             // 
@@ -1043,20 +1043,20 @@ namespace Dvorak
             this.cbEql.ThreeState = true;
             this.cbEql.UseVisualStyleBackColor = false;
             // 
-            // cbFSlsh
+            // cbBSlsh
             // 
-            this.cbFSlsh.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cbFSlsh.BackColor = System.Drawing.Color.Transparent;
-            this.cbFSlsh.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFSlsh.Location = new System.Drawing.Point(829, 132);
-            this.cbFSlsh.Name = "cbFSlsh";
-            this.cbFSlsh.Size = new System.Drawing.Size(55, 43);
-            this.cbFSlsh.TabIndex = 94;
-            this.cbFSlsh.TabStop = false;
-            this.cbFSlsh.Text = "\\ |";
-            this.cbFSlsh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cbFSlsh.ThreeState = true;
-            this.cbFSlsh.UseVisualStyleBackColor = false;
+            this.cbBSlsh.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cbBSlsh.BackColor = System.Drawing.Color.Transparent;
+            this.cbBSlsh.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbBSlsh.Location = new System.Drawing.Point(829, 132);
+            this.cbBSlsh.Name = "cbBSlsh";
+            this.cbBSlsh.Size = new System.Drawing.Size(55, 43);
+            this.cbBSlsh.TabIndex = 94;
+            this.cbBSlsh.TabStop = false;
+            this.cbBSlsh.Text = "\\ |";
+            this.cbBSlsh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbBSlsh.ThreeState = true;
+            this.cbBSlsh.UseVisualStyleBackColor = false;
             // 
             // cbL
             // 
@@ -1386,11 +1386,11 @@ namespace Dvorak
             // 
             this.lblDvorak.AutoSize = true;
             this.lblDvorak.Font = new System.Drawing.Font("Verdana", 110.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDvorak.Location = new System.Drawing.Point(175, 9);
+            this.lblDvorak.Location = new System.Drawing.Point(10, 12);
             this.lblDvorak.Name = "lblDvorak";
-            this.lblDvorak.Size = new System.Drawing.Size(477, 178);
+            this.lblDvorak.Size = new System.Drawing.Size(656, 178);
             this.lblDvorak.TabIndex = 14;
-            this.lblDvorak.Text = "Type!";
+            this.lblDvorak.Text = "Dvorak!";
             // 
             // cbFingerings
             // 
@@ -1504,9 +1504,9 @@ namespace Dvorak
         private System.Windows.Forms.CheckBox cbG;
         private System.Windows.Forms.CheckBox cbC;
         private System.Windows.Forms.CheckBox cbR;
-        private System.Windows.Forms.CheckBox cbBSlsh;
-        private System.Windows.Forms.CheckBox cbEql;
         private System.Windows.Forms.CheckBox cbFSlsh;
+        private System.Windows.Forms.CheckBox cbEql;
+        private System.Windows.Forms.CheckBox cbBSlsh;
         private System.Windows.Forms.CheckBox cbL;
         private System.Windows.Forms.CheckBox cbQte;
         private System.Windows.Forms.CheckBox cbLAlt;

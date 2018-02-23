@@ -14,7 +14,7 @@ namespace DvorakTrainer.Entities
          A scale is used to determine what percentage grade will dictate occurences in next list. 
          Lists are cumulative - keys a player is consistently weak at will occur more often so a player has more opportunities to strengthen that key strike.
          ** Interesting note - due to algorithm that prevents keys repeating (two "A"s in a row), no matter the list composition, a letter can only appear max 50% of time.
-         ** Note that totalsFocusKeyDistribution, totlsInFocusList are for watching results and thus testing purposes only. 
+          ** Note that totalsFocusKeyDistribution, totlsInFocusList are for watching results and thus testing purposes only. 
          */ 
 
         private List<KeyValuePair<int, int>> userResultsList = new List<KeyValuePair<int, int>>(); // Stores results of users test performance per key (key, rightOrWrong) 
