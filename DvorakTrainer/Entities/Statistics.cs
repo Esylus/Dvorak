@@ -12,13 +12,11 @@
        public int TotalPoints { get; set; }
 
         public Statistics()
-       {// constructor initializes fields
-
+       {
            Correct = 0;
            Total = 0;
            Accuracy = 0;
            TotalPoints = 0;
-
        }
  
        public decimal calculateAccuracy(decimal correct, decimal total)

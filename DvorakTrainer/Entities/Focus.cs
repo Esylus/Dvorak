@@ -7,16 +7,17 @@ using System.Windows.Forms;
 
 namespace DvorakTrainer.Entities
 {
-    public class Focus : KeyRandomizer
-    {   /* Focus class will track accuracy of users performance per keystroke, then break down numbers per unique key for number of attempts and number right.
+      /* Focus class will track accuracy of users performance per keystroke, then break down numbers per unique key for number of attempts and number right.
          From this a performance percentage is calculated.. ex. User got key "B" right 80% of time, key "X" right only 20% of time.
          These percentages are used to calculate the composition of the users next test, if they choose to continue practicing.
          A scale is used to determine what percentage grade will dictate occurences in next list. 
          Lists are cumulative - keys a player is consistently weak at will occur more often so a player has more opportunities to strengthen that key strike.
-         ** Interesting note - due to algorithm that prevents keys repeating (two "A"s in a row), no matter the list composition, a letter can only appear max 50% of time.
-          ** Note that totalsFocusKeyDistribution, totlsInFocusList are for watching results and thus testing purposes only. 
-         */ 
+      ** Interesting note - due to algorithm that prevents keys repeating (two "A"s in a row), no matter the list composition, a letter can only appear max 50% of time.
+      ** Note that totalsFocusKeyDistribution, totlsInFocusList are for watching results and thus testing purposes only. 
+         */
 
+    public class Focus : KeyRandomizer
+    {   
         private List<KeyValuePair<int, int>> userResultsList = new List<KeyValuePair<int, int>>(); // Stores results of users test performance per key (key, rightOrWrong) 
 
         private Dictionary<int, decimal> totalsKeyValuePairList = new Dictionary<int, decimal>();  // Stores processed results as (uniquekey, %correct)
@@ -28,8 +29,7 @@ namespace DvorakTrainer.Entities
         public bool FocusModeEnabled { get; set; }  // will override normal gameplay by using focusedList rather then userSelectedList
 
         public Focus()
-        {// constructor that clears all lists for good measure and turns off focus mode
-
+        {
             userResultsList.Clear();
             totalsKeyValuePairList.Clear();
             totalsFocusKeyDistribution.Clear();
@@ -37,19 +37,17 @@ namespace DvorakTrainer.Entities
             FocusModeEnabled = false;
         }
 
- 
-        public void recordKeyPressResults(int currentKey, int rightOrWrong)  
-        {// to add test records to the list
-
+        public void recordUserResults(int currentKey, int rightOrWrong)  
+        {
             userResultsList.Add(new KeyValuePair<int, int>(currentKey, rightOrWrong));
         }
 
         //-----------------------------------------Processing----------------------
 
         public void createFocusList()
-        {// clear collections, get all unique keys from users results, parse out attempts and correct strikes to create average
+        {// get all unique keys from users results, parse out attempts and correct strikes to create average
 
-            totalsKeyValuePairList.Clear();      // clear dictionaries at beggining of focus processing
+            totalsKeyValuePairList.Clear();      
             totalsFocusKeyDistribution.Clear();
             totalsInFocusList.Clear(); // TESTING PURPOSES
 
