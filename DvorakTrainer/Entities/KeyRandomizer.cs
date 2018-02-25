@@ -4,25 +4,23 @@ using System.Linq;
 
 namespace DvorakTrainer.Entities
 {
+    // this class contains all functionality related to extracting a unique (non-duplicated) random value from a user created list 
+
     public class KeyRandomizer
     {
-        // this class contains all functionality related to extracting a unique (non-duplicated) random value from a user created list 
-        
-
-        private List<int> userSelectedKeyList = new List<int>(); // main list curated by user
-        private int LastRandomKey = -1;                          // to track the last key served to prevent duplicates - preventDuplicats() below)
+        private List<int> userSelectedKeyList = new List<int>(); 
+        private int LastRandomKey = -1;                          // to track the last key served to prevent duplicates
 
         public List<int> UserSelectedKeyList { get { return userSelectedKeyList; } } 
-        public int CurrentRandomKey { get; set; }                                    // this is the key the user will see and try to press the right key       
+        public int CurrentRandomKey { get; set; }                 // this is target key the user tries to press       
 
 
         public KeyRandomizer()
-        {//empty default constructor          
+        {         
         }
 
         public KeyRandomizer(List<int> populateUserSelectedKeyList) 
-        {// constructor that first clears then populates userSelectedKeyList
-
+        {
             userSelectedKeyList.Clear();
             userSelectedKeyList = populateUserSelectedKeyList;            
         }
@@ -31,30 +29,24 @@ namespace DvorakTrainer.Entities
         {//for any list, get a non-duplicate number and extract it's element to be the CurrentRandomKey
 
             int nonDuplicateInt = preventDuplicates(userList);
-
-            int selectedKeyFromUserList = userList.ElementAt(nonDuplicateInt);
-        
+            int selectedKeyFromUserList = userList.ElementAt(nonDuplicateInt);       
             CurrentRandomKey = selectedKeyFromUserList;
-
         }
 
         public int preventDuplicates(List<int> list)
-        {// for any list, get a random int and check it's element, if unique to proceding assign to LastRandomKey and return it's int
-         // if not unique from preceding element, select a new one until unique
+        {// for any list, select a key that is unique from the key that preceded it
 
             int randomIntFromUserList = 0;
             int elementAtRandomIntFromUserList = 0;
 
-            do                                 // ensures there are no duplicate numbers in a row
+            do                                 
             {
-                randomIntFromUserList = getRandomIntFromAnyList(list);  // get random int from list
+                randomIntFromUserList = getRandomIntFromAnyList(list);  
+                elementAtRandomIntFromUserList = list.ElementAt(randomIntFromUserList);  
 
-                elementAtRandomIntFromUserList = list.ElementAt(randomIntFromUserList);  // extract element at the int
+            } while (elementAtRandomIntFromUserList == LastRandomKey);       
 
-
-            } while (elementAtRandomIntFromUserList == LastRandomKey);       // if new element NOT unique from preceding element, select again
-
-            LastRandomKey = elementAtRandomIntFromUserList;               // if element was unique, assign to LastRandomKey for future comparisons
+            LastRandomKey = elementAtRandomIntFromUserList;               
 
             return randomIntFromUserList;
         }

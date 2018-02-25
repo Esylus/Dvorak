@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace DvorakTrainer.Entities
 {
+    // this class is used to create colors for reccomended fingerings view
+
     public class Fingerings
     {
 

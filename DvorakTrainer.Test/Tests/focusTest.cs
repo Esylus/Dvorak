@@ -28,30 +28,30 @@ namespace DvorakTrainer.Test
 
             Focus testFocus = new Focus();
 
-            testFocus.recordKeyPressResults(4, 1);
-            testFocus.recordKeyPressResults(5, 1);
-            testFocus.recordKeyPressResults(6, 1);
-            testFocus.recordKeyPressResults(7, 1);
+            testFocus.recordUserResults(4, 1);
+            testFocus.recordUserResults(5, 1);
+            testFocus.recordUserResults(6, 1);
+            testFocus.recordUserResults(7, 1);
 
-            testFocus.recordKeyPressResults(4, 1);
-            testFocus.recordKeyPressResults(5, 1);
-            testFocus.recordKeyPressResults(6, 1);
-            testFocus.recordKeyPressResults(7, 1);
+            testFocus.recordUserResults(4, 1);
+            testFocus.recordUserResults(5, 1);
+            testFocus.recordUserResults(6, 1);
+            testFocus.recordUserResults(7, 1);
 
-            testFocus.recordKeyPressResults(4, 1);
-            testFocus.recordKeyPressResults(5, 1);
-            testFocus.recordKeyPressResults(6, 1);
-            testFocus.recordKeyPressResults(7, 0);
+            testFocus.recordUserResults(4, 1);
+            testFocus.recordUserResults(5, 1);
+            testFocus.recordUserResults(6, 1);
+            testFocus.recordUserResults(7, 0);
 
-            testFocus.recordKeyPressResults(4, 1);
-            testFocus.recordKeyPressResults(5, 1);
-            testFocus.recordKeyPressResults(6, 0);
-            testFocus.recordKeyPressResults(7, 0);
+            testFocus.recordUserResults(4, 1);
+            testFocus.recordUserResults(5, 1);
+            testFocus.recordUserResults(6, 0);
+            testFocus.recordUserResults(7, 0);
 
-            testFocus.recordKeyPressResults(4, 1);
-            testFocus.recordKeyPressResults(5, 0);
-            testFocus.recordKeyPressResults(6, 0);
-            testFocus.recordKeyPressResults(7, 0);
+            testFocus.recordUserResults(4, 1);
+            testFocus.recordUserResults(5, 0);
+            testFocus.recordUserResults(6, 0);
+            testFocus.recordUserResults(7, 0);
 
             testFocus.createFocusList();
 
@@ -70,21 +70,6 @@ namespace DvorakTrainer.Test
             {
                 Assert.Fail();
             }
-            
-      
-
-
-
-
-
-
-
-
         }
-
-
-
-
-
     }
 }
