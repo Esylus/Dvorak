@@ -121,6 +121,8 @@ namespace Dvorak
             this.lblDvorak = new System.Windows.Forms.Label();
             this.cbFingerings = new System.Windows.Forms.CheckBox();
             this.cbFocus = new System.Windows.Forms.CheckBox();
+            this.cbPreset = new System.Windows.Forms.ComboBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.gbKeyBoard.SuspendLayout();
             this.pnlStatistics.SuspendLayout();
             this.SuspendLayout();
@@ -1416,12 +1418,33 @@ namespace Dvorak
             this.cbFocus.UseVisualStyleBackColor = true;
             this.cbFocus.CheckedChanged += new System.EventHandler(this.cbFocus_CheckedChanged);
             // 
+            // cbPreset
+            // 
+            this.cbPreset.FormattingEnabled = true;
+            this.cbPreset.Location = new System.Drawing.Point(57, 9);
+            this.cbPreset.Name = "cbPreset";
+            this.cbPreset.Size = new System.Drawing.Size(121, 21);
+            this.cbPreset.TabIndex = 17;
+            this.cbPreset.SelectedIndexChanged += new System.EventHandler(this.cbPreset_SelectedIndexChanged);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(185, 9);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 18;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(952, 551);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.cbPreset);
             this.Controls.Add(this.cbFocus);
             this.Controls.Add(this.cbFingerings);
             this.Controls.Add(this.lblPointsDisplay);
@@ -1537,6 +1560,8 @@ namespace Dvorak
         private System.Windows.Forms.Label lblDvorak;
         private System.Windows.Forms.CheckBox cbFingerings;
         private System.Windows.Forms.CheckBox cbFocus;
+        private System.Windows.Forms.ComboBox cbPreset;
+        private System.Windows.Forms.Button btnSave;
     }
 }
 

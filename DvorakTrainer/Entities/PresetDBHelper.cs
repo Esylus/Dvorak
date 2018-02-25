@@ -30,6 +30,13 @@ namespace DvorakTrainer.Entities
             command.ExecuteNonQuery();
         }
 
+        public static void InsertDefault()
+        {
+            string sql = "INSERT INTO 'userPresets' ('name', 'list') VALUES ('Home Row', '42 43 44 45 46 47 48 49 50 51')";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+        }
+
         public static void InsertDB(Preset preset)
         {
             string sql = "INSERT INTO 'userPresets' ('name', 'list') VALUES ('" + preset.Name + "', '" + preset.UserList + "')";
