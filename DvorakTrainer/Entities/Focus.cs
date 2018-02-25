@@ -32,7 +32,7 @@ namespace DvorakTrainer.Entities
         {
             userResultsList.Clear();
             totalsKeyValuePairList.Clear();
-            totalsFocusKeyDistribution.Clear();
+            totalsFocusKeyDistribution.Clear(); // TESTING PURPOSES
             focusList.Clear();
             FocusModeEnabled = false;
         }
@@ -48,7 +48,7 @@ namespace DvorakTrainer.Entities
         {// get all unique keys from users results, parse out attempts and correct strikes to create average
 
             totalsKeyValuePairList.Clear();      
-            totalsFocusKeyDistribution.Clear();
+            totalsFocusKeyDistribution.Clear();  // TESTING PURPOSES
             totalsInFocusList.Clear(); // TESTING PURPOSES
 
             List<int> allKeys = (from kvp in userResultsList select kvp.Key).Distinct().ToList();
