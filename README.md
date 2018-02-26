@@ -7,6 +7,7 @@ A typing app designed to increase user speed and accuracy with all keys using us
 
   -- User can pick which letters they want to practice with by clicking on keys (twice to access special characters such as '&')
   
+
   -- Save chosen keys as a preset so you can systematically work on different areas of the keyboard 
   
   -- User chosen letters will then be served to user randomly for 1 minute. +5 for correct answers and -3 for incorrect
@@ -34,3 +35,4 @@ A typing app designed to increase user speed and accuracy with all keys using us
   -- Dvorak typing app was created and coded by PJ Miller in C# in a succesful effort to master typing in Dvorak
   
   -- Find out why typing in Dvorak is significantly more efficient than traditional QWERTY here http://www.dvzine.org/
+
