@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DvorakTrainer;
@@ -13,6 +14,8 @@ namespace Dvorak
         public Form1()
         {
             InitializeComponent();
+            loadCheckBoxNameDictionaries();
+            loadPresetComboBox();
         }
 
         private KeyRandomizer userKeyListObject;
@@ -21,6 +24,10 @@ namespace Dvorak
         private FadeTimer pointFade;
         private Focus sessionFocus;
         private bool disableKeyBoard = true;
+        private Dictionary<int, CheckBox> numberedCheckBoxNames;
+        private Dictionary<int, CheckBox> numberedCheckBoxNamesStateIndeterminate;
+
+       
 
         public void btnPractice_Click(object sender, EventArgs e)
         {
@@ -48,10 +55,8 @@ namespace Dvorak
             getRandomKeyAndDisplay();
         }
 
-        private List<int> putUserSelectedKeysIntoList()
-        {// Return a list of all the selected keys user wants to practice with
-         // Create dictionaries containing a number matched to each checkbox name 
-         // Collect all user-selected checkbox names, look up number in dict, put numbers in a list
+        private void loadCheckBoxNameDictionaries()
+        {  // On startup, create dictionaries containing a number matched to each checkbox name 
 
             List<CheckBox> allCheckBoxNames = new List<CheckBox>()
             {
@@ -62,36 +67,41 @@ namespace Dvorak
                 cbLAlt,cbSpace,cbLAlt,cbMenu,cbRCtrl
             };
 
-            Dictionary<int, CheckBox> numberedCheckBoxNames = new Dictionary<int, CheckBox>();
-              
-                    int count = 0;
-                    foreach (CheckBox cb in allCheckBoxNames)
-                    {
-                        numberedCheckBoxNames.Add(count, cb);
-                        count++;
-                    }
-                
+             numberedCheckBoxNames = new Dictionary<int, CheckBox>();
+
+            int count = 0;
+            foreach (CheckBox cb in allCheckBoxNames)
+            {
+                numberedCheckBoxNames.Add(count, cb);
+                count++;
+            }
+
 
             List<CheckBox> allCheckBoxNamesStateIndeterminate = new List<CheckBox>()
-            {            
+            {
                 cbTilda,cb1,cb2,cb3,cb4,cb5,cb6,cb7,cb8,cb9,cb0,cbLSqr,cbRSqr,
                 cbQte,cbComma,cbPrd,cbFSlsh,cbEql,cbBSlsh,cbDash,cbColon
             };
 
-            Dictionary<int, CheckBox> numberedCheckBoxNamesStateIndeterminate = new Dictionary<int, CheckBox>();
-              
-                    int count1 = 73;
-                    foreach (CheckBox cb in allCheckBoxNamesStateIndeterminate)
-                    {
-                        numberedCheckBoxNamesStateIndeterminate.Add(count1, cb);
-                        count1++;
-                    }
-                
-                foreach (var keyPair in numberedCheckBoxNames)
-                {// add first list to second  
-                    numberedCheckBoxNamesStateIndeterminate.Add(keyPair.Key, keyPair.Value);
-                }
+            numberedCheckBoxNamesStateIndeterminate = new Dictionary<int, CheckBox>();
 
+            int count1 = 73;
+            foreach (CheckBox cb in allCheckBoxNamesStateIndeterminate)
+            {
+                numberedCheckBoxNamesStateIndeterminate.Add(count1, cb);
+                count1++;
+            }
+
+            foreach (var keyPair in numberedCheckBoxNames)
+            {// add first list to second  
+                numberedCheckBoxNamesStateIndeterminate.Add(keyPair.Key, keyPair.Value);
+            }
+
+        }
+
+        private List<int> putUserSelectedKeysIntoList()
+        { // Return a list of all the selected keys user wants to practice with
+          // Collect all user-selected checkbox names, look up number in dict, put numbers in a list
 
             List<int> usersSelectedKeys = new List<int>();
 
@@ -516,6 +526,137 @@ namespace Dvorak
                         cb.UseVisualStyleBackColor = true;
                     }
                 }
-            }            
+            }
+
+        private void loadPresetComboBox()
+        {
+            if (File.Exists("DvorakPresets.sqlite"))
+            {
+                PresetDBHelper.connectToDatabase();
+                PresetDBHelper.printPresetsComboBox(cbPreset);
+                cbPreset.Text = "Default";
+            }
+            else
+            {
+
+                PresetDBHelper.createNewDatabase();
+                PresetDBHelper.connectToDatabase();
+                PresetDBHelper.createTable();
+                PresetDBHelper.InsertDefault();
+                PresetDBHelper.printPresetsComboBox(cbPreset);
+                cbPreset.Text = "Default";
+            }
+        }
+
+        private void refreshPresetComboBox()
+        {
+            cbPreset.Items.Clear();
+            PresetDBHelper.connectToDatabase();
+            PresetDBHelper.printPresetsComboBox(cbPreset);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {  // gather all user selected keys and look up in dictionary to get the int value
+           // add int to list to make a user list saved as a string
+           // put string and name of string into preset object and save to db
+
+            try
+            {
+                List<int> saveUsersSelectedKeys = new List<int>();
+       
+                foreach (CheckBox cb in gbKeyBoard.Controls.OfType<CheckBox>())
+                {
+                    if (cb.CheckState == CheckState.Checked)
+                    {
+                        foreach (KeyValuePair<int, CheckBox> keyString in numberedCheckBoxNames)
+                        {
+                            // look up checkbox name in Dictionary and add number to list
+                            if (cb == keyString.Value)
+                            {
+                                saveUsersSelectedKeys.Add(keyString.Key);
+                            }
+                        }
+                    }
+                    else if (cb.CheckState == CheckState.Indeterminate)
+                    {
+                        foreach (KeyValuePair<int, CheckBox> keyString in numberedCheckBoxNamesStateIndeterminate)
+                        {  // look up tristate indeterminate checkbox name in Dictionary and add number to list
+                            if (cb == keyString.Value)
+                            {
+                                saveUsersSelectedKeys.Add(keyString.Key);
+                            }
+                        }
+                    }
+                }
+
+                string myPresetList = "";
+                string name = cbPreset.Text;
+             
+                foreach (int keyNum in saveUsersSelectedKeys)
+                {
+                    myPresetList += keyNum.ToString() + " ";
+                }
+
+                if (string.IsNullOrEmpty(name) || (string.IsNullOrEmpty(myPresetList)))
+                {
+                    throw new ApplicationException();  // to ensure that blank presets are not saved
+                    
+                }
+
+                Preset newPreset = new Preset(name, myPresetList);
+             
+                PresetDBHelper.connectToDatabase();
+                PresetDBHelper.InsertPreset(newPreset);
+                refreshPresetComboBox();
+                MessageBox.Show("New Preset Created ");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Saving preset requires a name and keys selected ");
+            }
+     }
+
+        private void cbPreset_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string preset = "";
+
+            PresetDBHelper.connectToDatabase();
+            preset = PresetDBHelper.getPresetList(cbPreset.Text);    
+
+            preset = preset.TrimEnd();
+            string[] presetStrings = preset.Split();
+
+            List<int> presetInts = new List<int>();
+
+            foreach (string str in presetStrings)
+            {                
+                presetInts.Add(Convert.ToInt32(str));                
+            }
+          
+            foreach (CheckBox cb in gbKeyBoard.Controls.OfType<CheckBox>())
+            {
+                cb.Checked = false;
+            }
+
+            foreach (int cbInt in presetInts)
+            {
+                foreach (KeyValuePair<int, CheckBox> keyString in numberedCheckBoxNames)
+                {
+                    // look up checkbox name in Dictionary and add number to list
+                    if (cbInt == keyString.Key)
+                    {
+                        keyString.Value.Checked = true;
+                    }
+                }
+                foreach (KeyValuePair<int, CheckBox> keyString in numberedCheckBoxNamesStateIndeterminate)
+                {
+                    // look up checkbox name in Dictionary and add number to list
+                    if ((cbInt > 72) && (cbInt == keyString.Key))
+                    {
+                        keyString.Value.CheckState = CheckState.Indeterminate;
+                    }
+                }
+            }
+        }
     }
 }
