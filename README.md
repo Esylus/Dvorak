@@ -1,7 +1,7 @@
 # Dvorak
 A typing app designed to increase user speed and accuracy with all keys using user defined practice sessions
 
-![dvorak](https://user-images.githubusercontent.com/28571149/36582321-e4ed24a0-1825-11e8-8913-506b64a82b13.jpg)
+![dvorak](https://user-images.githubusercontent.com/28571149/36648448-a5b10a52-1a48-11e8-99da-88cddaed3399.jpg)
 
   -- Can be used with either QWERTY or DVORAK style typing 
 
