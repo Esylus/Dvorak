@@ -1,17 +1,19 @@
 # Dvorak
 A typing app designed to increase user speed and accuracy with all keys using user defined practice sessions
 
-![dvorak](https://user-images.githubusercontent.com/28571149/36582321-e4ed24a0-1825-11e8-8913-506b64a82b13.jpg)
+![dvorak](https://user-images.githubusercontent.com/28571149/36648448-a5b10a52-1a48-11e8-99da-88cddaed3399.jpg)
 
   -- Can be used with either QWERTY or DVORAK style typing 
 
   -- User can pick which letters they want to practice with by clicking on keys (twice to access special characters such as '&')
   
+  -- Save chosen keys as a preset so you can systematically work on different areas of the keyboard 
+  
   -- User chosen letters will then be served to user randomly for 1 minute. +5 for correct answers and -3 for incorrect
   
-  -- Pressing 'Learn' button activates psuedo machine learn option:
+  -- Pressing 'Focus' button activates learning optimization:
   
-      1. After selecting 'Learn', press 'Practice' to start. During 1st round, app will learn users typing strengths and weaknesses
+      1. After selecting 'Focus', press 'Practice' to start. During 1st round, app will learn users typing strengths and weaknesses
       
       2. On the following round, app will mutate the list to present keys that user had trouble with 50% more often
       
