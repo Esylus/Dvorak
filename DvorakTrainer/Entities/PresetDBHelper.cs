@@ -37,7 +37,7 @@ namespace DvorakTrainer.Entities
             command.ExecuteNonQuery();
         }
 
-        public static void InsertDB(Preset preset)
+        public static void InsertPreset(Preset preset)
         {
             string sql = "INSERT INTO 'userPresets' ('name', 'list') VALUES ('" + preset.Name + "', '" + preset.UserList + "')";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);

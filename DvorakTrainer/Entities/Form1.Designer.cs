@@ -1401,6 +1401,7 @@ namespace Dvorak
             this.cbFingerings.Name = "cbFingerings";
             this.cbFingerings.Size = new System.Drawing.Size(75, 33);
             this.cbFingerings.TabIndex = 15;
+            this.cbFingerings.TabStop = false;
             this.cbFingerings.Text = "Fingerings";
             this.cbFingerings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbFingerings.UseVisualStyleBackColor = true;
@@ -1413,7 +1414,8 @@ namespace Dvorak
             this.cbFocus.Name = "cbFocus";
             this.cbFocus.Size = new System.Drawing.Size(75, 33);
             this.cbFocus.TabIndex = 16;
-            this.cbFocus.Text = "Learn";
+            this.cbFocus.TabStop = false;
+            this.cbFocus.Text = "Focus";
             this.cbFocus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbFocus.UseVisualStyleBackColor = true;
             this.cbFocus.CheckedChanged += new System.EventHandler(this.cbFocus_CheckedChanged);
@@ -1425,6 +1427,7 @@ namespace Dvorak
             this.cbPreset.Name = "cbPreset";
             this.cbPreset.Size = new System.Drawing.Size(121, 21);
             this.cbPreset.TabIndex = 17;
+            this.cbPreset.TabStop = false;
             this.cbPreset.SelectedIndexChanged += new System.EventHandler(this.cbPreset_SelectedIndexChanged);
             // 
             // btnSave
@@ -1433,6 +1436,7 @@ namespace Dvorak
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 18;
+            this.btnSave.TabStop = false;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

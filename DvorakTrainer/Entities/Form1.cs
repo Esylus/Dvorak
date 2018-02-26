@@ -15,7 +15,7 @@ namespace Dvorak
         {
             InitializeComponent();
             loadCheckBoxNameDictionaries();
-            loadCBBox();
+            loadPresetComboBox();
         }
 
         private KeyRandomizer userKeyListObject;
@@ -528,7 +528,7 @@ namespace Dvorak
                 }
             }
 
-        private void loadCBBox()
+        private void loadPresetComboBox()
         {
             if (File.Exists("DvorakPresets.sqlite"))
             {
@@ -548,7 +548,7 @@ namespace Dvorak
             }
         }
 
-        private void refreshCBBox()
+        private void refreshPresetComboBox()
         {
             cbPreset.Items.Clear();
             PresetDBHelper.connectToDatabase();
@@ -606,8 +606,8 @@ namespace Dvorak
                 Preset newPreset = new Preset(name, myPresetList);
              
                 PresetDBHelper.connectToDatabase();
-                PresetDBHelper.InsertDB(newPreset);
-                refreshCBBox();
+                PresetDBHelper.InsertPreset(newPreset);
+                refreshPresetComboBox();
                 MessageBox.Show("New Preset Created ");
             }
             catch (Exception exception)
@@ -637,7 +637,6 @@ namespace Dvorak
             {
                 cb.Checked = false;
             }
-
 
             foreach (int cbInt in presetInts)
             {
