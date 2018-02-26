@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace DvorakTrainer.Entities
 {
+    // this class is used for points animations
+
     class FadeTimer
     {
         public int FadeTimerCount { get; set; }
