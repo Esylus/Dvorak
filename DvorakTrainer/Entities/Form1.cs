@@ -471,11 +471,11 @@ namespace Dvorak
             private void cbFingerings_CheckedChanged(object sender, EventArgs e)
                 { // toggle colored recommended key fingerings view  
 
-                Fingerings one = new Fingerings(155, 255, 131, 62); // thumb
-                Fingerings two = new Fingerings(155, 132, 138, 224); 
-                Fingerings three = new Fingerings(155, 149, 73, 203); 
-                Fingerings four = new Fingerings(155, 160, 192, 76); 
-                Fingerings five = new Fingerings(155, 0, 153, 217); // pinky
+                Fingerings one = new Fingerings(155, 0, 64, 100); // thumb
+                Fingerings two = new Fingerings(155, 19, 152, 27); 
+                Fingerings three = new Fingerings(155, 3, 60, 22); 
+                Fingerings four = new Fingerings(155, 0, 102, 204); 
+                Fingerings five = new Fingerings(155, 0, 64, 128); // pinky
 
                 CheckBox[] pinky = new CheckBox[] {cbEsc, cbF11, cbF12, cbTilda, cb1, cbRSqr, cbBack, cbLTab, cbQte,
                                                   cbBSlsh, cbEql, cbFSlsh, cbCaps, cbA, cbS, cbDash, cbEntr, cbLShft,
@@ -604,7 +604,7 @@ namespace Dvorak
                 }
 
                 Preset newPreset = new Preset(name, myPresetList);
-             
+            
                 PresetDBHelper.connectToDatabase();
                 PresetDBHelper.InsertPreset(newPreset);
                 refreshPresetComboBox();
@@ -658,5 +658,7 @@ namespace Dvorak
                 }
             }
         }
+
+        
     }
 }

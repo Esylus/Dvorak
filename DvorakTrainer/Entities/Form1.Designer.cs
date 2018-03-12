@@ -31,6 +31,7 @@ namespace Dvorak
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gbKeyBoard = new System.Windows.Forms.GroupBox();
             this.cbMenu = new System.Windows.Forms.CheckBox();
             this.cbLShft = new System.Windows.Forms.CheckBox();
@@ -42,6 +43,7 @@ namespace Dvorak
             this.cbCaps = new System.Windows.Forms.CheckBox();
             this.cbTilda = new System.Windows.Forms.CheckBox();
             this.cbLCtrl = new System.Windows.Forms.CheckBox();
+            this.lblDvorak = new System.Windows.Forms.Label();
             this.cbSpace = new System.Windows.Forms.CheckBox();
             this.cbLTab = new System.Windows.Forms.CheckBox();
             this.cbQ = new System.Windows.Forms.CheckBox();
@@ -118,7 +120,6 @@ namespace Dvorak
             this.lblTimerDisplay = new System.Windows.Forms.Label();
             this.FadeTimer = new System.Windows.Forms.Timer(this.components);
             this.lblMain = new System.Windows.Forms.Label();
-            this.lblDvorak = new System.Windows.Forms.Label();
             this.cbFingerings = new System.Windows.Forms.CheckBox();
             this.cbFocus = new System.Windows.Forms.CheckBox();
             this.cbPreset = new System.Windows.Forms.ComboBox();
@@ -129,6 +130,7 @@ namespace Dvorak
             // 
             // gbKeyBoard
             // 
+            this.gbKeyBoard.BackColor = System.Drawing.Color.Transparent;
             this.gbKeyBoard.Controls.Add(this.cbMenu);
             this.gbKeyBoard.Controls.Add(this.cbLShft);
             this.gbKeyBoard.Controls.Add(this.cbRAlt);
@@ -353,6 +355,18 @@ namespace Dvorak
             this.cbLCtrl.Text = "Ctrl";
             this.cbLCtrl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbLCtrl.UseVisualStyleBackColor = false;
+            // 
+            // lblDvorak
+            // 
+            this.lblDvorak.AutoSize = true;
+            this.lblDvorak.BackColor = System.Drawing.Color.Transparent;
+            this.lblDvorak.Font = new System.Drawing.Font("Verdana", 110.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDvorak.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblDvorak.Location = new System.Drawing.Point(27, 17);
+            this.lblDvorak.Name = "lblDvorak";
+            this.lblDvorak.Size = new System.Drawing.Size(656, 178);
+            this.lblDvorak.TabIndex = 14;
+            this.lblDvorak.Text = "Dvorak!";
             // 
             // cbSpace
             // 
@@ -1276,6 +1290,7 @@ namespace Dvorak
             // 
             this.lblAccuracy.AutoSize = true;
             this.lblAccuracy.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccuracy.ForeColor = System.Drawing.Color.White;
             this.lblAccuracy.Location = new System.Drawing.Point(6, 55);
             this.lblAccuracy.Name = "lblAccuracy";
             this.lblAccuracy.Size = new System.Drawing.Size(111, 23);
@@ -1286,6 +1301,7 @@ namespace Dvorak
             // 
             this.lblTotalPoints.AutoSize = true;
             this.lblTotalPoints.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPoints.ForeColor = System.Drawing.Color.White;
             this.lblTotalPoints.Location = new System.Drawing.Point(6, 16);
             this.lblTotalPoints.Name = "lblTotalPoints";
             this.lblTotalPoints.Size = new System.Drawing.Size(112, 23);
@@ -1294,7 +1310,7 @@ namespace Dvorak
             // 
             // pnlStatistics
             // 
-            this.pnlStatistics.BackColor = System.Drawing.Color.Silver;
+            this.pnlStatistics.BackColor = System.Drawing.Color.Transparent;
             this.pnlStatistics.Controls.Add(this.lblAccuracyDisplay);
             this.pnlStatistics.Controls.Add(this.lblTotalDisplay);
             this.pnlStatistics.Controls.Add(this.lblTotalPoints);
@@ -1308,6 +1324,7 @@ namespace Dvorak
             // 
             this.lblAccuracyDisplay.AutoSize = true;
             this.lblAccuracyDisplay.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccuracyDisplay.ForeColor = System.Drawing.Color.White;
             this.lblAccuracyDisplay.Location = new System.Drawing.Point(127, 55);
             this.lblAccuracyDisplay.Name = "lblAccuracyDisplay";
             this.lblAccuracyDisplay.Size = new System.Drawing.Size(0, 23);
@@ -1317,6 +1334,7 @@ namespace Dvorak
             // 
             this.lblTotalDisplay.AutoSize = true;
             this.lblTotalDisplay.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDisplay.ForeColor = System.Drawing.Color.White;
             this.lblTotalDisplay.Location = new System.Drawing.Point(128, 16);
             this.lblTotalDisplay.Name = "lblTotalDisplay";
             this.lblTotalDisplay.Size = new System.Drawing.Size(0, 23);
@@ -1325,6 +1343,7 @@ namespace Dvorak
             // lblPointsDisplay
             // 
             this.lblPointsDisplay.AutoSize = true;
+            this.lblPointsDisplay.BackColor = System.Drawing.Color.Transparent;
             this.lblPointsDisplay.Font = new System.Drawing.Font("Verdana", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPointsDisplay.Location = new System.Drawing.Point(619, 24);
             this.lblPointsDisplay.Name = "lblPointsDisplay";
@@ -1377,22 +1396,14 @@ namespace Dvorak
             // lblMain
             // 
             this.lblMain.AutoSize = true;
+            this.lblMain.BackColor = System.Drawing.Color.Transparent;
             this.lblMain.Font = new System.Drawing.Font("Verdana", 110.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMain.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblMain.Location = new System.Drawing.Point(215, 9);
             this.lblMain.Name = "lblMain";
             this.lblMain.Size = new System.Drawing.Size(418, 178);
             this.lblMain.TabIndex = 2;
             this.lblMain.Text = "Shift";
-            // 
-            // lblDvorak
-            // 
-            this.lblDvorak.AutoSize = true;
-            this.lblDvorak.Font = new System.Drawing.Font("Verdana", 110.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDvorak.Location = new System.Drawing.Point(10, 12);
-            this.lblDvorak.Name = "lblDvorak";
-            this.lblDvorak.Size = new System.Drawing.Size(656, 178);
-            this.lblDvorak.TabIndex = 14;
-            this.lblDvorak.Text = "Dvorak!";
             // 
             // cbFingerings
             // 
@@ -1446,6 +1457,8 @@ namespace Dvorak
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(952, 551);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cbPreset);
